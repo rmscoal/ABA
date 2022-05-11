@@ -1,1 +1,0 @@
-/* Dapat UID dari token */
