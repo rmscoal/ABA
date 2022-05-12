@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ABA">
         <activity
+            android:name=".ui.detailhuruf.DetailHurufActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.huruf.HurufActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.home.HomeActivity"
             android:exported="false" />
         <activity

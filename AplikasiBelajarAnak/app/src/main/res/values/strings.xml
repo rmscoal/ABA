@@ -6,4 +6,10 @@
     <string name="orangtua">untuk Orang Tua</string>
     <string name="selamat_datang">Selamat Datang!</string>
     <string name="username">Nama</string>
+    <string name="belajar_huruf">Belajar Huruf</string>
+    <string name="kategori1">Mudah</string>
+    <string name="kategori2">Sedang</string>
+    <string name="kategori3">Sulit</string>
+    <string name="hasil_pencarian">Hasil Pencarian</string>
+    <string name="kata">kata</string>
 </resources>
