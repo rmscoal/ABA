@@ -1,5 +1,7 @@
-<h1> Utils Folder </h1>
+# Aplikasi Belajar Anak
 
-</h3> What this folder contains </h3>
+## Backend
 
-<p> This folder is used for utility purposes suchs as reading data from database and hosting the application!</p>
+### Utils
+
+> This folder is used for utility purposes suchs as reading data from database and hosting the application!

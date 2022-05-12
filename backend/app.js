@@ -17,6 +17,7 @@ app.use(middlewareFirebase);
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
+
 /* Starting HTTP App */
 const httpServer = http.createServer(app);
 httpServer.listen(port, () => {
