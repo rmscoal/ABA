@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ABA">
         <activity
+            android:name=".ui.kataactivity.KataActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.detailhuruf.DetailHurufActivity"
             android:exported="false" />
         <activity
@@ -17,9 +20,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.home.HomeActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

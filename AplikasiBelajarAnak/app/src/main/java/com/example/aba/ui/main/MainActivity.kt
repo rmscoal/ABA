@@ -1,13 +1,12 @@
-package com.example.aba.ui.home
+package com.example.aba.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.aba.R
 
-class HomeActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-        supportActionBar?.hide()
+        setContentView(R.layout.activity_main)
     }
 }

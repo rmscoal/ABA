@@ -12,4 +12,8 @@
     <string name="kategori3">Sulit</string>
     <string name="hasil_pencarian">Hasil Pencarian</string>
     <string name="kata">kata</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_progress">Progress</string>
+    <string name="menu_home">Home</string>
 </resources>
