@@ -16,4 +16,36 @@
     <string name="menu_profile">Profile</string>
     <string name="menu_progress">Progress</string>
     <string name="menu_home">Home</string>
+
+    <string name="text_1">Hello Guys!</string>
+
+    <string name="text_2">
+        Nice to meet you, Lets start learning!
+        <br><b>Login</b> if you already have an account.</br>
+        <br><b>Register</b> to get started with the app.</br>
+    </string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="image1">imageview1</string>
+
+    <string name="input_name">Your Name</string>
+    <string name="input_email">Your Email</string>
+    <string name="input_password">Your Password</string>
+    <string name="input_description">What would you like to share?</string>
+    <string name="input_info_password">Type a password of at least 6 characters</string>
+    <string name="input_error_password">Less than 6 characters</string>
+    <string name="input_error_email">Invalid email entered</string>
+    <string name="input_error_empty">Please fill out this field</string>
+    <string name="input_error_image">Please insert the file</string>
+
+    <string name="button_register">Register</string>
+    <string name="button_login">Login</string>
+
+    <string name="login_description">Let\'s continue the story with the others</string>
+    <string name="register_description">Sudah siap untuk belajar sesuatu? Mari kita mulai!</string>
+
+
+    <string name="content_description_ic_login">Image login</string>
+    <string name="content_description_ic_register">Image register</string>
+    <string name="btn_logout">Logout</string>
 </resources>
