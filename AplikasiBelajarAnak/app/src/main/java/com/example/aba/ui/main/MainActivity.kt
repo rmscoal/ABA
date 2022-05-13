@@ -21,7 +21,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btRegis.setOnClickListener {
+            registerUser()
             startActivity(Intent(this, RegisterActivity::class.java))
         }
+    }
+
+    private fun registerUser() {
+        TODO("Not yet implemented")
     }
 }

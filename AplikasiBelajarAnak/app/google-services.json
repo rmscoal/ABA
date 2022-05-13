@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1027195685592",
+    "project_id": "aba-aplikasi-belajar-anak",
+    "storage_bucket": "aba-aplikasi-belajar-anak.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027195685592:android:a1a9e0527f116717b425ad",
+        "android_client_info": {
+          "package_name": "com.example.aba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1027195685592-bob1ea0fs9eca35iaj7o2pae8dpdv492.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG-7EGA0nD_DttKZB-SszLLEubKGQ0T4s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1027195685592-bob1ea0fs9eca35iaj7o2pae8dpdv492.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
