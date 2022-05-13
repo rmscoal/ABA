@@ -41,10 +41,10 @@
 
     </LinearLayout>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
@@ -110,6 +110,6 @@
                     android:layout_height="130dp"/>
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
 </LinearLayout>
