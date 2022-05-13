@@ -4,3 +4,23 @@
 
   Here, it will be written as a Promise function. 
 */
+const mysql = require('mysql') 
+
+const con = mysql.createConnection({
+    host: 'localhost',
+    user: 'root', 
+    password: '',
+    database: 'aba'
+});
+
+const getSpecificUser = (uid) => {
+  return new Promise((resolve, reject) => {
+    var query = `select * from users where uid = ${uid}`;
+    con.query(query, (err, result) => {
+      if (err) reject(err);
+      resolve(result);
+    })
+  })
+}
+
+module.exports = getSpecificUser;

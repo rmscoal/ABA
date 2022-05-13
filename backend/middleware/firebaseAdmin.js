@@ -8,7 +8,7 @@ class Middleware {
         try {
             const userAuthorized = admin.auth().verifyIdToken(token);
             if (userAuthorized) {
-                req.user = user.uid;
+                req.user = userAuthorized.uid;
                 // ! probably here check if user uid exist in database? 
                 next(); 
             }
