@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.aba.databinding.ActivityRegisterBinding
+import com.example.aba.ui.login.LoginActivity
+
 
 class RegisterActivity : AppCompatActivity() {
 

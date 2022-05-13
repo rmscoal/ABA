@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.aba.databinding.ActivityLoginBinding
+import com.example.aba.ui.home.HomeActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -15,7 +16,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnLogin.setOnClickListener {
-            startActivity(Intent(this, EmpthyActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
         }
     }
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".LoginActivity">
+    tools:context=".ui.splashscreen.SplashScreenActivity">
 
         <ImageView
             android:id="@+id/imageViewLogin"
@@ -115,7 +115,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:textColor="@color/white"
-            android:backgroundTint="@color/color1"
+            android:backgroundTint="@color/green"
             android:text="@string/button_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

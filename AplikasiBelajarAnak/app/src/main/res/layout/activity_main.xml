@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".ui.main.MainActivity"
     android:padding="16dp"
-    android:background="@color/color1">
+    android:background="@color/green">
 
     <TextView
         android:id="@+id/tvscreen_1"
@@ -56,7 +56,7 @@
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/white"
         android:text="@string/login"
-        android:textColor="@color/color1"
+        android:textColor="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_1"
@@ -69,7 +69,7 @@
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/white"
         android:text="@string/register"
-        android:textColor="@color/color1"
+        android:textColor="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_login"
