@@ -35,13 +35,15 @@ class Middleware {
                 const uid = decodedToken.uid;
                 // TODO: query to get the user id such that it can be stored in req.user = id
                 try {
+                    // !important : if this produces a bug due to await is only available in async function
+                    // and must be on top, then just return next() and be the next handler to get the user id
                     const id = await getId(uid); // getId to get the id of the user regarding the uid
                     req.user = id; // set id to req.user 
                     return next();
                 } catch (err) {
                     res.status(500).json({
                         status: 'fail',
-                        type: 'server/fail-to-query',
+                        type: 'database/fail-to-query',
                         message: err.message
                     })
                 }
