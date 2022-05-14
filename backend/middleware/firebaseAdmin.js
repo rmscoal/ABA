@@ -34,9 +34,17 @@ class Middleware {
             .then((decodedToken) => {
                 const uid = decodedToken.uid;
                 // TODO: query to get the user id such that it can be stored in req.user = id
-                const id = await getId(uid);
-                req.user = id; // set id in req.user
-                return next() // goes to the next middleware handler
+                try {
+                    const id = await getId(uid); // getId to get the id of the user regarding the uid
+                    req.user = id; // set id to req.user 
+                    return next();
+                } catch (err) {
+                    res.status(500).json({
+                        status: 'fail',
+                        type: 'server/fail-to-query',
+                        message: err.message
+                    })
+                }
             })
             .catch((err) => {
                 /*
