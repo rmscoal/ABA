@@ -1,6 +1,7 @@
 /* Dapat UID dari token dan disimpan di req.users */
 
 const admin = require('./config/firebaseAuth'); // import admin from firebase initializeApp
+const getId = require('../utils/getUserID'); // module to get userId form MySQL database
 
 class Middleware {
     async decodeToken(req,res,next) {
@@ -32,7 +33,9 @@ class Middleware {
         admin.auth().verifyIdToken(token)
             .then((decodedToken) => {
                 const uid = decodedToken.uid;
-                req.user = uid; // set uid in req.user
+                // TODO: query to get the user id such that it can be stored in req.user = id
+                const id = await getId(uid);
+                req.user = id; // set id in req.user
                 return next() // goes to the next middleware handler
             })
             .catch((err) => {
