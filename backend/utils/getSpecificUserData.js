@@ -1,17 +1,10 @@
 /* 
-  This file is defined to be used to get data from a given uid (select from)
+  This file is defined to be used to get data from a given id (select from)
   and retrieve name and achievements data for the user. 
 
   Here, it will be written as a Promise function. 
 */
-const mysql = require('mysql') 
-
-const con = mysql.createConnection({
-    host: 'localhost',
-    user: 'root', 
-    password: '',
-    database: 'aba'
-});
+const con = require('./database');
 
 const getSpecificUser = (uid) => {
   return new Promise((resolve, reject) => {

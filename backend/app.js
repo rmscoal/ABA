@@ -13,7 +13,7 @@ const middlewareFirebase = require('./middleware/firebaseAdmin.js');
 /* APP */
 app = express();
 
-app.use(middlewareFirebase);
+app.use(middlewareFirebase.decodeToken); // firebaseAdmin exported as a class
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 

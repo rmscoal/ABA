@@ -4,22 +4,40 @@ const admin = require('./config/firebaseAuth');
 
 class Middleware {
     async decodeToken(req,res,next) {
+        // get authorization from the headers
+        const { authorization } = req.headers; 
+
+        // check if the authorization headers are well configured
+        if (!authorization) return res.status(403).json({
+            status: 'fail', 
+            type: 'server/missing-authorization',
+            message: 'Missing req.headers.authorization on request to the server. This is need for authorization!'
+        })
+
+        if (!authorization.startWith('Bearer')) return res.status(400).json({
+            status: 'fail', 
+            type: 'server/missing-bearer',
+            message: 'Missing Bearer in req.headers.authorization on request to the server. This is needed to extract the token!'
+        })
+
+        if (authorization.split(' ').length !== 2) return res.status(400).json({
+            status: 'fail',
+            type: 'server/bearer-unrecognized',
+            message: 'Bearer in req.headers.authorization is not well configured. This is need to extract the token!'
+        })
+
+        // after passing the authorization header checks, now checks the token
         const token = req.headers.authorization.split(' ')[0]; // req.headers = {"Bearer $.token"} 
         try {
-            const userAuthorized  = await admin.auth().verifyIdToken(token); // check if user is authorized
-
-            // on authorized
-            if (userAuthorized) {
-                const uid = userAuthorized.uid();
-                req.user = uid; // set req.user to become the uid
-                next(); // TODO: check database if uid has existed or not? 
-            }
-            
-            // on unauthorized id token
-            return res.status(401).json({status: "fail", message: "Unauthorized"})
+            // verifying uid
+            await admin.auth().verifyIdToken(token).then((decodedToken) => {
+                const uid = decodedToken.uid;
+                req.user = uid;
+                next();
+            })
         } catch (err) {
             /*
-            on err, such as sent was FMC token instead of id token or token has expired!
+            on err for firebase tokens, such as sent was FMC token instead of id token or token has expired and many others!
             err response: after executing console.log(err)
             {
                 errorInfo: {
@@ -37,7 +55,9 @@ class Middleware {
                 codePrefix: 'auth'
             }
             */
-            return res.status(400).json({status: "fail", type: err.errorInfo.code, message: err.errorInfo.message}); // returns 404 bad request!
+            if (err.errorInfo.code === 'auth/internal-error') var statusCode = 500;
+            else var statusCode = 400; 
+            return res.status(statusCode).json({status: "fail", type: err.errorInfo.code, message: err.errorInfo.message}); // return with status codes
         }
     }
 }
