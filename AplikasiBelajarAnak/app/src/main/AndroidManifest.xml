@@ -20,7 +20,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.huruf.HurufActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="true" />
