@@ -69,11 +69,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ImageView
+                            android:id="@+id/huruf_a"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_a"
                             android:layout_width="130dp"
                             android:layout_height="130dp"/>
                         <ImageView
+                            android:id="@+id/huruf_b"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_b"
                             android:layout_width="130dp"
@@ -85,11 +87,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ImageView
+                            android:id="@+id/huruf_c"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_c"
                             android:layout_width="130dp"
                             android:layout_height="130dp"/>
                         <ImageView
+                            android:id="@+id/huruf_d"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_d"
                             android:layout_width="130dp"
@@ -101,11 +105,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ImageView
+                            android:id="@+id/huruf_e"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_e"
                             android:layout_width="130dp"
                             android:layout_height="130dp"/>
                         <ImageView
+                            android:id="@+id/huruf_f"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_f"
                             android:layout_width="130dp"
@@ -117,11 +123,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ImageView
+                            android:id="@+id/huruf_g"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_g"
                             android:layout_width="130dp"
                             android:layout_height="130dp"/>
                         <ImageView
+                            android:id="@+id/huruf_h"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_h"
                             android:layout_width="130dp"
@@ -133,11 +141,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ImageView
+                            android:id="@+id/huruf_i"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_i"
                             android:layout_width="130dp"
                             android:layout_height="130dp"/>
                         <ImageView
+                            android:id="@+id/huruf_j"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_j"
                             android:layout_width="130dp"
@@ -149,11 +159,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ImageView
+                            android:id="@+id/huruf_k"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_k"
                             android:layout_width="130dp"
                             android:layout_height="130dp"/>
                         <ImageView
+                            android:id="@+id/huruf_l"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_l"
                             android:layout_width="130dp"
@@ -165,11 +177,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ImageView
+                            android:id="@+id/huruf_m"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_m"
                             android:layout_width="130dp"
                             android:layout_height="130dp"/>
                         <ImageView
+                            android:id="@+id/huruf_n"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_n"
                             android:layout_width="130dp"
@@ -181,11 +195,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ImageView
+                            android:id="@+id/huruf_o"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_o"
                             android:layout_width="130dp"
                             android:layout_height="130dp"/>
                         <ImageView
+                            android:id="@+id/huruf_p"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_p"
                             android:layout_width="130dp"
@@ -197,11 +213,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ImageView
+                            android:id="@+id/huruf_q"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_q"
                             android:layout_width="130dp"
                             android:layout_height="130dp"/>
                         <ImageView
+                            android:id="@+id/huruf_r"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_r"
                             android:layout_width="130dp"
@@ -213,11 +231,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ImageView
+                            android:id="@+id/huruf_s"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_s"
                             android:layout_width="130dp"
                             android:layout_height="130dp"/>
                         <ImageView
+                            android:id="@+id/huruf_t"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_t"
                             android:layout_width="130dp"
@@ -229,11 +249,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ImageView
+                            android:id="@+id/huruf_u"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_u"
                             android:layout_width="130dp"
                             android:layout_height="130dp"/>
                         <ImageView
+                            android:id="@+id/huruf_v"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_v"
                             android:layout_width="130dp"
@@ -246,11 +268,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ImageView
+                            android:id="@+id/huruf_w"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_w"
                             android:layout_width="130dp"
                             android:layout_height="130dp"/>
                         <ImageView
+                            android:id="@+id/huruf_x"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_x"
                             android:layout_width="130dp"
@@ -263,11 +287,13 @@
                         android:layout_marginBottom="75dp"
                         android:layout_height="wrap_content">
                         <ImageView
+                            android:id="@+id/huruf_y"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_y"
                             android:layout_width="130dp"
                             android:layout_height="130dp"/>
                         <ImageView
+                            android:id="@+id/huruf_z"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_z"
                             android:layout_width="130dp"
@@ -399,7 +425,7 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <LinearLayout
-            android:layout_marginTop="-2"
+            android:layout_marginTop="0dp"
             android:layout_width="wrap_content"
             android:orientation="horizontal"
             android:layout_height="wrap_content">
