@@ -1,24 +1,41 @@
-/* !IMPORT MODULES */
+/* 
+  @ IMPORT MODULES 
+*/
 const express = require('express');
 const http = require('http');
 
-/* IMPORT FILES FROM OTHER DIRECTORIES */
+/* 
+  @ IMPORT ROUTES FROM OTHER DIRECTORIES 
+*/
 
-// UTILS - this might not be necessary/needed!
+/* 
+  @ UTILS 
+*/
+const port = process.env.PORT_HTTP || 8080;
 const hostname = require('./utils/host');
 
-// MIDDLEWARE - this will be used for Firebase authentications!
+/* 
+  @ IMPORT MIDDLEWARE FOR FIREBASE AUTHORIZATION
+*/
 const middlewareFirebase = require('./middleware/firebaseAdmin.js');
 
-/* APP */
+/* 
+  @ APP 
+*/
 app = express();
 
-app.use(middlewareFirebase.decodeToken); // firebaseAdmin exported as a class
+app.use(middlewareFirebase.decodeToken); // use firebaseAdmin that is exported as a class
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
+/* 
+  @ ROUTES
+*/
 
-/* Starting HTTP App */
+
+/* 
+  @ START APP 
+*/
 const httpServer = http.createServer(app);
 httpServer.listen(port, () => {
   console.log(`App is listening in ${hostname} on ${port}!`);

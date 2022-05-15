@@ -9,7 +9,7 @@ const con = require('./database');
 
 const makeNewUser = (uid,name) => {
   return new Promise((resolve, reject) => {
-    var query = `insert into users (uid,nama_anak) values (${uid},${name})`;
+    var query = `insert into users (uid,nama_user) values (${uid},${name})`;
     con.query(query, (err, result) => {
       if (err) reject(err);
       resolve(result);

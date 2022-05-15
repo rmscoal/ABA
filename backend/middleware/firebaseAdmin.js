@@ -2,7 +2,7 @@
 
 const admin = require('./config/firebaseAuth'); // import admin from firebase initializeApp
 const getId = require('../utils/getUserID'); // module to get userId form MySQL database
-const makeNewUser = require('../utils/makeNewUser');
+const makeNewUser = require('../utils/makeNewUser'); // module to make a new user into MySQL database
 
 
 class Middleware {
@@ -34,20 +34,22 @@ class Middleware {
         const token = authorization.split(' ')[1] // req.headers = {"Bearer $.token"} 
         admin.auth().verifyIdToken(token)
             .then((decodedToken) => {
-                const {uid, name} = decodedToken;
+                const {uid, name} = decodedToken; // get uid and name from the token
                 // TODO: query to get the user id such that it can be stored in req.user = id
                 try {
                     // !important : if this produces a bug due to await is only available in async function
                     // and must be on top, then just return next() and be the next handler to get the user id
                     const result = await getId(uid); // getId to get the id of the user regarding the uid
+                    // check if exist uid in the database
                     if (result.length < 1) {
+                        // if not make a new user
                         const result = await makeNewUser(uid, name); // make new user from the given uid and name
-                        const id = result.insertId;
-                        req.user = {id: id, namaAnak: name};
+                        const id = result.insertId; // get the id of the new user
+                        req.user = {id: id, name: name}; // set id and name to req.user
                         return next();
                     }
-                    const id = result[0].id; // getId to get the id of the user from the result query
-                    req.user = {id: id, namaAnak: name}; // set id to req.user 
+                    const id = result[0].id; // getId to get the id of the user from the result query since uid exist
+                    req.user = {id: id, name: name}; // set id and name to req.user 
                     return next();
                 } catch (err) {
                     return res.status(500).json({
