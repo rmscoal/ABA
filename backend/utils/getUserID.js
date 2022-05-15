@@ -6,7 +6,7 @@ const getId = (uid) => {
         var query = `select id from users where uid = ${uid}`;
         con.query(query, (err, result) => {
         if (err) reject(err);
-        resolve(result[0].id);
+        resolve(result);
         })
     })
 }

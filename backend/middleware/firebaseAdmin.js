@@ -2,6 +2,8 @@
 
 const admin = require('./config/firebaseAuth'); // import admin from firebase initializeApp
 const getId = require('../utils/getUserID'); // module to get userId form MySQL database
+const makeNewUser = require('../utils/makeNewUser');
+
 
 class Middleware {
     async decodeToken(req,res,next) {
@@ -32,16 +34,23 @@ class Middleware {
         const token = authorization.split(' ')[1] // req.headers = {"Bearer $.token"} 
         admin.auth().verifyIdToken(token)
             .then((decodedToken) => {
-                const uid = decodedToken.uid;
+                const {uid, name} = decodedToken;
                 // TODO: query to get the user id such that it can be stored in req.user = id
                 try {
                     // !important : if this produces a bug due to await is only available in async function
                     // and must be on top, then just return next() and be the next handler to get the user id
-                    const id = await getId(uid); // getId to get the id of the user regarding the uid
-                    req.user = id; // set id to req.user 
+                    const result = await getId(uid); // getId to get the id of the user regarding the uid
+                    if (result.length < 1) {
+                        const result = await makeNewUser(uid, name); // make new user from the given uid and name
+                        const id = result.insertId;
+                        req.user = {id: id, namaAnak: name};
+                        return next();
+                    }
+                    const id = result[0].id; // getId to get the id of the user from the result query
+                    req.user = {id: id, namaAnak: name}; // set id to req.user 
                     return next();
                 } catch (err) {
-                    res.status(500).json({
+                    return res.status(500).json({
                         status: 'fail',
                         type: 'database/fail-to-query',
                         message: err.message

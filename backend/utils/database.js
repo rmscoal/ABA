@@ -1,4 +1,4 @@
-/* A file for connecting to MySQL database */
+/* Initialize connecting to MySQL Database */
 
 const mysql = require('mysql') 
 
