@@ -7,6 +7,7 @@ const http = require('http');
 /* 
   @ IMPORT ROUTES FROM OTHER DIRECTORIES 
 */
+const userRoute = require('./routes/userRoute');
 
 /* 
   @ UTILS 
@@ -31,6 +32,7 @@ app.use(express.urlencoded({extended: false}));
 /* 
   @ ROUTES
 */
+app.use('/user', userRoute);
 
 
 /* 
