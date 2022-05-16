@@ -33,11 +33,10 @@ class Middleware {
         // after passing the authorization header checks, now checks the token
         const token = authorization.split(' ')[1]; // req.headers = {"Bearer $.token"} 
         admin.auth().verifyIdToken(token)
-            .then((decodedToken) => {
+            .then(async (decodedToken) => {
                 const {uid, name} = decodedToken; // get uid and name from the token
                 try {
-                    // !important : if this produces a bug due to await is only available in async function
-                    // and must be on top, then just return next() and be the next handler to get the user id
+                    // !this produces an error: await is only valid in async functions and the top level bodies of modules
                     const result = await getId(uid); // getId to get the id of the user regarding the uid
                     // check if exist uid in the database
                     if (result.length < 1) {
