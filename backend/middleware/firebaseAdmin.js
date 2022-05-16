@@ -31,11 +31,10 @@ class Middleware {
             message: 'Bearer in req.headers.authorization is not well configured. This is need to extract the token!'
         })
         // after passing the authorization header checks, now checks the token
-        const token = authorization.split(' ')[1] // req.headers = {"Bearer $.token"} 
+        const token = authorization.split(' ')[1]; // req.headers = {"Bearer $.token"} 
         admin.auth().verifyIdToken(token)
             .then((decodedToken) => {
                 const {uid, name} = decodedToken; // get uid and name from the token
-                // TODO: query to get the user id such that it can be stored in req.user = id
                 try {
                     // !important : if this produces a bug due to await is only available in async function
                     // and must be on top, then just return next() and be the next handler to get the user id
