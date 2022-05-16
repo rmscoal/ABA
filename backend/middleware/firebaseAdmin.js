@@ -36,7 +36,7 @@ class Middleware {
             .then(async (decodedToken) => {
                 const {uid, name} = decodedToken; // get uid and name from the token
                 try {
-                    // !this produces an error: await is only valid in async functions and the top level bodies of modules
+                    // check with the MySQL database
                     const result = await getId(uid); // getId to get the id of the user regarding the uid
                     // check if exist uid in the database
                     if (result.length < 1) {
