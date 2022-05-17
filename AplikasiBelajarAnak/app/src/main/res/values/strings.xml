@@ -48,4 +48,9 @@
     <string name="content_description_ic_login">Image login</string>
     <string name="content_description_ic_register">Image register</string>
     <string name="btn_logout">Logout</string>
+    <string name="menyusun_kata">Latihan Menyusun Kata</string>
+    <string name="level1">Level 1</string>
+    <string name="level2">Level 2</string>
+    <string name="level3">Level 3</string>
+    <string name="menyusun_huruf">Latihan Menyusun Huruf</string>
 </resources>
