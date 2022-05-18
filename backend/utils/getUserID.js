@@ -1,5 +1,5 @@
 /* 
-Get id (PRIMARY KEY in Users Table) from an uid. This will make query process faster. 
+  Get id (PRIMARY KEY in Users Table) from an uid. This will make query process faster. 
 */
 const con = require('./database');
 
