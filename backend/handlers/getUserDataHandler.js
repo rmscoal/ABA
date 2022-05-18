@@ -19,6 +19,7 @@ const getUserDataHandler = async (req,res) => {
     const { id } = req.user; // get the id of the user
     // handles the promise 
     getSpecificUserData(id)
+        // resultQuery returns an array 
         .then((resultQuery) => {
             // handles data not found
             if (resultQuery.length < 1) {
