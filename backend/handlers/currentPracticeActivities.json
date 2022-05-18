@@ -1,0 +1,17 @@
+{
+    "_comment": "This JSON file is a list of practice activities in the application!",
+    "latMenyusunKata": {
+        "level": {
+            "1": 5,
+            "2": 11, 
+            "3": 10
+        }
+    },
+    "latMengejaHuruf": {
+        "level": {
+            "1": 5, 
+            "2": 11, 
+            "3": 10
+        }
+    }
+}
