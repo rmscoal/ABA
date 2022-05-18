@@ -8,6 +8,7 @@ const http = require('http');
   @ IMPORT ROUTES FROM OTHER DIRECTORIES 
 */
 const userRoute = require('./routes/userRoute');
+const achievementRoute = require('./routes/achievementRoute');
 
 /* 
   @ UTILS 
@@ -19,6 +20,7 @@ const hostname = require('./utils/host');
   @ IMPORT MIDDLEWARE FOR FIREBASE AUTHORIZATION
 */
 const middlewareFirebase = require('./middleware/firebaseAdmin.js');
+// const { app } = require('firebase-admin');
 
 /* 
   @ APP 
@@ -33,7 +35,7 @@ app.use(express.urlencoded({extended: false}));
   @ ROUTES
 */
 app.use('/user', userRoute);
-
+app.use('/achievements', achievementRoute);
 
 /* 
   @ START APP 
