@@ -34,7 +34,7 @@ const updateEA = async (req, res, next) => {
         // resultQuery returns an object 
         .then((resultQuery) => {
             // handles no rows being affected from the query
-            if (resultQuery.changedRows < 1 || resultQuery.affectedRows < 1) {
+            if (resultQuery.changedRows < 1 && resultQuery.affectedRows < 1) {
                 return res.status(400).json({
                     status: 'fail',
                     type: 'database/no-affected-rows',
