@@ -5,7 +5,7 @@
 */ 
 const getSpecificUserData = require('../utils/getSpecificUserData'); // 
 
-// currently next() is not required
+// currently next() is not implemented
 const getUserDataHandler = async (req,res) => {
     // req.user does not exist 
     if (!req.user) {
