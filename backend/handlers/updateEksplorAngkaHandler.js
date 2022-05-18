@@ -1,9 +1,9 @@
-/* Handler to update/PUT achievements in eksplor-huruf section */
+/* Handler to update/PUT achievements in eksplor-angka section */
 
 /* 
   @ IMPORT MODULES FROM UTILS TO QUERY THE DATABASE
 */ 
-const updateEksplorHurufDatabaseQuery = require('../utils/updateEksplorHurufDatabaseQuery');
+const updateEksplorAngkaDatabaseQuery = require('../utils/updateEksplorAngkaDatabaseQuery');
 
 // currently next() is not implemented
 // EA stands for eksplor angka
@@ -30,7 +30,7 @@ const updateEA = async (req, res, next) => {
             }
         }
     */
-    updateEksplorHurufDatabaseQuery(id, eksplorAngkaData)
+    updateEksplorAngkaDatabaseQuery(id, eksplorAngkaData)
         // resultQuery returns an object 
         .then((resultQuery) => {
             // handles no rows being affected from the query
