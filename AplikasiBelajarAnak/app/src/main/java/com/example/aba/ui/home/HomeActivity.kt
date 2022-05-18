@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.aba.R
 import com.example.aba.databinding.ActivityHomeBinding
-import com.example.aba.databinding.ActivityLoginBinding
 import com.example.aba.ui.settings.SettingsActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

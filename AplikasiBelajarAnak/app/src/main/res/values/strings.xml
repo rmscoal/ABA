@@ -53,4 +53,7 @@
     <string name="level2">Level 2</string>
     <string name="level3">Level 3</string>
     <string name="menyusun_huruf">Latihan Menyusun Huruf</string>
+
+    <string name="statistik">Statistik Pembelajaran!</string>
+
 </resources>
