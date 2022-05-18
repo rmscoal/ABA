@@ -19,16 +19,16 @@ const getUserDataHandler = async (req,res) => {
     const { id } = req.user; // get the id of the user
     // handles the promise 
     getSpecificUserData(id)
-        .then((data) => {
+        .then((resultQuery) => {
             // handles data not found
-            if (data.length < 1) {
+            if (resultQuery.length < 1) {
                 return res.status(404).json({
                     status: 'fail', 
                     type: 'user/user-data-not-found',
                     message: 'Empty result for user\'s query!'
                 })
             }
-            const result = data[0]; // sets the result
+            const result = resultQuery[0]; // sets the result
             // return the result from the query
             return res.status(200).json({
                 status: 'success', 
