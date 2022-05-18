@@ -4,7 +4,7 @@
 
   Here, it will be written as a Promise function. 
 */
-const con = require('./database');
+const con = require('./database'); 
 
 const getSpecificUser = (id) => {
   return new Promise((resolve, reject) => {
