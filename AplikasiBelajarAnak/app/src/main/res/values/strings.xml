@@ -55,5 +55,7 @@
     <string name="menyusun_huruf">Latihan Menyusun Huruf</string>
 
     <string name="statistik">Statistik Pembelajaran!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
