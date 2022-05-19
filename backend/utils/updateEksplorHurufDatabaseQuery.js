@@ -11,8 +11,8 @@ For example, the req.body is:
   {
     eksplorHurufData: {
       a: true,
-      b: true, 
-      etc 
+      b: true,
+      c: true 
     }
   }
 */
@@ -21,6 +21,10 @@ const updateEksplorHurufObj = (id, obj) => {
   for (const [key, value] of Object.entries(obj)) {
     queryObjString += `"${key}"`+ ':' + value + ',';
   }
+  // the result of queryObjString would look like this: "a":true, "b":true, "c":true,
+  // if necessary (some cases error occurs) we need to delete the last ',' on queryObjString
+  // use this code: queryObjString = queryObjString.slice(0, queryObjString.length - 1);
+  // however without slicing it works just fine... 
   return new Promise((resolve, reject) => {
     var query = `UPDATE achievements SET eksplor_huruf=JSON_MERGE_PATCH(eksplor_huruf, '{${queryObjString}}') WHERE achievements.user_id=${id}`;
     con.query(query, (err, result) => {
