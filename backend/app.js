@@ -29,7 +29,7 @@ app = express();
 
 app.use(middlewareFirebase.decodeToken); // use firebaseAdmin that is exported as a class
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: false})); // Don't forget to send the header Content-Type: application/json
 
 /* 
   @ ROUTES
