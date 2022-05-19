@@ -24,7 +24,7 @@ const updatePracticeActivity = async (req, res, next) => {
     }
 
     // check if the level of the activity is in the JSON file activities
-    if (!Object.keys(currentJSON[`${activityName}`].level).includes(level)) {
+    if (!Object.keys(currentPractiveActivitiesJSON[`${activityName}`].level).includes(level)) {
         return res.status(404).json({
             status: 'fail',
             type: 'server/param-not-found',
