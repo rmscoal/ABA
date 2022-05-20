@@ -8,7 +8,7 @@ const {getPractiveActivity, updatePracticeActivityPlusOne} = require('../utils/u
 /* 
   @ IMPORT JSON FILE FOR CURRENT ACTIVITIES AND LEVELS FOR THE ACTIVITIES
 */ 
-const currentPractiveActivitiesJSON = require('./currentPracticeActivities.json');
+const currentPractiveActivitiesJSON = require('./resource/currentPracticeActivities.json');
 
 // currently next() is not implemented
 const updatePracticeActivity = async (req, res, next) => {
