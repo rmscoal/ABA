@@ -25,7 +25,7 @@ const middlewareFirebase = require('./middleware/firebaseAdmin.js');
 /* 
   @ APP 
 */
-app = express();
+const app = express();
 
 app.use(middlewareFirebase.decodeToken); // use firebaseAdmin that is exported as a class
 app.use(express.json());
