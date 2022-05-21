@@ -43,7 +43,7 @@ const updateEA = async (req, res, next) => {
             }
             return res.status(200).json({
                 status: 'success',
-                message: 'User\'s achievements on eksplor angka successfully updated'
+                message: 'User\'s achievements on eksplor angka successfully updated!'
             })
         })
         .catch((err) => {

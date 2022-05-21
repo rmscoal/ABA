@@ -42,7 +42,7 @@ const updateEH = async (req, res, next) => {
             }
             return res.status(200).json({
                 status: 'success',
-                message: 'User\'s achievements on eksplor huruf successfully updated'
+                message: 'User\'s achievements on eksplor huruf successfully updated!'
             })
         })
         .catch((err) => {
