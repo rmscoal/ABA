@@ -19,6 +19,7 @@ const updateEA = async (req, res, next) => {
     
     const { id } = req.user; // get id from the user
     const { eksplorAngkaData } = req.body // get data from the request body as an object
+    // add handler if eksplorAngkaData is undefined, for example frontend sent the wrong format
     /* 
         example req.body
         {

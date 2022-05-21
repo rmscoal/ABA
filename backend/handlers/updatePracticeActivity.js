@@ -56,7 +56,7 @@ const updatePracticeActivity = async (req, res, next) => {
             }
 
             // get the current user's achievement
-            const result = resultQuery[0][`${columnName}`];
+            const result = resultQuery[0][activityName+'lvl'+level];
 
             // checks with the JSON file
             if (result === currentPractiveActivitiesJSON[`${activityName}`]['level'][`${level}`]) {
