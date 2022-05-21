@@ -19,7 +19,7 @@ class Middleware {
             message: 'Missing req.headers.authorization on request to the server. This is need for authorization!'
         })
 
-        else if (!authorization.startWith('Bearer')) return res.status(400).json({
+        else if (!authorization.startsWith('Bearer')) return res.status(400).json({
             status: 'fail', 
             type: 'server/missing-bearer',
             message: 'Missing Bearer in req.headers.authorization on request to the server. This is needed to extract the token!'
