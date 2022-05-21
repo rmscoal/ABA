@@ -1,6 +1,6 @@
 var admin = require("firebase-admin");
 
-var serviceAccount = require("./exampleServiceAccountt.json"); // ABAServiceAccount
+var serviceAccount = require("./ABAServiceAccount.json"); // ABAServiceAccount
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)

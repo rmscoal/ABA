@@ -34,7 +34,7 @@ app.use(express.urlencoded({extended: false})); // Don't forget to set the heade
 /* 
   @ ROUTES
 */
-app.use('/user', userRoute);
+app.use('/users', userRoute);
 app.use('/achievements', achievementRoute);
 
 /* 
