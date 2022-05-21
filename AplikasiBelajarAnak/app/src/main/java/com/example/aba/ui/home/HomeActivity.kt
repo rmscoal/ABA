@@ -28,6 +28,7 @@ class HomeActivity : AppCompatActivity() {
         bottomNav.setOnItemSelectedListener(menuItemSelected)
         addFragment(fragment)
 
+
     }
 
     private val menuItemSelected = NavigationBarView.OnItemSelectedListener  { item ->
@@ -59,8 +60,9 @@ class HomeActivity : AppCompatActivity() {
     private fun addFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.home_activity, fragment, fragment.javaClass.getSimpleName())
+            .replace(R.id.frame_baru, fragment, fragment.javaClass.getSimpleName())
             .commit()
     }
+
 
 }

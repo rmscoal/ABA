@@ -7,12 +7,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.aba.R
 
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
 
-    private const val ARG_PARAM1 = "param1"
-    private const val ARG_PARAM2 = "param2"
-
+/**
+ * A simple [Fragment] subclass.
+ * Use the [SettingFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
 class SettingFragment : Fragment() {
-
+    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
@@ -29,9 +35,8 @@ class SettingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_setting, container, false)
     }
-
 
     companion object {
         /**
