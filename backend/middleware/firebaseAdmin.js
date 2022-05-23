@@ -34,7 +34,8 @@ class Middleware {
         const token = authorization.split(' ')[1]; // req.headers = {"Bearer $.token"} 
         admin.auth().verifyIdToken(token)
             .then(async (decodedToken) => {
-                const {uid, name} = decodedToken; // get uid and name from the token
+                const {uid, email} = decodedToken; // get uid and email from the token
+                const name = email.split('@')[0]; // set the name to the email address since name is undefined
                 try {
                     // check with the MySQL database
                     const result = await getId(uid); // getId to get the id of the user regarding the uid
