@@ -1,0 +1,1 @@
+{"status":"fail","type":"auth/argument-error","message":"Firebase ID token has invalid signature. See https://firebase.google.com/docs/auth/admin/verify-id-tokens for details on how to retrieve an ID token."}

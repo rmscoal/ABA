@@ -1,0 +1,1 @@
+{"status":"fail","type":"server/missing-authorization","message":"Missing req.headers.authorization on request to the server. This is need for authorization!"}

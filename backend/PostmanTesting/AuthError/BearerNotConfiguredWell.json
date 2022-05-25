@@ -1,0 +1,1 @@
+{"status":"fail","type":"server/bearer-unrecognized","message":"Bearer in req.headers.authorization is not well configured. This is need to extract the token!"}

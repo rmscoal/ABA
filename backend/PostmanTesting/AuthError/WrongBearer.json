@@ -1,0 +1,1 @@
+{"status":"fail","type":"server/missing-bearer","message":"Missing Bearer in req.headers.authorization on request to the server. This is needed to extract the token!"}

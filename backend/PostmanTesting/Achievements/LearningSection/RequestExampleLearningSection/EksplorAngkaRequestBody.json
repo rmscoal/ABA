@@ -1,0 +1,12 @@
+{
+    "eksplorHurufData":{
+        "nol": true,
+        "satu": true,
+        "dua": true,
+        "tiga": true,
+        "empat": true,
+        "lima": true,
+        "enam": true,
+        "tujuh": true
+    }
+}
