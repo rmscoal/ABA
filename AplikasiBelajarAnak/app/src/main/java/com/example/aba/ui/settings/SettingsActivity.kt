@@ -30,7 +30,7 @@ class SettingsActivity : AppCompatActivity() {
             finish()
             return
         }
-        val user = auth.currentUser
+
         val mUser = FirebaseAuth.getInstance().currentUser
         mUser!!.getIdToken(true)
             .addOnCompleteListener { task ->

@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.aba.R
+import com.example.aba.data.api.ApiConfig
+import com.example.aba.data.response.UserResponse
 import com.example.aba.databinding.ActivityLoginBinding
 import com.example.aba.ui.home.HomeActivity
 import com.example.aba.ui.settings.SettingsActivity
@@ -19,6 +21,9 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
 
@@ -30,7 +35,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         // Configure Google Sign In
         val gso = GoogleSignInOptions
@@ -71,6 +75,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
@@ -79,6 +84,9 @@ class LoginActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
+                    val token = getToken()
+//                    loginUser()
+                    getUserData(token)
                     updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
@@ -87,6 +95,93 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
     }
+
+//    fun loginUser(email: String, password: String): LiveData<ResultRepository<Boolean>>{
+//        val result = MutableLiveData<ResultRepository<Boolean>>()
+//        result.value = ResultRepository.Loading
+//        apiService.loginUser(email, password).enqueue(object : Callback<LoginResponse> {
+//            override fun onResponse(
+//                call: Call<LoginResponse>,
+//                response: Response<LoginResponse>
+//            ) {
+//                if (response.isSuccessful) {
+//                    val responseBody = response.body()
+//                    if (responseBody != null){
+//                        if (!responseBody.error) {
+//                            result.value = ResultRepository.Success(true)
+//                            MainScope().launch {
+//                                // userPreference.setNameToken(responseBody.loginResult.name, responseBody.loginResult.token)
+//                                userPreference.loginUser(responseBody.loginResult.token)
+//                            }
+//                        } else {
+//                            result.value = ResultRepository.Error(responseBody.message!!)
+//                        }
+//                    }
+//                }else {
+//                    result.value = ResultRepository.Error(response.message())
+//                }
+//            }
+//            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+//                result.value = ResultRepository.Error("Can't Connect Retrofit")
+//            }
+//        })
+//        return result
+//    }
+
+    private fun getUserData(token: String) {
+//        showLoading(true)
+        val auth = "Bearer $token"
+        val client = ApiConfig().getApiService().getDataUser(auth)
+        client.enqueue(object : Callback<UserResponse> {
+            override fun onResponse(
+                call: Call<UserResponse>,
+                response: Response<UserResponse>
+            ) {
+//                showLoading(false)
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        if(responseBody.totalCount != 0){
+//                            setUserData(responseBody)
+//                            showNoUser(false)
+
+                        }
+                        else{
+//                            setUserData(responseBody)
+//                            showNoUser(true)
+                        }
+                    }
+                } else {
+                    Log.e(TAG, "onFailure: ${response.message()}")
+//                    showNoUser(true)
+                }
+            }
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+//                showLoading(false)
+//                showNoUser(true)
+                Log.e(TAG, "onFailure: ${t.message}")
+            }
+        })
+    }
+
+    private fun getToken(): String{
+        var token = ""
+        val mUser = FirebaseAuth.getInstance().currentUser
+        mUser!!.getIdToken(true)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val idToken: String? = task.result.token
+                    Log.d("token di login",idToken!!)
+                    token = idToken!!
+                    // Send token to your backend via HTTPS
+                    // ...
+                } else {
+                    // Handle error -> task.getException();
+                }
+            }
+        return token
+    }
+
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null){
             startActivity(Intent(this, SettingsActivity::class.java))
