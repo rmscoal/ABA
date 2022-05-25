@@ -25,7 +25,7 @@ class Middleware {
             message: 'Missing Bearer in req.headers.authorization on request to the server. This is needed to extract the token!'
         })
 
-        else if (authorization.split(' ').length !== 2) return res.status(400).json({
+        else if (authorization.split(' ').length !== 2 || authorization.split(' ')[0] !== 'Bearer') return res.status(400).json({
             status: 'fail',
             type: 'server/bearer-unrecognized',
             message: 'Bearer in req.headers.authorization is not well configured. This is need to extract the token!'
