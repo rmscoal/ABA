@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiConfig {
     private val storyURL = "https://story-api.dicoding.dev/"
-    private val localURL = "https://localhost:8080/"
+    private val localURL = "http://192.168.1.3:8080/"
     fun getApiService(): ApiService {
         val loggingInterceptor = if(BuildConfig.DEBUG) {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)

@@ -84,9 +84,18 @@ class LoginActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
-                    val token = getToken()
-//                    loginUser()
-                    getUserData(token)
+                    user!!.getIdToken(true)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val idToken: String? = task.result.token
+                            Log.d("token di login",idToken!!)
+                            getUserData(idToken!!)
+                            // Send token to your backend via HTTPS
+                            // ...
+                        } else {
+                            // Handle error -> task.getException();
+                        }
+                    }
                     updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
@@ -131,6 +140,7 @@ class LoginActivity : AppCompatActivity() {
     private fun getUserData(token: String) {
 //        showLoading(true)
         val auth = "Bearer $token"
+        Log.e(TAG, "token: ${auth}")
         val client = ApiConfig().getApiService().getDataUser(auth)
         client.enqueue(object : Callback<UserResponse> {
             override fun onResponse(
@@ -141,18 +151,10 @@ class LoginActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        if(responseBody.totalCount != 0){
-//                            setUserData(responseBody)
-//                            showNoUser(false)
-
-                        }
-                        else{
-//                            setUserData(responseBody)
-//                            showNoUser(true)
-                        }
+                        Log.d("respon",responseBody.data.toString())
                     }
                 } else {
-                    Log.e(TAG, "onFailure: ${response.message()}")
+                    Log.e(TAG, "onFailure: ${response.raw()}")
 //                    showNoUser(true)
                 }
             }
@@ -164,8 +166,7 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
-    private fun getToken(): String{
-        var token = ""
+    private fun getToken(){
         val mUser = FirebaseAuth.getInstance().currentUser
         mUser!!.getIdToken(true)
             .addOnCompleteListener { task ->
@@ -179,7 +180,6 @@ class LoginActivity : AppCompatActivity() {
                     // Handle error -> task.getException();
                 }
             }
-        return token
     }
 
     private fun updateUI(currentUser: FirebaseUser?) {
@@ -198,5 +198,6 @@ class LoginActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "LoginActivity"
+        private var token: String = ""
     }
 }

@@ -8,7 +8,7 @@ import retrofit2.http.*
 
 interface ApiService {
 
-    @GET("v1/login")
+    @GET("users/")
     fun getDataUser(
         @Header("Authorization") token: String,
     ): Call<UserResponse>
