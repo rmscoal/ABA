@@ -57,5 +57,19 @@
     <string name="statistik">Statistik Pembelajaran!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pencapaian">Statistik Pencapaian</string>
+
+    <string name="progres">Progres</string>
+    <string name="progres2">Capaian huruf yang telah anda selesaikan.</string>
+    <string name="skor">Total Skor</string>
+    <string name="skor2">Total skor yang diraih.</string>
+    <string name="susun">Susun Huruf</string>
+    <string name="susun2">Total susunan huruf yang sudah dipahami.</string>
+    <string name="katakata">Kata</string>
+    <string name="kata2">Total kata yang sudah dipahami.</string>
+    <string name="hurufhurf">Huruf</string>
+    <string name="huruf2">Total susunan huruf yang sudah dipahami.</string>
+
+
 
 </resources>

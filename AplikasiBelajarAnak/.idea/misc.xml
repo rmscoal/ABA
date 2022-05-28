@@ -45,11 +45,13 @@
         <entry key="app/src/main/res/drawable/bg_iv_white.xml" value="0.113" />
         <entry key="app/src/main/res/layout/activity_detail_huruf.xml" value="0.1852563830389493" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.17877750120301178" />
-        <entry key="app/src/main/res/layout/activity_huruf.xml" value="0.18578643798828126" />
+        <entry key="app/src/main/res/layout/activity_huruf.xml" value="0.24297180175781252" />
         <entry key="app/src/main/res/layout/activity_kata.xml" value="0.12590579710144928" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2842187853826993" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.11347517730496454" />
         <entry key="app/src/main/res/layout/activity_susun_kata.xml" value="0.10196380615234377" />
+        <entry key="app/src/main/res/layout/fragment_pencapaian.xml" value="0.39683685302734384" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.17064375640652704" />
       </map>
     </option>
   </component>

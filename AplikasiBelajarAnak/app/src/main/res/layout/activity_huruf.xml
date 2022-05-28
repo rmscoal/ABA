@@ -54,7 +54,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
@@ -64,130 +63,139 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-<!--                    AB-->
+<!--                    ABC-->
                     <LinearLayout
                         android:layout_width="match_parent"
+                        android:gravity="center"
                         android:layout_height="wrap_content">
                         <ImageView
                             android:id="@+id/huruf_a"
-                            android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_a"
-                            android:layout_width="130dp"
-                            android:layout_height="130dp"/>
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"/>
                         <ImageView
                             android:id="@+id/huruf_b"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_b"
-                            android:layout_width="130dp"
-                            android:layout_height="130dp"/>
-                    </LinearLayout>
-<!--                    CD-->
-                    <LinearLayout
-                        android:layout_marginTop="15dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"/>
                         <ImageView
                             android:id="@+id/huruf_c"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_c"
-                            android:layout_width="130dp"
-                            android:layout_height="130dp"/>
-                        <ImageView
-                            android:id="@+id/huruf_d"
-                            android:layout_marginStart="15dp"
-                            android:background="@drawable/alfa_d"
-                            android:layout_width="130dp"
-                            android:layout_height="130dp"/>
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"/>
                     </LinearLayout>
-<!--                    EF-->
+<!--                    DEF-->
                     <LinearLayout
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
+                        android:gravity="center"
                         android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/huruf_d"
+                            android:background="@drawable/alfa_d"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"/>
                         <ImageView
                             android:id="@+id/huruf_e"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_e"
-                            android:layout_width="130dp"
-                            android:layout_height="130dp"/>
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"/>
                         <ImageView
                             android:id="@+id/huruf_f"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_f"
-                            android:layout_width="130dp"
-                            android:layout_height="130dp"/>
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"/>
+                    </LinearLayout>
+<!--                    GHI-->
+                    <LinearLayout
+                        android:layout_marginTop="15dp"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/huruf_g"
+                            android:background="@drawable/alfa_g"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"/>
+                        <ImageView
+                            android:id="@+id/huruf_h"
+                            android:layout_marginStart="15dp"
+                            android:background="@drawable/alfa_h"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"/>
+                        <ImageView
+                            android:id="@+id/huruf_i"
+                            android:layout_marginStart="15dp"
+                            android:background="@drawable/alfa_i"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"/>
                     </LinearLayout>
 <!--                    GH-->
                     <LinearLayout
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-                        <ImageView
-                            android:id="@+id/huruf_g"
-                            android:layout_marginStart="15dp"
-                            android:background="@drawable/alfa_g"
-                            android:layout_width="130dp"
-                            android:layout_height="130dp"/>
-                        <ImageView
-                            android:id="@+id/huruf_h"
-                            android:layout_marginStart="15dp"
-                            android:background="@drawable/alfa_h"
-                            android:layout_width="130dp"
-                            android:layout_height="130dp"/>
+
                     </LinearLayout>
-<!--                    IJ-->
+<!--                    JKL-->
                     <LinearLayout
-                        android:layout_marginTop="15dp"
+
                         android:layout_width="match_parent"
+                        android:gravity="center"
                         android:layout_height="wrap_content">
-                        <ImageView
-                            android:id="@+id/huruf_i"
-                            android:layout_marginStart="15dp"
-                            android:background="@drawable/alfa_i"
-                            android:layout_width="130dp"
-                            android:layout_height="130dp"/>
+
                         <ImageView
                             android:id="@+id/huruf_j"
-                            android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_j"
-                            android:layout_width="130dp"
-                            android:layout_height="130dp"/>
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"/>
+                        <ImageView
+                            android:id="@+id/huruf_k"
+                            android:layout_marginStart="15dp"
+                            android:background="@drawable/alfa_k"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"/>
+                        <ImageView
+                            android:id="@+id/huruf_l"
+                            android:layout_marginStart="15dp"
+                            android:background="@drawable/alfa_l"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"/>
                     </LinearLayout>
 <!--                    KL-->
                     <LinearLayout
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
+                        android:gravity="center"
                         android:layout_height="wrap_content">
-                        <ImageView
-                            android:id="@+id/huruf_k"
-                            android:layout_marginStart="15dp"
-                            android:background="@drawable/alfa_k"
-                            android:layout_width="130dp"
-                            android:layout_height="130dp"/>
-                        <ImageView
-                            android:id="@+id/huruf_l"
-                            android:layout_marginStart="15dp"
-                            android:background="@drawable/alfa_l"
-                            android:layout_width="130dp"
-                            android:layout_height="130dp"/>
+
                     </LinearLayout>
-<!--                    MN-->
+<!--                    MNO-->
                     <LinearLayout
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <ImageView
                             android:id="@+id/huruf_m"
-                            android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_m"
-                            android:layout_width="130dp"
-                            android:layout_height="130dp"/>
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"/>
                         <ImageView
                             android:id="@+id/huruf_n"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_n"
-                            android:layout_width="130dp"
-                            android:layout_height="130dp"/>
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"/>
+                        <ImageView
+                            android:id="@+id/huruf_o"
+                            android:layout_marginStart="15dp"
+                            android:background="@drawable/alfa_o"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"/>
                     </LinearLayout>
 <!--                    OP-->
                     <LinearLayout
@@ -312,243 +320,5 @@
         android:layout_height="wrap_content"
         app:menu="@menu/menu_nav_bottom" />
 
-    <LinearLayout
-        android:layout_marginTop="165dp"
-        android:layout_marginBottom="15dp"
-        android:layout_width="80dp"
-        android:orientation="vertical"
-        android:background="@drawable/bg_et_green"
-        android:layout_marginStart="310dp"
-        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="A"
-                android:layout_marginStart="15dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="B"
-                android:layout_marginStart="10dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="A"
-                android:layout_marginStart="15dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="B"
-                android:layout_marginStart="10dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="A"
-                android:layout_marginStart="15dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="B"
-                android:layout_marginStart="10dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="A"
-                android:layout_marginStart="15dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="B"
-                android:layout_marginStart="10dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="A"
-                android:layout_marginStart="15dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="B"
-                android:layout_marginStart="10dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="A"
-                android:layout_marginStart="15dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="B"
-                android:layout_marginStart="10dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="0dp"
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="A"
-                android:layout_marginStart="15dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="B"
-                android:layout_marginStart="10dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="A"
-                android:layout_marginStart="15dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="B"
-                android:layout_marginStart="10dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="A"
-                android:layout_marginStart="15dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="B"
-                android:layout_marginStart="10dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="A"
-                android:layout_marginStart="15dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="B"
-                android:layout_marginStart="10dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="A"
-                android:layout_marginStart="15dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="B"
-                android:layout_marginStart="10dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="A"
-                android:layout_marginStart="15dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="B"
-                android:layout_marginStart="10dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="A"
-                android:layout_marginStart="15dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="B"
-                android:layout_marginStart="10dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-
-
-
-
-
-
-    </LinearLayout>
 </RelativeLayout>
