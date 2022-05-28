@@ -32,10 +32,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
                 android:layout_marginTop="18dp"
-                android:layout_marginEnd="100dp"
                 android:text="@string/pencapaian"
+                android:gravity="center"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -51,6 +50,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:src="@drawable/icons1"
+                android:contentDescription="@string/pencapaian"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,7 +61,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/progres"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/img1"
                 app:layout_constraintTop_toTopOf="@+id/img1" />
 
@@ -84,6 +84,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/icons2"
+                android:contentDescription="@string/pencapaian"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img1" />
 
@@ -94,7 +95,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/huruf"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/img2"
                 app:layout_constraintTop_toTopOf="@+id/img2" />
 
@@ -116,6 +117,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/icons3"
+                android:contentDescription="@string/pencapaian"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img2" />
 
@@ -126,7 +128,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/susun"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/img3"
                 app:layout_constraintTop_toTopOf="@+id/img3" />
 
@@ -147,6 +149,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/icons4"
+                android:contentDescription="@string/pencapaian"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img3" />
 
@@ -157,7 +160,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/kata"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/img4"
                 app:layout_constraintTop_toTopOf="@+id/img4" />
 
@@ -178,6 +181,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/icons5"
+                android:contentDescription="@string/pencapaian"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img4" />
 
@@ -188,7 +192,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/skor"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/img5"
                 app:layout_constraintTop_toTopOf="@+id/img5" />
 

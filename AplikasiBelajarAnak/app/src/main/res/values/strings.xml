@@ -69,6 +69,10 @@
     <string name="kata2">Total kata yang sudah dipahami.</string>
     <string name="hurufhurf">Huruf</string>
     <string name="huruf2">Total susunan huruf yang sudah dipahami.</string>
+<<<<<<< HEAD
 
+=======
+    <string name="profile">Profile</string>
+>>>>>>> 9e5c678da33b685bd0b9de79ee0cedd9afa60564
 
 </resources>
