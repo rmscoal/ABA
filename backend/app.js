@@ -9,6 +9,7 @@ const http = require('http');
 */
 const userRoute = require('./routes/userRoute');
 const achievementRoute = require('./routes/achievementRoute');
+const predictionRoute = require('./routes/predictionRoute');
 
 /* 
   @ UTILS 
@@ -36,6 +37,7 @@ app.use(express.urlencoded({extended: false})); // Don't forget to set the heade
 */
 app.use('/users', userRoute);
 app.use('/achievements', achievementRoute);
+app.use('/predictions', predictionRoute);
 
 /* 
   @ START APP 
