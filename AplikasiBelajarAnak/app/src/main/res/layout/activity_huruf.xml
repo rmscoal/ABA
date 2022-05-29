@@ -259,7 +259,7 @@
                             android:layout_width="110dp"
                             android:layout_height="110dp"/>
                         <ImageView
-                            android:id="@+id/x"
+                            android:id="@+id/huruf_x"
                             android:layout_marginStart="15dp"
                             android:background="@drawable/alfa_x"
                             android:layout_width="110dp"

@@ -49,8 +49,12 @@ class HurufActivity : AppCompatActivity() {
                 Toast.makeText(this@HurufActivity, "A", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
+                    sp.play(soundId,5f,5f,0,0,1f)
                 }
+                //ketika dipencet
+            //  edit text bertambah
+                // simpan huruf di user pref
+                //
             }
             hurufB.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.b, 1)
