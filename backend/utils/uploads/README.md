@@ -1,1 +1,7 @@
-<h4>THIS FOLDER WILL STORE THE FILE UPLOADED FROM MOBILE APPLICATION</h4>
+# Aplikasi Belajar Anak
+
+## Backend
+
+### Utils
+
+>This folder is use to store audio files from the frontend!

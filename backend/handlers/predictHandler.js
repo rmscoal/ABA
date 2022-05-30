@@ -40,23 +40,26 @@ const predictHandler = async (req,res,next) => {
         })
     }
 
+    // check if the extension is .wav or not 
     else if (ext !== 'wave') {
-        const converter = require('../utils/converter')
-            var temp = Object.assign({},file);
-            try {
-                file.path = await converter(temp.path, temp.filename.split('.')[0],  function (errorMessage) {
+        const converter = require('../utils/converter');
+        var temp = Object.assign({},file); // store the temporary path of the file here
+        var converterBool = 1; // set the converter bool to 1. This means that converting process took place
+        try {
+            // get the new path of the converted
+            file.path = await converter(temp.path, temp.filename.split('.')[0],  function (errorMessage) {
 
-                }, null, function () {
-                    console.log("success");
-                });
-            } catch (err) {
-                fs.unlinkSync(file.path);
-                return res.status(500).json({
-                    status: 'fail',
-                    type: 'server/convert-error',
-                    message: 'There was an error while converting. Here is the error message: ' + err
-                })   
-            }
+            }, null, function () {
+                console.log('Successfully converted to .wav file!');
+            });
+        } catch (err) {
+            fs.unlinkSync(file.path);
+            return res.status(500).json({
+                status: 'fail',
+                type: 'server/convert-error',
+                message: 'There was an error while converting. Here is the error message: ' + err
+            })   
+        }
     }
     
     // load the model according to the alphabet requested
@@ -80,7 +83,7 @@ const predictHandler = async (req,res,next) => {
                     const tensor = tf.tensor4d(numpyArr, [1,32,13,1], 'float32');
                     // use the tensor for prediction using the model
                     const predict = await model.predict(tensor).data();
-                    if (temp.path !== undefined) {
+                    if (converterBool) {
                         fs.unlinkSync(temp.path);
                     }
                     // sends back result

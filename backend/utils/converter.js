@@ -8,7 +8,7 @@ const converter = (file, destinationFileName, error, progress, finish) => {
                 reject(err); 
             })
             .on('progress', (progress) => {
-                console.log(progress.targetSize);
+                // console.log(progress.targetSize);
             })
             .on('end', () => {
                 if (finish) { 
