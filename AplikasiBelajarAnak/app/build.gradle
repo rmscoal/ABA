@@ -79,4 +79,7 @@ dependencies {
     implementation "androidx.paging:paging-runtime-ktx:3.1.1"
     implementation 'androidx.room:room-paging:2.5.0-alpha01'
 
+    //json parser
+    implementation 'com.beust:klaxon:5.5'
+    implementation 'com.google.code.gson:gson:2.8.9'
 }
