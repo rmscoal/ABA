@@ -3,6 +3,8 @@
 */
 const express = require('express');
 const http = require('http');
+const path = require('path');
+require('dotenv').config({path: path.join(__dirname, 'config.env')});
 
 /* 
   @ IMPORT ROUTES FROM OTHER DIRECTORIES 
@@ -14,7 +16,7 @@ const predictionRoute = require('./routes/predictionRoute');
 /* 
   @ UTILS 
 */
-const port = process.env.PORT_HTTP || 8080;
+const port = process.env.PORT_HTTP;
 const hostname = require('./utils/host');
 
 /* 
