@@ -3,6 +3,7 @@
 const admin = require('./config/firebaseAuth'); // import admin from firebase initializeApp
 const getId = require('../utils/getUserID'); // module to get userId form MySQL database
 const makeNewUser = require('../utils/makeNewUser'); // module to make a new user into MySQL database
+const makeNewUserAchievements = require('../utils/makeNewUserAchievements'); // module to make new achievements of users into MySQL database
 
 
 class Middleware {
@@ -44,6 +45,7 @@ class Middleware {
                         // if not make a new user
                         const result = await makeNewUser(uid, name); // make new user from the given uid and name
                         const id = result.insertId; // get the id of the new user
+                        await makeNewUserAchievements(id); // make new achievements row
                         req.user = {id: id, name: name}; // set id and name to req.user
                         return next();
                     }
