@@ -18,6 +18,6 @@ const upload = multer({storage: fileStorageEngine});
 const predictHandler = require('../handlers/predictHandler');
 
 router.route('/:letter')
-    .post(upload.single('wav'), predictHandler);
+    .post(upload.single('predict'), predictHandler);
 
 module.exports = router; 

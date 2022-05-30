@@ -2,13 +2,16 @@ const tf = require('@tensorflow/tfjs-node');
 const path = require('path');
 const fs = require('fs');
 
+// import getMFCCData to get the array value of the mfcc
 const getMFCCData = require('../utils/getMFCCData');
 
 // current next() is not implemented
 const predictHandler = async (req,res,next) => {
-    const {letter} = req.params; // get the params to know which alphabet to predict
+    // get the params to know which alphabet to predict
+    const {letter} = req.params;
 
-    let file = req.file; // get the file path of the uploaded wav file
+    // get the file path of the uploaded wav file
+    let file = req.file;
 
     // checks the header content-type
     if (!req.is('multipart/form-data')) return res.status(404).json({
@@ -24,38 +27,83 @@ const predictHandler = async (req,res,next) => {
         message: 'Something went wrong! File is not found!'
     })
 
-    // checks the extension of the file that is uploaded
-    else if (file.mimetype !== 'audio/wave') return res.status(404).json({
-        status: 'fail',
-        type: 'server/wrong-file-type',
-        message: 'File type is not supported!'
-    })
+    var type = file.mimetype.split('/')[0]; // get the file type
+    var ext = file.mimetype.split('/')[1]; // get the extension
 
+    // checks the extension of the file that is uploaded
+    if (type !== 'audio') {
+        fs.unlinkSync(file.path); // deletes the uploaded file
+        return res.status(404).json({
+            status: 'fail',
+            type: 'server./file-not-supported',
+            message: 'We only receive audio file type. You\'re file type was: ' + type
+        })
+    }
+
+    else if (ext !== 'wave') {
+        const converter = require('../utils/converter')
+            var temp = Object.assign({},file);
+            try {
+                file.path = await converter(temp.path, temp.filename.split('.')[0],  function (errorMessage) {
+
+                }, null, function () {
+                    console.log("success");
+                });
+            } catch (err) {
+                fs.unlinkSync(file.path);
+                return res.status(500).json({
+                    status: 'fail',
+                    type: 'server/convert-error',
+                    message: 'There was an error while converting. Here is the error message: ' + err
+                })   
+            }
+    }
+    
+    // load the model according to the alphabet requested
     const model = await tf.loadLayersModel('file://' +  path.join(__dirname, '..', 'models', `${letter.toUpperCase()}`, 'model.json'));
 
+    // run getMFCCData from utils
     getMFCCData(file.path)
         .then(async (response) => {
             try {
+                // run if return form python file is 1
                 if (response) {
-                    fs.unlinkSync(file.path); // delete file after result is obtained
+                    // delete file after result is obtained
+                    fs.unlinkSync(file.path); 
+                    // read result output from python stored in the json file 
                     var arr = fs.readFileSync(path.join(__dirname, '..', 'utils', 'mfccsResult', 'result.json'));
+                    // parse the output to json
                     var jsonArr = JSON.parse(JSON.parse(arr));
+                    // get the array value from the parsed json
                     var numpyArr = jsonArr.array; 
+                    // convert array into tensor 4 dimension
                     const tensor = tf.tensor4d(numpyArr, [1,32,13,1], 'float32');
+                    // use the tensor for prediction using the model
                     const predict = await model.predict(tensor).data();
+                    if (temp.path !== undefined) {
+                        fs.unlinkSync(temp.path);
+                    }
+                    // sends back result
                     return res.status(200).json({
                         status: 'success',
                         message: 'We have successfully predict the wav file!',
                         result: predict[0]
                     })
                 }
-            } catch (err) {
-                // catch errors during deleting the wav file
+            } catch (err) { // this error catches fail on deleting the wav file
+                // outputs problem to analyze
+                console.log('File unsuccessfully deleted!')
+                // read result output from python stored in the json file 
                 var arr = fs.readFileSync(path.join(__dirname, '..', 'utils', 'mfccsResult', 'result.json'));
+                // parse the output to json
                 var jsonArr = JSON.parse(JSON.parse(arr));
+                // get the array value from the parsed json
                 var numpyArr = jsonArr.array; 
+                // convert array into tensor 4 dimension
                 const tensor = tf.tensor4d(numpyArr, [1,32,13,1], 'float32');
+                // use the tensor for prediction using the model
                 const predict = await model.predict(tensor).data();
+                // sends back the result but the file is not deleted
                 return res.status(500).json({
                     status: 'fail',
                     type: 'server/fail-to-delete',
@@ -64,7 +112,9 @@ const predictHandler = async (req,res,next) => {
                 });
             }
         })
-        .catch((err) => {
+        .catch((err) => { // this catches prediction error
+            fs.unlinkSync(file.path);
+            // sends back error to application
             return res.status(404).json({
                 status: 'fail',
                 type: 'server/fail-to-predict',
