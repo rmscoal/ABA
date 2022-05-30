@@ -1,0 +1,10 @@
+{
+    "_comment": "This JSON file is a list of levels and its value for latihan mengeja huruf in the application! In the database this is JSON type.",
+    "latMengejaHuruf": {
+        "level": {
+            "1": ["a", "i", "u","e", "o", "p", "m", "h", "n", "w"], 
+            "2": ["t", "d", "k", "g", "f", "b", "c", "l"], 
+            "3": ["z", "x", "s", "j", "v", "q", "r", "y"]
+        }
+    }
+}

@@ -1,18 +1,26 @@
 const tf = require('@tensorflow/tfjs-node');
 const path = require('path');
 const fs = require('fs');
+const _ = require('lodash');
 
 // import getMFCCData to get the array value of the mfcc
 const getMFCCData = require('../utils/getMFCCData');
+const updateSpeechRecogLevel = require('../utils/updateSpeechRecogLevel');
 
 // current next() is not implemented
 const predictHandler = async (req,res,next) => {
+    if (!req.user) {
+        return res.status(401).json({
+            status: 'fail',
+            type: 'user/user-unidentified',
+            message: 'req.user does not exist. It is required to query data.'
+        })
+    }
+
     // get the params to know which alphabet to predict
-    const {letter} = req.params;
-
-    // get the file path of the uploaded wav file
-    let file = req.file;
-
+    const {id} = req.user;
+    const {letter} = req;
+    
     // checks the header content-type
     if (!req.is('multipart/form-data')) return res.status(404).json({
         status: 'fail',
@@ -20,8 +28,11 @@ const predictHandler = async (req,res,next) => {
         message: 'Please speicfy the header content-type to be \'multipart/form-data.\''
     })
 
+    // get the file path of the uploaded wav file
+    let file = req.file;
+    
     // if file does not exist
-    else if (!file) return res.status(500).json({
+    if (!file) return res.status(500).json({
         status: 'fail',
         type: 'server/file-not-found',
         message: 'Something went wrong! File is not found!'
@@ -33,9 +44,9 @@ const predictHandler = async (req,res,next) => {
     // checks the extension of the file that is uploaded
     if (type !== 'audio') {
         fs.unlinkSync(file.path); // deletes the uploaded file
-        return res.status(404).json({
+        return res.status(400).json({
             status: 'fail',
-            type: 'server./file-not-supported',
+            type: 'server/file-not-supported',
             message: 'We only receive audio file type. You\'re file type was: ' + type
         })
     }
@@ -47,7 +58,7 @@ const predictHandler = async (req,res,next) => {
         var converterBool = 1; // set the converter bool to 1. This means that converting process took place
         try {
             // get the new path of the converted
-            file.path = await converter(temp.path, temp.filename.split('.')[0],  function (errorMessage) {
+            file.path = await converter(temp.path, temp.filename.split('.')[0], (errorMessage) => {
 
             }, null, function () {
                 console.log('Successfully converted to .wav file!');
@@ -83,36 +94,147 @@ const predictHandler = async (req,res,next) => {
                     const tensor = tf.tensor4d(numpyArr, [1,32,13,1], 'float32');
                     // use the tensor for prediction using the model
                     const predict = await model.predict(tensor).data();
+                    // deletes the temp data if it goes through conversion to wav file
                     if (converterBool) {
                         fs.unlinkSync(temp.path);
                     }
-                    // sends back result
-                    return res.status(200).json({
-                        status: 'success',
-                        message: 'We have successfully predict the wav file!',
-                        result: predict[0]
-                    })
+
+                    // update user's score if predict equals to 1
+                    if (predict[0]) {
+                        // JSON file to get the levels of the requested alphabet
+                        const speechRecogLevels = require('./resource/speechRecogLevels.json');
+                        // set the Object values of speechRecogLevels.latMengejaHuruf.level to find the level
+                        const arrToFindLevel = Object.values(speechRecogLevels.latMengejaHuruf.level);
+                        // get the level of the alphabet requested 
+                        var level = _.findIndex(arrToFindLevel, (el) => { 
+                            return el.includes(letter);
+                        }) + 1;
+                        /**
+                            @option
+                            search for level from the requested letter without using lodash
+                            for (let i=0 ; i < arrToFindLevel.length; ++i){
+                                if (arr[i].includes(letter)) var level = i+1; break;
+                                else continue
+                            }
+                        */
+                        // define the object to be passed through the query
+                        const obj = {};
+                        // set the object of the letter to true for the purpose of the query
+                        obj[`${letter}`] = true; 
+                        // run the query function in utils folder 
+                        updateSpeechRecogLevel(level, obj, id)
+                            // resultQuery returns an object 
+                            .then((resultQuery) => {
+                                // handles no rows being affected from the query
+                                if (resultQuery.changedRows < 1 && resultQuery.affectedRows < 1) {
+                                    return res.status(500).json({
+                                        status: 'fail',
+                                        type: 'database/no-affected-rows',
+                                        message: 'No rows are being affected on this query. We were unable to update your score. See you\'re result.',
+                                        result: predict[0]
+                                    })
+                                }
+                                return res.status(200).json({
+                                    status: 'success',
+                                    message: 'We have succesfully predict your recording. User\'s achievements on latihan mengeja huruf successfully updated!',
+                                    result: predict[0]
+                                })
+                            })
+                            .catch((err) => {
+                                return res.status(500).json({
+                                    status: 'fail',
+                                    type: 'database/fail-to-query',
+                                    message: err.message + '. See you\'re result.',
+                                    result: predict[0]
+                                })
+                            })
+                    } else {
+                        // sends back result if predict equals to 1
+                        return res.status(200).json({
+                            status: 'success',
+                            message: 'We have successfully predict the recording! See you\'re result.',
+                            result: predict[0]
+                        })
+                    }
                 }
             } catch (err) { // this error catches fail on deleting the wav file
-                // outputs problem to analyze
-                console.log('File unsuccessfully deleted!')
-                // read result output from python stored in the json file 
-                var arr = fs.readFileSync(path.join(__dirname, '..', 'utils', 'mfccsResult', 'result.json'));
-                // parse the output to json
-                var jsonArr = JSON.parse(JSON.parse(arr));
-                // get the array value from the parsed json
-                var numpyArr = jsonArr.array; 
-                // convert array into tensor 4 dimension
-                const tensor = tf.tensor4d(numpyArr, [1,32,13,1], 'float32');
-                // use the tensor for prediction using the model
-                const predict = await model.predict(tensor).data();
-                // sends back the result but the file is not deleted
-                return res.status(500).json({
-                    status: 'fail',
-                    type: 'server/fail-to-delete',
-                    message: 'Failed to delete wav file after getting result! This is error message: ' + err + '. However we got you\'re prediction!',
-                    result: predict[0]
-                });
+                // run if return form python file is 1
+                if (response) {
+                    // outputs problem to analyze
+                    console.log('File unsuccessfully deleted!');
+                    // read result output from python stored in the json file 
+                    var arr = fs.readFileSync(path.join(__dirname, '..', 'utils', 'mfccsResult', 'result.json'));
+                    // parse the output to json
+                    var jsonArr = JSON.parse(JSON.parse(arr));
+                    // get the array value from the parsed json
+                    var numpyArr = jsonArr.array; 
+                    // convert array into tensor 4 dimension
+                    const tensor = tf.tensor4d(numpyArr, [1,32,13,1], 'float32');
+                    // use the tensor for prediction using the model
+                    const predict = await model.predict(tensor).data();
+                    // deletes the temp data if it goes through conversion to wav file
+                    if (converterBool) {
+                        fs.unlinkSync(temp.path);
+                    }
+
+                    // update user's score if predict equals to 1
+                    if (predict[0]) {
+                        // JSON file to get the levels of the requested alphabet
+                        const speechRecogLevels = require('./resource/speechRecogLevels.json');
+                        // set the Object values of speechRecogLevels.latMengejaHuruf.level to find the level
+                        const arrToFindLevel = Object.values(speechRecogLevels.latMengejaHuruf.level);
+                        // get the level of the alphabet requested 
+                        var level = _.findIndex(arrToFindLevel, (el) => { 
+                            return el.includes(letter);
+                        }) + 1;
+                        /**
+                            @option
+                            search for level from the requested letter without using lodash
+                            for (let i=0 ; i < arrToFindLevel.length; ++i){
+                                if (arr[i].includes(letter)) var level = i+1; break;
+                                else continue
+                            }
+                        */
+                        // define the object to be passed through the query
+                        const obj = {};
+                        // set the object of the letter to true for the purpose of the query
+                        obj[`${letter}`] = true; 
+                        // run the query function in utils folder 
+                        updateSpeechRecogLevel(level, obj, id)
+                            // resultQuery returns an object 
+                            .then((resultQuery) => {
+                                // handles no rows being affected from the query
+                                if (resultQuery.changedRows < 1 && resultQuery.affectedRows < 1) {
+                                    return res.status(500).json({
+                                        status: 'fail',
+                                        type: 'database/no-affected-rows',
+                                        message: 'No rows are being affected on this query. We were unable to update your score. See you\'re result.',
+                                        result: predict[0]
+                                    })
+                                }
+                                return res.status(200).json({
+                                    status: 'success',
+                                    message: 'We have succesfully predict your recording. User\'s achievements on latihan mengeja huruf successfully updated!',
+                                    result: predict[0]
+                                })
+                            })
+                            .catch((err) => {
+                                return res.status(500).json({
+                                    status: 'fail',
+                                    type: 'database/fail-to-query',
+                                    message: err.message + '. See you\'re result.',
+                                    result: predict[0]
+                                })
+                            })
+                    } else {
+                        // sends back result if predict equals to 1
+                        return res.status(200).json({
+                            status: 'success',
+                            message: 'We have successfully predict the recording! See you\'re result.',
+                            result: predict[0]
+                        })
+                    }
+                }
             }
         })
         .catch((err) => { // this catches prediction error

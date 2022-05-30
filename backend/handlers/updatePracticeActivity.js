@@ -34,7 +34,7 @@ const updatePracticeActivity = async (req, res, next) => {
 
     // check if req.user exist
     if (!req.user) {
-        return res.status(400).json({
+        return res.status(401).json({
             status: 'fail', 
             type: 'user/user-unidentified',
             message: 'req.user does not exist! It is required to query data.'

@@ -10,7 +10,7 @@ const updateEksplorHurufDatabaseQuery = require('../utils/updateEksplorHurufData
 const updateEH = async (req, res, next) => {
     if (!req.user) {
         // return a bad request error
-        return res.status(400).json({
+        return res.status(401).json({
             status: 'fail', 
             type: 'user/user-unidentified',
             message: 'req.user does not exist! It is required to query data.'

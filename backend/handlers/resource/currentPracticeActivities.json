@@ -1,15 +1,8 @@
 {
-    "_comment": "This JSON file is a list of practice activities in the application!",
+    "_comment": "This JSON file is a list of practice activities in the application! In the database this is INT type.",
     "latMenyusunKata": {
         "level": {
             "1": 5,
-            "2": 11, 
-            "3": 10
-        }
-    },
-    "latMengejaHuruf": {
-        "level": {
-            "1": 5, 
             "2": 11, 
             "3": 10
         }
