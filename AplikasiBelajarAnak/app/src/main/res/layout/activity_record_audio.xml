@@ -39,4 +39,13 @@
         app:layout_constraintStart_toStartOf="@+id/bt_stop_record"
         app:layout_constraintTop_toBottomOf="@+id/bt_stop_record" />
 
+    <Button
+        android:id="@+id/bt_upload_audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload Audio"
+        app:layout_constraintEnd_toEndOf="@+id/bt_play_record"
+        app:layout_constraintStart_toStartOf="@+id/bt_play_record"
+        app:layout_constraintTop_toBottomOf="@+id/bt_play_record" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -105,38 +105,6 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
-//    fun loginUser(email: String, password: String): LiveData<ResultRepository<Boolean>>{
-//        val result = MutableLiveData<ResultRepository<Boolean>>()
-//        result.value = ResultRepository.Loading
-//        apiService.loginUser(email, password).enqueue(object : Callback<LoginResponse> {
-//            override fun onResponse(
-//                call: Call<LoginResponse>,
-//                response: Response<LoginResponse>
-//            ) {
-//                if (response.isSuccessful) {
-//                    val responseBody = response.body()
-//                    if (responseBody != null){
-//                        if (!responseBody.error) {
-//                            result.value = ResultRepository.Success(true)
-//                            MainScope().launch {
-//                                // userPreference.setNameToken(responseBody.loginResult.name, responseBody.loginResult.token)
-//                                userPreference.loginUser(responseBody.loginResult.token)
-//                            }
-//                        } else {
-//                            result.value = ResultRepository.Error(responseBody.message!!)
-//                        }
-//                    }
-//                }else {
-//                    result.value = ResultRepository.Error(response.message())
-//                }
-//            }
-//            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-//                result.value = ResultRepository.Error("Can't Connect Retrofit")
-//            }
-//        })
-//        return result
-//    }
-
     private fun getUserData(token: String) {
 //        showLoading(true)
         val auth = "Bearer $token"
