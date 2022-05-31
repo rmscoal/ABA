@@ -21,14 +21,11 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-
         val bottomNav = binding.bottomNavigation
 
         val fragment = HomeFragment.newInstance("test1","test2")
         bottomNav.setOnItemSelectedListener(menuItemSelected)
         addFragment(fragment)
-
-
     }
 
     private val menuItemSelected = NavigationBarView.OnItemSelectedListener  { item ->
@@ -63,6 +60,5 @@ class HomeActivity : AppCompatActivity() {
             .replace(R.id.frame_baru, fragment, fragment.javaClass.getSimpleName())
             .commit()
     }
-
 
 }
