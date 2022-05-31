@@ -3,7 +3,9 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 
-
+/* 
+  @ MULTER CONFIG CODE
+*/
 const fileStorageEngine = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, path.join(__dirname, '..', 'utils', 'uploads'))
@@ -15,8 +17,15 @@ const fileStorageEngine = multer.diskStorage({
 
 const upload = multer({storage: fileStorageEngine});
 
+/* 
+  @ IMPORT HANDLERS 
+*/
 const predictHandler = require('../handlers/predictHandler');
 
+
+/* 
+  @ ROUTES AND ITS HANDLERS 
+*/
 router.route('/:letter')
     .post(upload.single('predict'), async (req,res,next) => {
         var {letter} = req.params; 

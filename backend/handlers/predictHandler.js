@@ -10,6 +10,7 @@ const updateSpeechRecogLevel = require('../utils/updateSpeechRecogLevel');
 // current next() is not implemented
 const predictHandler = async (req,res,next) => {
     if (!req.user) {
+        // sends back response to user
         return res.status(401).json({
             status: 'fail',
             type: 'user/user-unidentified',
@@ -17,8 +18,9 @@ const predictHandler = async (req,res,next) => {
         })
     }
 
-    // get the params to know which alphabet to predict
+    // get the id of the user
     const {id} = req.user;
+    // get the params to know which alphabet to predict
     const {letter} = req;
     
     // checks the header content-type
@@ -44,6 +46,7 @@ const predictHandler = async (req,res,next) => {
     // checks the extension of the file that is uploaded
     if (type !== 'audio') {
         fs.unlinkSync(file.path); // deletes the uploaded file
+        // send response to user
         return res.status(400).json({
             status: 'fail',
             type: 'server/file-not-supported',
@@ -53,7 +56,7 @@ const predictHandler = async (req,res,next) => {
 
     // check if the extension is .wav or not 
     else if (ext !== 'wave') {
-        const converter = require('../utils/converter');
+        const converter = require('../utils/converter'); // get the converter module
         var temp = Object.assign({},file); // store the temporary path of the file here
         var converterBool = 1; // set the converter bool to 1. This means that converting process took place
         try {
@@ -65,6 +68,7 @@ const predictHandler = async (req,res,next) => {
             });
         } catch (err) {
             fs.unlinkSync(file.path);
+            // sends back response to user
             return res.status(500).json({
                 status: 'fail',
                 type: 'server/convert-error',
@@ -127,6 +131,7 @@ const predictHandler = async (req,res,next) => {
                             .then((resultQuery) => {
                                 // handles no rows being affected from the query
                                 if (resultQuery.changedRows < 1 && resultQuery.affectedRows < 1) {
+                                    // sends back response to the user
                                     return res.status(500).json({
                                         status: 'fail',
                                         type: 'database/no-affected-rows',
@@ -134,6 +139,7 @@ const predictHandler = async (req,res,next) => {
                                         result: predict[0]
                                     })
                                 }
+                                // sends back response to user
                                 return res.status(200).json({
                                     status: 'success',
                                     message: 'We have succesfully predict your recording. User\'s achievements on latihan mengeja huruf successfully updated!',
@@ -141,6 +147,7 @@ const predictHandler = async (req,res,next) => {
                                 })
                             })
                             .catch((err) => {
+                                // sends back response to user
                                 return res.status(500).json({
                                     status: 'fail',
                                     type: 'database/fail-to-query',
@@ -211,7 +218,8 @@ const predictHandler = async (req,res,next) => {
                                         message: 'No rows are being affected on this query. We were unable to update your score. See you\'re result.',
                                         result: predict[0]
                                     })
-                                }
+                                } 
+                                // sends back response to user
                                 return res.status(200).json({
                                     status: 'success',
                                     message: 'We have succesfully predict your recording. User\'s achievements on latihan mengeja huruf successfully updated!',
@@ -219,6 +227,7 @@ const predictHandler = async (req,res,next) => {
                                 })
                             })
                             .catch((err) => {
+                                // sends back response to user
                                 return res.status(500).json({
                                     status: 'fail',
                                     type: 'database/fail-to-query',
@@ -227,7 +236,7 @@ const predictHandler = async (req,res,next) => {
                                 })
                             })
                     } else {
-                        // sends back result if predict equals to 1
+                        // sends back result if predict equals to 0
                         return res.status(200).json({
                             status: 'success',
                             message: 'We have successfully predict the recording! See you\'re result.',
@@ -238,12 +247,11 @@ const predictHandler = async (req,res,next) => {
             }
         })
         .catch((err) => { // this catches prediction error
-            fs.unlinkSync(file.path);
             // sends back error to application
-            return res.status(404).json({
+            return res.status(500).json({
                 status: 'fail',
                 type: 'server/fail-to-predict',
-                message: 'Something went wrong when predicting the wav file: ' + err
+                message: 'Something went wrong when predicting the wav file: ' + err.message
             })
         })
 }
