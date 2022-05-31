@@ -18,8 +18,15 @@ For example, the req.body is:
 */
 const updateEksplorAngkaObj = (id, obj) => {
   var queryObjString = '';
+  let i = 0;
+  const max = Object.entries(obj).length;
   for (const [key, value] of Object.entries(obj)) {
-    queryObjString += `"${key}"`+ ':' + value + ',';
+    if (i === max - 1) {
+      queryObjString += `"${key}"`+ ':' + value; 
+    } else {
+      queryObjString += `"${key}"`+ ':' + value + ',';
+    }
+    i++;
   }
   // the result of queryObjString would look like this: "nol":true, "satu":true, "dua":true,
   // if necessary (some cases error occurs) we need to delete the last ',' on queryObjString
