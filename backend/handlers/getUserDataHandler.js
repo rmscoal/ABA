@@ -30,11 +30,24 @@ const getUserDataHandler = async (req,res) => {
                 })
             }
             const result = resultQuery[0]; // sets the result
+            const dataToSendResponse = {
+                "nama_user": result.nama_user,
+                "achv_id": result.achv_id,
+                "user_id": result.user_id,
+                "eksplor_huruf": Object.keys(JSON.parse(result.eksplor_huruf)),
+                "eksplor_angka": Object.keys(JSON.parse(result.eksplor_angka)),
+                "latMenyusunKatalvl1": data.latMenyusunKatalvl1,
+                "latMenyusunKatalvl2": data.latMenyusunKatalvl2,
+                "latMenyusunKatalvl3": data.latMenyusunKatalvl3,
+                "latMengejaHuruflvl1": Object.keys(JSON.parse(result.latMengejaHuruflvl1)),
+                "latMengejaHuruflvl2": Object.keys(JSON.parse(result.latMengejaHuruflvl2)),
+                "latMengejaHuruflvl3": Object.keys(JSON.parse(result.latMengejaHuruflvl3)),
+            }
             // return the result from the query
             return res.status(200).json({
                 status: 'success', 
                 message: 'Query user data successfully done!',
-                data: result
+                data: dataToSendResponse
             })
         })
         // error handling

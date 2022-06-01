@@ -62,7 +62,8 @@ const updatePracticeActivity = async (req, res, next) => {
             if (result === currentPractiveActivitiesJSON[`${activityName}`]['level'][`${level}`]) {
                 return res.status(200).json({
                     status: 'success',
-                    message: 'Score has been updated. User has reached highest accomplishment on the level.'
+                    message: 'Score has been updated. User has reached highest accomplishment on the level.',
+                    highScore: true
                 })
             }
 
@@ -73,13 +74,16 @@ const updatePracticeActivity = async (req, res, next) => {
                     return res.status(400).json({
                         status: 'fail',
                         type: 'database/no-affected-rows',
-                        message: 'No rows are being affected on this query.'
+                        message: 'No rows are being affected on this query.',
+                        updated: false
                     })
                 }
 
                 return res.status(200).json({
                     status: 'success',
-                    message: 'Score has been updated.'
+                    message: 'Score has been updated.',
+                    updated: true,
+                    highScore: false
                 })
 
             } catch (err) {
@@ -87,7 +91,8 @@ const updatePracticeActivity = async (req, res, next) => {
                 return res.status(500).json({
                     status: 'fail',
                     type: 'database/fail-to-query',
-                    message: err.message
+                    message: err.message,
+                    updated: false
                 })
             }
         })

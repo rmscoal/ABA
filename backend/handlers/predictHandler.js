@@ -136,14 +136,16 @@ const predictHandler = async (req,res,next) => {
                                         status: 'fail',
                                         type: 'database/no-affected-rows',
                                         message: 'No rows are being affected on this query. We were unable to update your score. See you\'re result.',
-                                        result: predict[0]
+                                        result: predict[0],
+                                        updated: false
                                     })
                                 }
                                 // sends back response to user
                                 return res.status(200).json({
                                     status: 'success',
                                     message: 'We have succesfully predict your recording. User\'s achievements on latihan mengeja huruf successfully updated!',
-                                    result: predict[0]
+                                    result: predict[0],
+                                    updated: true
                                 })
                             })
                             .catch((err) => {
@@ -152,7 +154,8 @@ const predictHandler = async (req,res,next) => {
                                     status: 'fail',
                                     type: 'database/fail-to-query',
                                     message: err.message + '. See you\'re result.',
-                                    result: predict[0]
+                                    result: predict[0],
+                                    updated: false
                                 })
                             })
                     } else {
@@ -216,14 +219,16 @@ const predictHandler = async (req,res,next) => {
                                         status: 'fail',
                                         type: 'database/no-affected-rows',
                                         message: 'No rows are being affected on this query. We were unable to update your score. See you\'re result.',
-                                        result: predict[0]
+                                        result: predict[0],
+                                        updated: false
                                     })
                                 } 
                                 // sends back response to user
                                 return res.status(200).json({
                                     status: 'success',
                                     message: 'We have succesfully predict your recording. User\'s achievements on latihan mengeja huruf successfully updated!',
-                                    result: predict[0]
+                                    result: predict[0],
+                                    updated: true
                                 })
                             })
                             .catch((err) => {
