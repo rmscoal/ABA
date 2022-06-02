@@ -57,7 +57,6 @@
     <string name="menyusun_huruf">Latihan Menyusun Huruf</string>
 
     <string name="statistik">Statistik Pembelajaran!</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="pencapaian">Statistik Pencapaian</string>
 
@@ -72,7 +71,6 @@
     <string name="hurufhurf">Huruf</string>
     <string name="huruf2">Total susunan huruf yang sudah dipahami.</string>
     <string name="profile">Profile</string>
-<<<<<<< HEAD
     <string name="mengeja">Latihan Mengeja Huruf</string>
     <string name="hentikan_rekaman">Hentikan Rekaman</string>
     <string name="rekam">Rekam</string>
@@ -89,18 +87,6 @@
         <br> Yuk Ulangi lagi! </br>
     </string>
 
-    <
-    <
-    <
-    <
-    <
-    <
-    < HEAD
-
-    =======
-    >>>>>>> 9e5c678da33b685bd0b9de79ee0cedd9afa60564
-=======
     <string name="latihan_mengeja">Latihan Mengeja Huruf</string>
->>>>>>> f1e9c8d8ddb4855c43d2081974025871beabd42a
 
 </resources>

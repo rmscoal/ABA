@@ -8,11 +8,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aba.R
-<<<<<<< HEAD
-=======
 import com.example.aba.data.preferences.UserModel
 import com.example.aba.databinding.ActivityHomeBinding
->>>>>>> f1e9c8d8ddb4855c43d2081974025871beabd42a
 import com.example.aba.databinding.ActivityHurufBinding
 import com.example.aba.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth

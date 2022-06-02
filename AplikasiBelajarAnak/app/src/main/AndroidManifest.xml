@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
     package="com.example.aba" >
-=======
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.aba">
->>>>>>> f1e9c8d8ddb4855c43d2081974025871beabd42a
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -21,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ABA"
-<<<<<<< HEAD
+        android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true" >
         <activity
             android:name=".ui.latihanmengejahuruf.HasilRecordAudioActivity2"
@@ -35,10 +30,7 @@
         <activity
             android:name=".ui.latihan.SusunKataActivity"
             android:exported="false" />
-=======
-        android:requestLegacyExternalStorage="true"
-        android:usesCleartextTraffic="true">
->>>>>>> f1e9c8d8ddb4855c43d2081974025871beabd42a
+
         <activity
             android:name=".ui.latihanmengejahuruf.RecordAudioActivity"
             android:exported="true" />
@@ -62,16 +54,7 @@
             android:exported="true" />
         <activity
             android:name=".ui.register.RegisterActivity"
-<<<<<<< HEAD
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-=======
-            android:exported="true">
->>>>>>> f1e9c8d8ddb4855c43d2081974025871beabd42a
         </activity>
         <activity
             android:name=".ui.home.HomeActivity"
@@ -80,24 +63,15 @@
             android:name=".ui.splashscreen.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/SplashScreen" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.main.MainActivity"
-<<<<<<< HEAD
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-=======
-            android:exported="true">
->>>>>>> f1e9c8d8ddb4855c43d2081974025871beabd42a
         </activity>
     </application>
 

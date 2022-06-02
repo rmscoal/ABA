@@ -5,29 +5,23 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.media.MediaRecorder
-<<<<<<< HEAD
+import com.example.aba.data.database.UploadRecordingResponse
+
+
 import android.os.Bundle
 import android.os.Environment
 import androidx.appcompat.app.AppCompatActivity
-=======
-import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.os.Environment
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
->>>>>>> f1e9c8d8ddb4855c43d2081974025871beabd42a
+
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
-import com.example.aba.R
+
 import com.example.aba.data.api.ApiConfig
 import com.example.aba.data.preferences.UserModel
 import com.example.aba.databinding.ActivityRecordAudioBinding
-import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -39,10 +33,8 @@ import java.io.IOException
 
 class RecordAudioActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRecordAudioBinding
-<<<<<<< HEAD
     private lateinit var mr: MediaRecorder
 
-=======
     private lateinit var userModel: UserModel
     private var output: String? = null
     private var mediaRecorder: MediaRecorder? = null
@@ -51,21 +43,15 @@ class RecordAudioActivity : AppCompatActivity() {
     private var getFile: File? = null
 
     @RequiresApi(Build.VERSION_CODES.N)
->>>>>>> f1e9c8d8ddb4855c43d2081974025871beabd42a
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRecordAudioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-<<<<<<< HEAD
-        val path: String = Environment.getExternalStorageDirectory().toString()+"myrec.ogg"
-        mr = MediaRecorder()
-=======
         //create directory in folder ABA
         val folder = Environment.getExternalStorageDirectory().toString()
         val f = File(folder,"ABA")
         f.mkdir()
->>>>>>> f1e9c8d8ddb4855c43d2081974025871beabd42a
 
         ///storage/emulated/0/ABA/test.wav
         output = Environment.getExternalStorageDirectory().toString() + "/ABA/test.wav"
@@ -93,8 +79,8 @@ class RecordAudioActivity : AppCompatActivity() {
             playRecording()
         }
 
-        binding.btUploadAudio.setOnClickListener {
-//            uploadRecording()
+        binding.tvLihat.setOnClickListener {
+            uploadRecording()
         }
     }
 
@@ -137,45 +123,47 @@ class RecordAudioActivity : AppCompatActivity() {
     }
 
 
-//    private fun uploadRecording() {
-//        if (getFile != null) {
-//
-//            val file = getFile as File
-//
-//            val requestAudioFile = file.asRequestBody("audio/wav".toMediaTypeOrNull())
-//            val audioMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-//                "audio",
-//                file.name,
-//                requestAudioFile
-//            )
-//            val token = "Bearer ${userModel.token.toString()}"
-//            val service = ApiConfig().getApiService().uploadRecording(token,audioMultipart)
-//            service.enqueue(object : Callback<UploadRecordingResponse> {
-//                override fun onResponse(
-//                    call: Call<UploadRecordingResponse>,
-//                    response: Response<UploadRecordingResponse>
-//                ) {
-//                    if (response.isSuccessful) {
-//                        val responseBody = response.body()
-//                        if (responseBody != null && !responseBody.error!!) {
-//                            //Toast.makeText(this@RecordAudioActivity, resources.getString(R.string.berhasil_upload), Toast.LENGTH_SHORT).show()
-//                            //showLoading(false)
-//                            //startActivity(Intent(this@RecordAudioActivity, ListStoryActivity::class.java))
-//                            //finish()
-//                        }
-//                    } else {
-//                        Toast.makeText(this@RecordAudioActivity, response.message(), Toast.LENGTH_SHORT).show()
-//                        //showLoading(false)
-//                    }
-//                }
-//                override fun onFailure(call: Call<UploadRecordingResponse>, t: Throwable) {
-//                    //Toast.makeText(this@RecordAudioActivity, resources.getString(R.string.gagal), Toast.LENGTH_SHORT).show()
-//                    //showLoading(false)
-//                }
-//            })
-//        } else {
-//            //Toast.makeText(this@AddStoryActivity, resources.getString(R.string.masukkan), Toast.LENGTH_SHORT).show()
-//        }
-//    }
+    private fun uploadRecording() {
+        if (getFile != null) {
+
+            val file = getFile as File
+
+            val requestAudioFile = file.asRequestBody("audio/wav".toMediaTypeOrNull())
+            val audioMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                "value",
+                file.name,
+                requestAudioFile
+            )
+            val token = "Bearer ${userModel.token.toString()}"
+            val key = "predict"
+            val service = ApiConfig().getApiService().uploadRecording(token,key,audioMultipart)
+            service.enqueue(object : Callback<UploadRecordingResponse> {
+                override fun onResponse(
+                    call: Call<UploadRecordingResponse>,
+                    response: Response<UploadRecordingResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+                            Log.d("responUpload",responseBody.toString())
+                            //Toast.makeText(this@RecordAudioActivity, resources.getString(R.string.berhasil_upload), Toast.LENGTH_SHORT).show()
+                            //showLoading(false)
+                            //startActivity(Intent(this@RecordAudioActivity, ListStoryActivity::class.java))
+                            //finish()
+                        }
+                    } else {
+                        Toast.makeText(this@RecordAudioActivity, response.message(), Toast.LENGTH_SHORT).show()
+                        //showLoading(false)
+                    }
+                }
+                override fun onFailure(call: Call<UploadRecordingResponse>, t: Throwable) {
+                    //Toast.makeText(this@RecordAudioActivity, resources.getString(R.string.gagal), Toast.LENGTH_SHORT).show()
+                    //showLoading(false)
+                }
+            })
+        } else {
+            //Toast.makeText(this@AddStoryActivity, resources.getString(R.string.masukkan), Toast.LENGTH_SHORT).show()
+        }
+    }
 
 }
