@@ -12,6 +12,7 @@ require('dotenv').config({path: path.join(__dirname, 'config.env')});
 const userRoute = require('./routes/userRoute');
 const achievementRoute = require('./routes/achievementRoute');
 const predictionRoute = require('./routes/predictionRoute');
+const healthzRoute = require('./routes/healthzRoute');
 
 /* 
   @ UTILS 
@@ -40,6 +41,7 @@ app.use(express.urlencoded({extended: false})); // Don't forget to set the heade
 app.use('/users', userRoute);
 app.use('/achievements', achievementRoute);
 app.use('/predictions', predictionRoute);
+app.use('/healthz', healthzRoute);
 
 /* 
   @ START APP 
