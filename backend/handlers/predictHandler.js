@@ -2,10 +2,23 @@ const tf = require('@tensorflow/tfjs-node');
 const path = require('path');
 const fs = require('fs');
 const _ = require('lodash');
+const winston = require('winston');
+const {LoggingWinston} = require('@google-cloud/logging-winston');
 
 // import getMFCCData to get the array value of the mfcc
 const getMFCCData = require('../utils/getMFCCData');
 const updateSpeechRecogLevel = require('../utils/updateSpeechRecogLevel');
+
+// initiate logging winston
+const loggingWinston = new LoggingWinston();
+
+const logger = winston.createLogger({
+    level: 'info',
+    transports: [
+        new winston.transports.Console(),
+        loggingWinston,
+    ],
+})
 
 // current next() is not implemented
 const predictHandler = async (req,res,next) => {
@@ -145,6 +158,8 @@ const predictHandler = async (req,res,next) => {
                             .then((resultQuery) => {
                                 // handles no rows being affected from the query
                                 if (resultQuery.changedRows < 1 && resultQuery.affectedRows < 1) {
+                                    // log to winston_log
+                                    logger.error('database/no-affected-rows');
                                     // sends back response to the user
                                     return res.status(500).json({
                                         status: 'fail',
@@ -154,6 +169,8 @@ const predictHandler = async (req,res,next) => {
                                         updated: false
                                     })
                                 }
+                                // log to winston_log
+                                logger.info('Predict success and sent to: ' + id);
                                 // sends back response to user
                                 return res.status(200).json({
                                     status: 'success',
@@ -163,6 +180,8 @@ const predictHandler = async (req,res,next) => {
                                 })
                             })
                             .catch((err) => {
+                                // log to winston_log
+                                logger.error('database/fail-to-query');
                                 // sends back response to user
                                 return res.status(500).json({
                                     status: 'fail',
@@ -173,7 +192,9 @@ const predictHandler = async (req,res,next) => {
                                 })
                             })
                     } else {
-                        // sends back result if predict equals to 1
+                        // log to winston_log
+                        logger.info('Predict success and sent to: ' + id);
+                        // sends back result if predict equals to 0
                         return res.status(200).json({
                             status: 'success',
                             message: 'We have successfully predict the recording! See you\'re result.',
@@ -184,8 +205,8 @@ const predictHandler = async (req,res,next) => {
             } catch (err) { // this error catches fail on deleting the wav file
                 // run if return form python file is 1
                 if (response) {
-                    // outputs problem to analyze
-                    console.log('File unsuccessfully deleted!');
+                    // outputs problem to analyze to winston_log
+                    logger.error('File unsuccessfully deleted');
                     // read result output from python stored in the json file 
                     var arr = fs.readFileSync(path.join(__dirname, '..', 'utils', 'mfccsResult', 'result.json'));
                     // parse the output to json
@@ -229,6 +250,9 @@ const predictHandler = async (req,res,next) => {
                             .then((resultQuery) => {
                                 // handles no rows being affected from the query
                                 if (resultQuery.changedRows < 1 && resultQuery.affectedRows < 1) {
+                                    // log to winston_log
+                                    logger.error('database/no-affected-rows');
+                                    // sends back response to user
                                     return res.status(500).json({
                                         status: 'fail',
                                         type: 'database/no-affected-rows',
@@ -237,6 +261,8 @@ const predictHandler = async (req,res,next) => {
                                         updated: false
                                     })
                                 } 
+                                // log to winston_log
+                                logger.info('Predict success and sent to: ' + id);
                                 // sends back response to user
                                 return res.status(200).json({
                                     status: 'success',
@@ -246,6 +272,8 @@ const predictHandler = async (req,res,next) => {
                                 })
                             })
                             .catch((err) => {
+                                // log to winston_log
+                                logger.error('database/fail-to-query');
                                 // sends back response to user
                                 return res.status(500).json({
                                     status: 'fail',
@@ -255,6 +283,8 @@ const predictHandler = async (req,res,next) => {
                                 })
                             })
                     } else {
+                        // log to winston_log
+                        logger.info('Predict success and sent to: ' + id);
                         // sends back result if predict equals to 0
                         return res.status(200).json({
                             status: 'success',
@@ -266,6 +296,8 @@ const predictHandler = async (req,res,next) => {
             }
         })
         .catch((err) => { // this catches prediction error
+            // log to winston_log
+            logger.error('server/fail-to-predict');
             // sends back error to application
             return res.status(500).json({
                 status: 'fail',

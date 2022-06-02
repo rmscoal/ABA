@@ -1,6 +1,23 @@
 /* Get all achievements from user */
 
 /* 
+    @ IMPORT MODULES
+*/
+const winston = require('winston');
+const {LoggingWinston} = require('@google-cloud/logging-winston');
+
+// initiate logging winston
+const loggingWinston = new LoggingWinston();
+
+const logger = winston.createLogger({
+    level: 'info',
+    transports: [
+        winston.transports.Console(),
+        loggingWinston,
+    ],
+})
+
+/* 
   @ IMPORT MODULES FROM UTILS TO QUERY THE DATABASE
 */ 
 const getSpecificUserData = require('../utils/getSpecificUserData'); // 
@@ -23,6 +40,8 @@ const getUserDataHandler = async (req,res) => {
         .then((resultQuery) => {
             // handles data not found
             if (resultQuery.length < 1) {
+                // log to winston_log
+                logger.error('user/user-data-not-found');
                 return res.status(404).json({
                     status: 'fail', 
                     type: 'user/user-data-not-found',
@@ -43,6 +62,8 @@ const getUserDataHandler = async (req,res) => {
                 "latMengejaHuruflvl2": Object.keys(JSON.parse(result.latMengejaHuruflvl2)),
                 "latMengejaHuruflvl3": Object.keys(JSON.parse(result.latMengejaHuruflvl3)),
             }
+            // log to winston_log
+            logger.info('Request on user data for id: ' + id);
             // return the result from the query
             return res.status(200).json({
                 status: 'success', 
@@ -52,6 +73,9 @@ const getUserDataHandler = async (req,res) => {
         })
         // error handling
         .catch((err) => {
+            // log to winston_log
+            logger.error('database/fail-to-query');
+            // sends back response to user
             return res.status(500).json({
                 status: 'fail', 
                 type: 'database/fail-to-query',

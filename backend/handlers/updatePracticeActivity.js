@@ -1,6 +1,23 @@
 /* Handler to update/PUT achievements in practice section */
 
 /* 
+    @ IMPORT MODULES
+*/
+const winston = require('winston');
+const {LoggingWinston} = require('@google-cloud/logging-winston');
+
+// initiate logging winston
+const loggingWinston = new LoggingWinston();
+
+const logger = winston.createLogger({
+    level: 'info',
+    transports: [
+        new winston.transports.Console(),
+        loggingWinston,
+    ],
+})
+
+/* 
   @ IMPORT MODULES FROM UTILS TO QUERY THE DATABASE
 */ 
 const {getPractiveActivity, updatePracticeActivityPlusOne} = require('../utils/updatePracticeActivityDatabaseQuery');
@@ -48,7 +65,10 @@ const updatePracticeActivity = async (req, res, next) => {
         .then(async (resultQuery) => {
             // error for no data found
             if (resultQuery.length < 1) {
-                return res.status(404).json({
+                // log to winston_log
+                logger.error('user/user-data-not-found');
+                // sends back response to user
+                return res.status(444).json({
                     status: 'fail', 
                     type: 'user/user-data-not-found',
                     message: 'Empty result for user\'s query!'
@@ -71,6 +91,9 @@ const updatePracticeActivity = async (req, res, next) => {
             try {
                 var resultUpdate = await updatePracticeActivityPlusOne(activityName, level, id);
                 if (resultUpdate.changedRows < 1 && resultUpdate.affectedRows < 1) {
+                    // log to winston_log
+                    logger.error('database/no-affected-rows');
+                    // sends back response to user
                     return res.status(400).json({
                         status: 'fail',
                         type: 'database/no-affected-rows',
@@ -78,7 +101,9 @@ const updatePracticeActivity = async (req, res, next) => {
                         updated: false
                     })
                 }
-
+                // log to winston_log
+                logger.info('Request update score for id: ' + id);
+                // sends back response to user
                 return res.status(200).json({
                     status: 'success',
                     message: 'Score has been updated.',
@@ -87,6 +112,8 @@ const updatePracticeActivity = async (req, res, next) => {
                 })
 
             } catch (err) {
+                // log to winston_log
+                logger.error('database/fail-to-query');
                 // catches query error
                 return res.status(500).json({
                     status: 'fail',
@@ -97,6 +124,8 @@ const updatePracticeActivity = async (req, res, next) => {
             }
         })
         .catch((err) => {
+            // log to winston_log
+            logger.error('database/fail-to-query');
             // catches query error
             return res.status(500).json({
                 status: 'fail',
