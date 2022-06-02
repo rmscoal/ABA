@@ -2,11 +2,10 @@ package com.example.aba.ui.huruf
 
 import android.media.AudioAttributes
 import android.media.SoundPool
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.aba.R
-import com.example.aba.databinding.ActivityHomeBinding
 import com.example.aba.databinding.ActivityHurufBinding
 
 class HurufActivity : AppCompatActivity() {

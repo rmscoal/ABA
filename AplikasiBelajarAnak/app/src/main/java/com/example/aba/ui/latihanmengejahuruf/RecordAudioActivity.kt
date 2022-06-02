@@ -4,21 +4,22 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.media.MediaRecorder
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.aba.databinding.ActivityRecordAudioBinding
 
 class RecordAudioActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRecordAudioBinding
     private lateinit var mr: MediaRecorder
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRecordAudioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var path: String = Environment.getExternalStorageDirectory().toString()+"myrec.ogg"
+        val path: String = Environment.getExternalStorageDirectory().toString()+"myrec.ogg"
         mr = MediaRecorder()
 
         binding.btStartRecord.isEnabled = false

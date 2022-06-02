@@ -24,21 +24,35 @@
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/AplikasiBelajarAnak/AplikasiBelajarAnak/app/src/main/res/drawable/bg_iv_yellow.xml" value="0.183" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/AplikasiBelajarAnak/AplikasiBelajarAnak/app/src/main/res/drawable/ic_launcher_background.xml" value="0.183" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/AplikasiBelajarAnak/AplikasiBelajarAnak/app/src/main/res/layout/activity_home.xml" value="0.33" />
+        <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_et_green.xml" value="0.1285" />
+        <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_iv_green.xml" value="0.1285" />
+        <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_iv_white.xml" value="0.1285" />
+        <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_iv_yellow.xml" value="0.1285" />
         <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.1285" />
         <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.1285" />
+        <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/ic_baseline_keyboard_voice_24.xml" value="0.1435" />
+        <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/ic_baseline_play_arrow_24.xml" value="0.1435" />
+        <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/ic_baseline_stop_24.xml" value="0.1435" />
+        <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1435" />
+        <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_detail_huruf.xml" value="0.18229166666666666" />
+        <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_hasil_record_audio.xml" value="0.22" />
+        <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_hasil_record_audio2.xml" value="0.14" />
         <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_home.xml" value="0.22" />
         <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_huruf.xml" value="0.18167202572347266" />
         <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_kata.xml" value="0.18229166666666666" />
         <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_login.xml" value="0.18229166666666666" />
         <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_main.xml" value="0.18229166666666666" />
         <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_pencapaian.xml" value="0.18229166666666666" />
+        <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_record_audio.xml" value="0.2" />
         <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_register.xml" value="0.13425925925925927" />
         <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_settings.xml" value="0.18229166666666666" />
+        <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_susun_huruf.xml" value="0.22" />
         <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_susun_kata.xml" value="0.18229166666666666" />
+        <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_susun_kata2.xml" value="0.18229166666666666" />
         <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_home.xml" value="0.19" />
         <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_pencaoaian.xml" value="0.18229166666666666" />
         <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_pencapaian.xml" value="0.22" />
-        <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_profile.xml" value="0.18" />
         <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_setting.xml" value="0.23696682464454977" />
         <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/layout/toolbar.xml" value="0.18229166666666666" />
         <entry key="..\:/S6/ABA/AplikasiBelajarAnak/app/src/main/res/menu/menu_nav_bottom.xml" value="0.1" />
@@ -60,7 +74,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16_PREVIEW" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
