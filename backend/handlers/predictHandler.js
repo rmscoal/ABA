@@ -43,6 +43,8 @@ const predictHandler = async (req,res,next) => {
     var type = file.mimetype.split('/')[0]; // get the file type
     var ext = file.mimetype.split('/')[1]; // get the extension
 
+    console.log(type, ext);
+
     // checks the extension of the file that is uploaded
     if (type !== 'audio') {
         fs.unlinkSync(file.path); // deletes the uploaded file
@@ -56,24 +58,36 @@ const predictHandler = async (req,res,next) => {
 
     // check if the extension is .wav or not 
     else if (ext !== 'wave') {
-        const converter = require('../utils/converter'); // get the converter module
-        var temp = Object.assign({},file); // store the temporary path of the file here
-        var converterBool = 1; // set the converter bool to 1. This means that converting process took place
-        try {
-            // get the new path of the converted
-            file.path = await converter(temp.path, temp.filename.split('.')[0], (errorMessage) => {
+        if (ext === 'mp4') {
+            const converter = require('../utils/converter'); // get the converter module
+            var temp = Object.assign({},file); // store the temporary path of the file here
+            var converterBool = 1; // set the converter bool to 1. This means that converting process took place
+            try {
+                // get the new path of the converted
+                file.path = await converter(temp.path, temp.filename.split('.')[0], (errorMessage) => {
 
-            }, null, function () {
-                console.log('Successfully converted to .wav file!');
-            });
-        } catch (err) {
+                }, null, function () {
+                    console.log('Successfully converted to .wav file!');
+                });
+            } catch (err) {
+                // deletes the uploaded file
+                fs.unlinkSync(file.path);
+                // sends back response to user
+                return res.status(500).json({
+                    status: 'fail',
+                    type: 'server/convert-error',
+                    message: 'There was an error while converting. Here is the error message: ' + err
+                })   
+            }
+        } else {
+            // deletes the uploaded file
             fs.unlinkSync(file.path);
-            // sends back response to user
-            return res.status(500).json({
+            // sends back response to the user 
+            return res.status(400).json({
                 status: 'fail',
-                type: 'server/convert-error',
-                message: 'There was an error while converting. Here is the error message: ' + err
-            })   
+                type: 'server/file-not-supported',
+                message: 'We only receive wave/m4a extensions. You\'re extension was: ' + ext 
+            })
         }
     }
     

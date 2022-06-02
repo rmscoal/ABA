@@ -1,4 +1,4 @@
-{
+{  "_comment": "eksplorHurufData nya ditaruh di request body ya... dan jangan include comment ini",
     "eksplorHurufData":{
         "a": true,
         "b": true,

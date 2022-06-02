@@ -1,4 +1,4 @@
-{
+{   "_comment": "eksplorAngkaData nya di taruh di request body ya... dan jangan include comment ini.",
     "eksplorAngkaData":{
         "nol": true,
         "satu": true,
