@@ -1,15 +1,32 @@
 package com.example.aba.ui.huruf
 
+import android.content.Intent
 import android.media.AudioAttributes
 import android.media.SoundPool
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aba.R
+<<<<<<< HEAD
+=======
+import com.example.aba.data.preferences.UserModel
+import com.example.aba.databinding.ActivityHomeBinding
+>>>>>>> f1e9c8d8ddb4855c43d2081974025871beabd42a
 import com.example.aba.databinding.ActivityHurufBinding
+import com.example.aba.ui.login.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class HurufActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHurufBinding
+
+    //firebase
+    private lateinit var auth: FirebaseAuth
+
+    //userModel
+    private var userModel= UserModel()
 
     //soundPool
     private lateinit var sp: SoundPool
@@ -22,6 +39,16 @@ class HurufActivity : AppCompatActivity() {
         binding = ActivityHurufBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+
+        //get userdata
+        auth = Firebase.auth
+        val firebaseUser = auth.currentUser
+        if (firebaseUser == null) {
+            // Not signed in, launch the Login activity
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+//        val mUser = FirebaseAuth.getInstance().currentUser
 
         aa= AudioAttributes.Builder()
             .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
@@ -41,6 +68,8 @@ class HurufActivity : AppCompatActivity() {
             }
 
         }
+        getToken()
+        sendProgress()
 
         with(binding){
             hurufA.setOnClickListener {
@@ -48,8 +77,12 @@ class HurufActivity : AppCompatActivity() {
                 Toast.makeText(this@HurufActivity, "A", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
+                    sp.play(soundId,5f,5f,0,0,1f)
                 }
+                //ketika dipencet
+            //  edit text bertambah
+                // simpan huruf di user pref
+                //
             }
             hurufB.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.b, 1)
@@ -252,5 +285,23 @@ class HurufActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+    private fun sendProgress(){
+        val token = userModel.token
+        Log.d("token", "$token")
+    }
+
+    private fun getToken(){
+        val user = auth.currentUser
+        user!!.getIdToken(true)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val idToken: String? = task.result.token
+//                    Log.d("token di login",idToken!!)
+                    userModel.token = idToken!!
+                } else {
+                    // Handle error -> task.getException();
+                }
+            }
     }
 }

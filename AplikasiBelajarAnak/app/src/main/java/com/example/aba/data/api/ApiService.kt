@@ -12,6 +12,14 @@ interface ApiService {
     fun getDataUser(
         @Header("Authorization") token: String,
     ): Call<UserResponse>
+
+    //    @Multipart
+//    @POST("v1/stories")
+//    fun uploadRecording(
+//        @Header("Authorization") token: String,
+//        @Part("description") description: RequestBody,
+//        @Part file: MultipartBody.Part,
+//    ): Call<UploadRecordingResponse>
 //
 //    @FormUrlEncoded
 //    @POST("v1/register")

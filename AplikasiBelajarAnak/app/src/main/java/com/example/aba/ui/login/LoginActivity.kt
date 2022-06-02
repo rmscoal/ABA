@@ -6,8 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
+import com.beust.klaxon.Json
+import com.beust.klaxon.JsonObject
+import com.beust.klaxon.Klaxon
 import com.example.aba.R
 import com.example.aba.data.api.ApiConfig
+import com.example.aba.data.preferences.EksplorAngka
+import com.example.aba.data.preferences.EksplorHuruf
+import com.example.aba.data.preferences.UserModel
+import com.example.aba.data.preferences.UserPreferences
 import com.example.aba.data.response.UserResponse
 import com.example.aba.databinding.ActivityLoginBinding
 import com.example.aba.ui.home.HomeActivity
@@ -21,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,6 +38,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
+    private lateinit var userPreferences: UserPreferences
+    private lateinit var userModel: UserModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,13 +99,17 @@ class LoginActivity : AppCompatActivity() {
                         if (task.isSuccessful) {
                             val idToken: String? = task.result.token
                             Log.d("token di login",idToken!!)
+
+                            //showLoading(true)
                             getUserData(idToken!!)
+
                             // Send token to your backend via HTTPS
                             // ...
                         } else {
                             // Handle error -> task.getException();
                         }
                     }
+                    //showLoading(false)
                     updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
@@ -104,38 +118,6 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
     }
-
-//    fun loginUser(email: String, password: String): LiveData<ResultRepository<Boolean>>{
-//        val result = MutableLiveData<ResultRepository<Boolean>>()
-//        result.value = ResultRepository.Loading
-//        apiService.loginUser(email, password).enqueue(object : Callback<LoginResponse> {
-//            override fun onResponse(
-//                call: Call<LoginResponse>,
-//                response: Response<LoginResponse>
-//            ) {
-//                if (response.isSuccessful) {
-//                    val responseBody = response.body()
-//                    if (responseBody != null){
-//                        if (!responseBody.error) {
-//                            result.value = ResultRepository.Success(true)
-//                            MainScope().launch {
-//                                // userPreference.setNameToken(responseBody.loginResult.name, responseBody.loginResult.token)
-//                                userPreference.loginUser(responseBody.loginResult.token)
-//                            }
-//                        } else {
-//                            result.value = ResultRepository.Error(responseBody.message!!)
-//                        }
-//                    }
-//                }else {
-//                    result.value = ResultRepository.Error(response.message())
-//                }
-//            }
-//            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-//                result.value = ResultRepository.Error("Can't Connect Retrofit")
-//            }
-//        })
-//        return result
-//    }
 
     private fun getUserData(token: String) {
 //        showLoading(true)
@@ -152,10 +134,24 @@ class LoginActivity : AppCompatActivity() {
                     val responseBody = response.body()
                     if (responseBody != null) {
                         Log.d("respon",responseBody.data.toString())
+
+                        //save user data to user preferences
+                        val data = responseBody.data
+                        with(userModel){
+                            name = data.namaUser
+                            achv_id = data.achvId
+                            eksplor_angka = data.eksplorAngka
+                            eksplor_huruf = data.eksplorHuruf
+                            latMengejaHuruflv1 = data.latMengejaHuruflvl1
+                            latMengejaHuruflv2 = data.latMengejaHuruflvl2
+                            latMengejaHuruflv3 = data.latMengejaHuruflvl3
+                            latMenyusunKatalvl1 = data.latMenyusunKatalvl1
+                            latMenyusunKatalvl2 = data.latMenyusunKatalvl2
+                            latMenyusunKatalvl3 = data.latMenyusunKatalvl3
+                        }
                     }
                 } else {
                     Log.e(TAG, "onFailure: ${response.raw()}")
-//                    showNoUser(true)
                 }
             }
             override fun onFailure(call: Call<UserResponse>, t: Throwable) {
@@ -166,25 +162,10 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
-    private fun getToken(){
-        val mUser = FirebaseAuth.getInstance().currentUser
-        mUser!!.getIdToken(true)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val idToken: String? = task.result.token
-                    Log.d("token di login",idToken!!)
-                    token = idToken!!
-                    // Send token to your backend via HTTPS
-                    // ...
-                } else {
-                    // Handle error -> task.getException();
-                }
-            }
-    }
 
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null){
-            startActivity(Intent(this, SettingsActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
     }
@@ -199,5 +180,41 @@ class LoginActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "LoginActivity"
         private var token: String = ""
+    }
+
+    private fun parseEksplorHuruftoJSON(){
+        val eksplorHuruf = userModel.eksplor_huruf
+        val hasil = Klaxon().parse<EksplorHuruf>(
+//            """
+//            {
+//            "status":"success",
+//            "message":"Query user data successfully done!",
+//            "data":
+//                    {
+//                        "nama_user":"rifky.satyana08",
+//                        "achv_id":16,
+//                        "user_id":19,
+//                        "eksplor_huruf":"{\"a\": true, \"b\": true, \"c\": true}",
+//                        "eksplor_angka":"{\"nol\": true, \"satu\": true, \"dua\": true}",
+//                        "latMenyusunKatalvl1":5,
+//                        "latMenyusunKatalvl2":5,
+//                        "latMenyusunKatalvl3":0,
+//                        "latMengejaHuruflvl1":5,
+//                        "latMengejaHuruflvl2":5,
+//                        "latMengejaHuruflvl3":0
+//                    }
+//            }
+//            """.trimIndent()
+//            )
+        eksplorHuruf!!.trimIndent())
+
+        Log.d("a","${hasil?.a}")
+        Log.d("a","${hasil?.b}")
+//        assert(hasil?.a == true)
+//        assert(hasil?.b == false)
+    }
+
+    private fun userProgress(){
+
     }
 }

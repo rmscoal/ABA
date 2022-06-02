@@ -1,46 +1,80 @@
 package com.example.aba.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.aba.R
+import com.example.aba.data.preferences.UserModel
+import com.example.aba.databinding.FragmentHomeBinding
+import com.example.aba.databinding.FragmentSettingBinding
+import com.example.aba.ui.huruf.HurufActivity
+import com.example.aba.ui.login.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
-    private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM1 = "param1"
     private const val ARG_PARAM2 = "param2"
 
 class HomeFragment : Fragment() {
 
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentHomeBinding
+    private lateinit var auth: FirebaseAuth
+    private var userModel= UserModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(inflater,container,false)
+
+        //get userdata
+        auth = Firebase.auth
+        val firebaseUser = auth.currentUser
+        if (firebaseUser == null) {
+            // Not signed in, launch the Login activity
+            startActivity(Intent(activity, LoginActivity::class.java))
+            activity?.finish()
+        }
+        val mUser = FirebaseAuth.getInstance().currentUser
+
+        val test = userModel.email
+        //get pencapaian
+        //get progress
+        getPencapaian()
+        getProgress()
+
+        //binding
+        Glide.with(this)
+            .load(mUser?.photoUrl)
+            .circleCrop()
+            .into(binding.ivAvatar)
+        binding.ivNama.text = mUser?.displayName
+        binding.tvProgress.text = "5/36"
+        binding.tvPencapaian.text = "1/6"
+
+
+        binding.conBelajarHuruf.setOnClickListener {
+            startActivity(Intent(activity,HurufActivity::class.java))
+        }
+        return binding.root
+    }
+
+    private fun getProgress() {
+        val data = userModel.eksplor_huruf
+
+    }
+
+    private fun getPencapaian() {
+
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             HomeFragment().apply {

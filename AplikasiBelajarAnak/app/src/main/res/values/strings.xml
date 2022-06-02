@@ -2,7 +2,7 @@
     <string name="app_name">ABA</string>
     <string name="huruf">Huruf</string>
     <string name="angka">Angka</string>
-    <string name="latihan">Latihan</string>
+    <string name="latihan_menyusun">Latihan Menyusun Huruf</string>
     <string name="orangtua">untuk Orang Tua</string>
     <string name="selamat_datang">Selamat Datang!</string>
     <string name="username">Nama</string>
@@ -72,6 +72,7 @@
     <string name="hurufhurf">Huruf</string>
     <string name="huruf2">Total susunan huruf yang sudah dipahami.</string>
     <string name="profile">Profile</string>
+<<<<<<< HEAD
     <string name="mengeja">Latihan Mengeja Huruf</string>
     <string name="hentikan_rekaman">Hentikan Rekaman</string>
     <string name="rekam">Rekam</string>
@@ -98,5 +99,8 @@
 
     =======
     >>>>>>> 9e5c678da33b685bd0b9de79ee0cedd9afa60564
+=======
+    <string name="latihan_mengeja">Latihan Mengeja Huruf</string>
+>>>>>>> f1e9c8d8ddb4855c43d2081974025871beabd42a
 
 </resources>

@@ -36,6 +36,7 @@
                     android:text="@string/selamat_datang"/>
 
                 <ImageView
+                    android:id="@+id/iv_avatar"
                     android:layout_width="75dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_round_tag_faces_24"
@@ -44,6 +45,7 @@
                 </ImageView>
 
                 <TextView
+                    android:id="@+id/iv_nama"
                     android:textSize="20sp"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
@@ -74,6 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/tv_progress"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:textSize="20sp"
@@ -82,6 +85,7 @@
                         tools:text="Progress"/>
 
                     <TextView
+                        android:id="@+id/tv_pencapaian"
                         android:textSize="20sp"
                         android:gravity="center"
                         android:layout_weight="1"
@@ -97,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/con_belajar_huruf"
                     android:layout_width="0dp"
                     android:layout_height="220dp"
                     android:layout_marginStart="20dp"
@@ -108,6 +112,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/con_home"/>
 
                 <ImageView
+
                     android:layout_width="0dp"
                     android:layout_height="220dp"
                     android:layout_weight="1"
@@ -146,6 +151,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="15dp"
+                android:gravity="center"
                 android:background="@drawable/bg_iv_yellow"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -154,11 +160,10 @@
 
                 <TextView
                     android:layout_gravity="center_vertical"
-                    android:textSize="40sp"
-                    android:layout_marginStart="120dp"
+                    android:textSize="30sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/latihan"/>
+                    android:text="@string/latihan_menyusun"/>
             </LinearLayout>
 
             <LinearLayout
@@ -170,18 +175,19 @@
                 android:layout_marginBottom="200dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="15dp"
+                android:gravity="center"
                 android:background="@drawable/bg_iv_yellow"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView">
+
                 <TextView
                     android:layout_gravity="center_vertical"
                     android:textSize="30sp"
-                    android:layout_marginStart="70dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/orangtua"/>
+                    android:text="@string/latihan_mengeja"/>
 
             </LinearLayout>
 
