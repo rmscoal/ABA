@@ -12,7 +12,7 @@ const loggingWinston = new LoggingWinston();
 const logger = winston.createLogger({
     level: 'info',
     transports: [
-        winston.transports.Console(),
+        new winston.transports.Console(),
         loggingWinston,
     ],
 })
