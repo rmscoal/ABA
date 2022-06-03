@@ -17,3 +17,6 @@ nvm install v16.15.0
 
 npm install -g pm2
 cd ABA/backend && npm install
+
+sudo apt-get install libcap2-bin
+sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
