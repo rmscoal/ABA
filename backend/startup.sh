@@ -17,8 +17,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 nvm install v16.15.0
 
-npm install -g pm2
 npm install -g npm@8.12.1
+npm install -g pm2
 cd ABA/backend && npm install
 
 cd
