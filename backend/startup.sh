@@ -14,4 +14,4 @@ sudo pip install numpy
 sudo apt install g++ gcc make
 sudo pip install tensorflowjs
 cd ABA/backend && npm install
-npm install -g pm2
+cd && npm install -g pm2
