@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
     private lateinit var userPreferences: UserPreferences
-    private lateinit var userModel: UserModel
+    private var userModel= UserModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -133,7 +133,7 @@ class LoginActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        Log.d("respon",responseBody.data.toString())
+                        Log.d("kontol",responseBody.data.toString())
 
                         //save user data to user preferences
                         val data = responseBody.data
@@ -182,37 +182,37 @@ class LoginActivity : AppCompatActivity() {
         private var token: String = ""
     }
 
-    private fun parseEksplorHuruftoJSON(){
-        val eksplorHuruf = userModel.eksplor_huruf
-        val hasil = Klaxon().parse<EksplorHuruf>(
-//            """
-//            {
-//            "status":"success",
-//            "message":"Query user data successfully done!",
-//            "data":
-//                    {
-//                        "nama_user":"rifky.satyana08",
-//                        "achv_id":16,
-//                        "user_id":19,
-//                        "eksplor_huruf":"{\"a\": true, \"b\": true, \"c\": true}",
-//                        "eksplor_angka":"{\"nol\": true, \"satu\": true, \"dua\": true}",
-//                        "latMenyusunKatalvl1":5,
-//                        "latMenyusunKatalvl2":5,
-//                        "latMenyusunKatalvl3":0,
-//                        "latMengejaHuruflvl1":5,
-//                        "latMengejaHuruflvl2":5,
-//                        "latMengejaHuruflvl3":0
-//                    }
-//            }
-//            """.trimIndent()
-//            )
-        eksplorHuruf!!.trimIndent())
-
-        Log.d("a","${hasil?.a}")
-        Log.d("a","${hasil?.b}")
-//        assert(hasil?.a == true)
-//        assert(hasil?.b == false)
-    }
+//    private fun parseEksplorHuruftoJSON(){
+//        val eksplorHuruf = userModel.eksplor_huruf
+//        val hasil = Klaxon().parse<EksplorHuruf>(
+////            """
+////            {
+////            "status":"success",
+////            "message":"Query user data successfully done!",
+////            "data":
+////                    {
+////                        "nama_user":"rifky.satyana08",
+////                        "achv_id":16,
+////                        "user_id":19,
+////                        "eksplor_huruf":"{\"a\": true, \"b\": true, \"c\": true}",
+////                        "eksplor_angka":"{\"nol\": true, \"satu\": true, \"dua\": true}",
+////                        "latMenyusunKatalvl1":5,
+////                        "latMenyusunKatalvl2":5,
+////                        "latMenyusunKatalvl3":0,
+////                        "latMengejaHuruflvl1":5,
+////                        "latMengejaHuruflvl2":5,
+////                        "latMengejaHuruflvl3":0
+////                    }
+////            }
+////            """.trimIndent()
+////            )
+//        eksplorHuruf!!.trimIndent())
+//
+//        Log.d("a","${hasil?.a}")
+//        Log.d("a","${hasil?.b}")
+////        assert(hasil?.a == true)
+////        assert(hasil?.b == false)
+//    }
 
     private fun userProgress(){
 

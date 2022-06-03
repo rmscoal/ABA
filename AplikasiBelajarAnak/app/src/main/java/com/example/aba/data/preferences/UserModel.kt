@@ -13,11 +13,11 @@ data class UserModel(
     var latMenyusunKatalvl1: Int? = null,
     var latMenyusunKatalvl2: Int? = null,
     var latMenyusunKatalvl3: Int? = null,
-    var latMengejaHuruflv1: Int? = null,
-    var latMengejaHuruflv2: Int? = null,
-    var latMengejaHuruflv3: Int? = null,
-    var eksplor_huruf: String? = null,
-    var eksplor_angka: String? = null,
+    var latMengejaHuruflv1: ArrayList<String>? = null,
+    var latMengejaHuruflv2: ArrayList<String>? = null,
+    var latMengejaHuruflv3: ArrayList<String>? = null,
+    var eksplor_huruf: ArrayList<String>? = null,
+    var eksplor_angka: ArrayList<String>? = null,
 
 //    var eksplor_huruf: Map<String,Boolean> = mapOf<String,Boolean>(
 //        "a" to false,

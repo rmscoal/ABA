@@ -50,12 +50,13 @@
     <string name="btn_logout">Logout</string>
     <string name="menyusun_kata">Latihan Menyusun Kata</string>
     <string name="level1">Level 1</string>
+    <string name="level1.1">Level 1.1</string>
+    <string name="level1.2">Level 1.2</string>
     <string name="level2">Level 2</string>
     <string name="level3">Level 3</string>
     <string name="menyusun_huruf">Latihan Menyusun Huruf</string>
 
     <string name="statistik">Statistik Pembelajaran!</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="pencapaian">Statistik Pencapaian</string>
 
@@ -70,6 +71,22 @@
     <string name="hurufhurf">Huruf</string>
     <string name="huruf2">Total susunan huruf yang sudah dipahami.</string>
     <string name="profile">Profile</string>
+    <string name="mengeja">Latihan Mengeja Huruf</string>
+    <string name="hentikan_rekaman">Hentikan Rekaman</string>
+    <string name="rekam">Rekam</string>
+    <string name="putar">Putar</string>
+    <string name="ulangi">Ulangi</string>
+    <string name="lihat_hasil">Lihat Hasil</string>
+    <string name="lihat_hasil2">
+        <br> Hore, </br>
+        <br> Kamu Benar! </br></string>
+
+    <string name="lihat_hasil3">
+        <br> Yahh, </br>
+        <br> Kamu Belum Benar, </br>
+        <br> Yuk Ulangi lagi! </br>
+    </string>
+
     <string name="latihan_mengeja">Latihan Mengeja Huruf</string>
 
 </resources>

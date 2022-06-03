@@ -62,6 +62,8 @@ class HomeFragment : Fragment() {
         binding.conBelajarHuruf.setOnClickListener {
             startActivity(Intent(activity,HurufActivity::class.java))
         }
+
+        binding.conLatihan
         return binding.root
     }
 

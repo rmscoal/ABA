@@ -26,6 +26,8 @@ class HomeActivity : AppCompatActivity() {
         val fragment = HomeFragment.newInstance("test1","test2")
         bottomNav.setOnItemSelectedListener(menuItemSelected)
         addFragment(fragment)
+
+
     }
 
     private val menuItemSelected = NavigationBarView.OnItemSelectedListener  { item ->

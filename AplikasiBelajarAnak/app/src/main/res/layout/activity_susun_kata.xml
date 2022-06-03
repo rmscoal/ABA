@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg_iv_green"
-    tools:context=".ui.latihan.SusunHurufActivity">
+    tools:context=".ui.latihan.SusunKataActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -17,10 +17,10 @@ data class UserResponse(
 data class Data(
 
 	@field:SerializedName("eksplor_huruf")
-	val eksplorHuruf: String,
+	val eksplorHuruf: ArrayList<String>,
 
 	@field:SerializedName("eksplor_angka")
-	val eksplorAngka: String,
+	val eksplorAngka: ArrayList<String>,
 
 	@field:SerializedName("user_id")
 	val userId: Int,
@@ -38,14 +38,14 @@ data class Data(
 	val latMenyusunKatalvl3: Int,
 
 	@field:SerializedName("latMengejaHuruflvl3")
-	val latMengejaHuruflvl3: Int,
+	val latMengejaHuruflvl3: ArrayList<String>,
 
 	@field:SerializedName("latMenyusunKatalvl2")
 	val latMenyusunKatalvl2: Int,
 
 	@field:SerializedName("latMengejaHuruflvl2")
-	val latMengejaHuruflvl2: Int,
+	val latMengejaHuruflvl2: ArrayList<String>,
 
 	@field:SerializedName("latMengejaHuruflvl1")
-	val latMengejaHuruflvl1: Int
+	val latMengejaHuruflvl1: ArrayList<String>
 )

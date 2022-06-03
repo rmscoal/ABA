@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.aba">
+    package="com.example.aba" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -18,15 +17,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ABA"
         android:requestLegacyExternalStorage="true"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name=".ui.latihanmengejahuruf.HasilRecordAudioActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".ui.latihanmengejahuruf.HasilRecordAudioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.latihan.SusunHurufActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.latihan.SusunKataActivity"
+            android:exported="false" />
+
         <activity
             android:name=".ui.latihanmengejahuruf.RecordAudioActivity"
             android:exported="true" />
         <activity
             android:name=".ui.pencapaian.PencapaianActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.latihan.SusunHurufActivity"
             android:exported="false" />
         <activity
             android:name=".ui.settings.SettingsActivity"
@@ -45,7 +54,7 @@
             android:exported="true" />
         <activity
             android:name=".ui.register.RegisterActivity"
-            android:exported="true">
+            android:exported="true" >
         </activity>
         <activity
             android:name=".ui.home.HomeActivity"
@@ -53,16 +62,16 @@
         <activity
             android:name=".ui.splashscreen.SplashScreenActivity"
             android:exported="true"
-            android:theme="@style/SplashScreen">
+            android:theme="@style/SplashScreen" >
+        </activity>
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".ui.main.MainActivity"
-            android:exported="true">
         </activity>
     </application>
 

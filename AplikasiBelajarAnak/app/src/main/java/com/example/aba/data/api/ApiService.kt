@@ -1,5 +1,6 @@
 package com.example.aba.data.api
 
+import com.example.aba.data.database.UploadRecordingResponse
 import com.example.aba.data.response.UserResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -13,29 +14,13 @@ interface ApiService {
         @Header("Authorization") token: String,
     ): Call<UserResponse>
 
-    //    @Multipart
-//    @POST("v1/stories")
-//    fun uploadRecording(
-//        @Header("Authorization") token: String,
-//        @Part("description") description: RequestBody,
-//        @Part file: MultipartBody.Part,
-//    ): Call<UploadRecordingResponse>
-//
-//    @FormUrlEncoded
-//    @POST("v1/register")
-//    fun registerUser(
-//        @Field("name") name: String,
-//        @Field("email") email: String,
-//        @Field("password") password: String,
-//    ): Call<RegisterResponse>
-//
-//    @Multipart
-//    @POST("v1/stories")
-//    fun uploadStory(
-//        @Header("Authorization") token: String,
-//        @Part("description") description: RequestBody,
-//        @Part file: MultipartBody.Part,
-//    ): Call<AddNewStoryResponse>
+    @Multipart
+    @POST("predictions/a/")
+    fun uploadRecording(
+        @Header("Authorization") token: String,
+        @Part file: MultipartBody.Part,
+    ): Call<UploadRecordingResponse>
+
 
 //    @GET("users")
 //    suspend fun getUsers(
