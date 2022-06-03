@@ -1,3 +1,4 @@
+#This is a file for automation startup scripts in VM
 sudo apt-get update && sudo apt update
 sudo apt install python3
 sudo apt install python3-pip 
