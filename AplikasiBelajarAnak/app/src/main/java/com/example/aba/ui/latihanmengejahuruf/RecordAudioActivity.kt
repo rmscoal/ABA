@@ -147,7 +147,7 @@ class RecordAudioActivity : AppCompatActivity() {
             val file = getFile as File
 
             val requestAudioFile = file.asRequestBody("audio/*".toMediaTypeOrNull())
-            Log.d("reqaudio","$requestAudioFile")
+            Log.d("audio","$requestAudioFile")
             val audioMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
                 "predict",
                 file.name,
@@ -155,7 +155,7 @@ class RecordAudioActivity : AppCompatActivity() {
             )
             val auth = "Bearer $token"
             Log.d("filename","${file.name}")
-            val service = ApiConfig().getApiService().uploadRecording(auth,audioMultipart)
+            val service = ApiConfig().getApiService().uploadRecording(auth,file,audioMultipart)
             service.enqueue(object : Callback<UploadRecordingResponse> {
                 override fun onResponse(
                     call: Call<UploadRecordingResponse>,

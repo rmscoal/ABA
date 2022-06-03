@@ -122,7 +122,7 @@ class LoginActivity : AppCompatActivity() {
     private fun getUserData(token: String) {
 //        showLoading(true)
         val auth = "Bearer $token"
-        Log.e(TAG, "token: ${auth}")
+        Log.e(TAG, "token diget user: ${auth}")
         val client = ApiConfig().getApiService().getDataUser(auth)
         client.enqueue(object : Callback<UserResponse> {
             override fun onResponse(
@@ -133,7 +133,7 @@ class LoginActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        Log.d("kontol",responseBody.data.toString())
+                        Log.d("test",responseBody.data.toString())
 
                         //save user data to user preferences
                         val data = responseBody.data

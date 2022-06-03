@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiConfig {
-    private val cloudURL = "http://34.101.137.131/"
+    private val cloudURL = "http://34.101.114.72/"
 
     private val localURL = "http://192.168.1.3:8080/"
     fun getApiService(): ApiService {
