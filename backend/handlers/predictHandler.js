@@ -56,8 +56,6 @@ const predictHandler = async (req,res,next) => {
     var type = file.mimetype.split('/')[0]; // get the file type
     var ext = file.mimetype.split('/')[1]; // get the extension
 
-    console.log(type, ext);
-
     // checks the extension of the file that is uploaded
     if (type !== 'audio') {
         fs.unlinkSync(file.path); // deletes the uploaded file

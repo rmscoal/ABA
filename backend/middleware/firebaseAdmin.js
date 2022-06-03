@@ -1,10 +1,29 @@
 /* Dapat UID dari token dan disimpan di req.users */
 
+/* 
+    @ IMPORT MODULES
+*/
+const winston = require('winston');
+const {LoggingWinston} = require('@google-cloud/logging-winston');
+
+/* 
+    @ IMPORT MODULES FROM OTHER FILES
+*/
 const admin = require('./config/firebaseAuth'); // import admin from firebase initializeApp
 const getId = require('../utils/getUserID'); // module to get userId form MySQL database
 const makeNewUser = require('../utils/makeNewUser'); // module to make a new user into MySQL database
 const makeNewUserAchievements = require('../utils/makeNewUserAchievements'); // module to make new achievements of users into MySQL database
 
+// initiate logging winston
+const loggingWinston = new LoggingWinston();
+
+const logger = winston.createLogger({
+    level: 'info',
+    transports: [
+        new winston.transports.Console(),
+        loggingWinston,
+    ],
+})
 
 class Middleware {
     async decodeToken(req,res,next) {
@@ -42,6 +61,8 @@ class Middleware {
                     const result = await getId(uid); // getId to get the id of the user regarding the uid
                     // check if exist uid in the database
                     if (result.length < 1) {
+                        // log to winston_log
+                        logger.info('We have a new user!');
                         // if not make a new user
                         const result = await makeNewUser(uid, name); // make new user from the given uid and name
                         const id = result.insertId; // get the id of the new user
@@ -53,6 +74,9 @@ class Middleware {
                     req.user = {id: id, name: name}; // set id and name to req.user 
                     return next();
                 } catch (err) {
+                    // log to winston_log
+                    logger.error('database/fail-to-query');
+                    // sends back response to user
                     return res.status(500).json({
                         status: 'fail',
                         type: 'database/fail-to-query',
