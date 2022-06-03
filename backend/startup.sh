@@ -1,6 +1,7 @@
 # This is a file for automation startup scripts in VM
 # sudo apt install git
 # git clone https://github.com/rmscoal/ABA.git
+cd
 sudo apt-get update && sudo apt update
 sudo apt install g++ gcc make
 sudo apt install python3
@@ -16,7 +17,8 @@ export NVM_DIR="$HOME/.nvm"
 nvm install v16.15.0
 
 npm install -g pm2
-npm install
+cd ABA/backend && npm install
 
+cd
 sudo apt-get install libcap2-bin
 sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
