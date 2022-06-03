@@ -29,6 +29,8 @@ class Middleware {
     async decodeToken(req,res,next) {
         // get authorization from the headers
         const { authorization } = req.headers; 
+        // get the url for health checkers
+        // const url = req.url;
 
         // check if the authorization headers are well configured
         // this includes checking if headers.authorization exist
@@ -50,8 +52,13 @@ class Middleware {
             type: 'server/bearer-unrecognized',
             message: 'Bearer in req.headers.authorization is not well configured. This is need to extract the token!'
         })
+        
         // after passing the authorization header checks, now checks the token
         const token = authorization.split(' ')[1]; // req.headers = {"Bearer $.token"} 
+        // checks if it is a health checker
+        // if (token === 'healthchecks' && url === '/healthchecks') return next();
+
+        // else run as if it is user
         admin.auth().verifyIdToken(token)
             .then(async (decodedToken) => {
                 const {uid, email} = decodedToken; // get uid and email from the token
