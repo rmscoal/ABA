@@ -3,6 +3,7 @@ package com.example.aba.ui.latihanmengejahuruf
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.AudioFormat
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import com.example.aba.data.database.UploadRecordingResponse
@@ -33,6 +34,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 import java.io.IOException
+import kotlin.math.roundToInt
 
 class RecordAudioActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRecordAudioBinding
@@ -59,7 +61,7 @@ class RecordAudioActivity : AppCompatActivity() {
         f.mkdir()
 
         ///storage/emulated/0/ABA/test.wav
-        output = Environment.getExternalStorageDirectory().toString() + "/ABA/test.wav"
+        output = Environment.getExternalStorageDirectory().toString() + "/ABA/test.m4a"
         Log.d("path","$output")
 
         //set file to upload
@@ -106,10 +108,12 @@ class RecordAudioActivity : AppCompatActivity() {
         try {
             mediaRecorder = MediaRecorder()
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                mediaRecorder?.setAudioSource(MediaRecorder.AudioSource.MIC)
-                mediaRecorder?.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
-                mediaRecorder?.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
+                mediaRecorder?.setAudioSource(MediaRecorder.AudioSource.MIC);
+                mediaRecorder?.setOutputFormat(AudioFormat.ENCODING_PCM_FLOAT);
+                mediaRecorder?.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
+                mediaRecorder?.setAudioChannels(2);
                 mediaRecorder?.setOutputFile(output)
+
             }
             mediaRecorder?.prepare()
             mediaRecorder?.start()
@@ -146,16 +150,16 @@ class RecordAudioActivity : AppCompatActivity() {
 
             val file = getFile as File
 
-            val requestAudioFile = file.asRequestBody("audio/*".toMediaTypeOrNull())
+            val requestAudioFile = file.asRequestBody("audio/mp4".toMediaTypeOrNull())
             Log.d("audio","$requestAudioFile")
             val audioMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-                "predict",
+                "",
                 file.name,
                 requestAudioFile
             )
             val auth = "Bearer $token"
-            Log.d("filename","${file.name}")
-            val service = ApiConfig().getApiService().uploadRecording(auth,file,audioMultipart)
+            Log.d("filename","$file")
+            val service = ApiConfig().getApiService().uploadRecording(auth,audioMultipart)
             service.enqueue(object : Callback<UploadRecordingResponse> {
                 override fun onResponse(
                     call: Call<UploadRecordingResponse>,
@@ -165,6 +169,7 @@ class RecordAudioActivity : AppCompatActivity() {
                         val responseBody = response.body()
                         if (responseBody != null) {
                             Log.d("responUpload",responseBody.toString())
+                            updateUI(responseBody)
                             //Toast.makeText(this@RecordAudioActivity, resources.getString(R.string.berhasil_upload), Toast.LENGTH_SHORT).show()
                             //showLoading(false)
                             //startActivity(Intent(this@RecordAudioActivity, ListStoryActivity::class.java))
@@ -172,7 +177,7 @@ class RecordAudioActivity : AppCompatActivity() {
                         }
                     } else {
                         Toast.makeText(this@RecordAudioActivity, response.message(), Toast.LENGTH_SHORT).show()
-                        Log.d("gagal",response.message())
+                        Log.d("gagalff",response.message())
                     //showLoading(false)
                     }
                 }
@@ -185,6 +190,13 @@ class RecordAudioActivity : AppCompatActivity() {
         } else {
             //Toast.makeText(this@AddStoryActivity, resources.getString(R.string.masukkan), Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun updateUI(responseBody: UploadRecordingResponse) {
+        if(responseBody.result?.roundToInt() == 1 ){
+            startActivity(Intent(this,HasilRecordAudioActivity::class.java))
+        }
+        else startActivity(Intent(this,HasilRecordAudioActivity2::class.java))
     }
 
 }

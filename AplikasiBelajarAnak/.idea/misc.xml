@@ -4,12 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_et_green.xml" value="0.202" />
-        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_iv_dark_yellow.xml" value="0.27" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_iv_pink.xml" value="0.23" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_iv_yellow.xml" value="0.23" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_audio_test.xml" value="0.1671875" />
-        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_detail_huruf.xml" value="0.1" />
-        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_detail_kata.xml" value="0.27291666666666664" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_detail_huruf.xml" value="0.2463768115942029" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_hasil_record_audio.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_hasil_record_audio2.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_home.xml" value="0.2" />
@@ -23,12 +21,11 @@
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_settings.xml" value="0.1421875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_splash_screen.xml" value="0.19427083333333334" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_susun_huruf.xml" value="0.1671875" />
-        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_susun_kata.xml" value="0.22" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_susun_kata.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_home.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_pencapaian.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_profile.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_setting.xml" value="0.27291666666666664" />
-        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/item_kata.xml" value="0.27291666666666664" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/toolbar.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/menu/menu_nav_bottom.xml" value="0.27291666666666664" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/menu/nav_bottom.xml" value="0.27291666666666664" />
@@ -46,9 +43,13 @@
         <entry key="app/src/main/res/drawable/bg_iv_white.xml" value="0.113" />
         <entry key="app/src/main/res/layout/activity_audio_test.xml" value="0.10054347826086957" />
         <entry key="app/src/main/res/layout/activity_detail_huruf.xml" value="0.1852563830389493" />
+        <entry key="app/src/main/res/layout/activity_detail_kata.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_hasil_record_audio.xml" value="0.11347517730496454" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.12590579710144928" />
         <entry key="app/src/main/res/layout/activity_huruf.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_kata.xml" value="0.3314333708389946" />
         <entry key="app/src/main/res/layout/activity_record_audio.xml" value="0.10552536231884058" />
+        <entry key="app/src/main/res/layout/activity_susun_huruf.xml" value="0.27810211181640626" />
       </map>
     </option>
   </component>

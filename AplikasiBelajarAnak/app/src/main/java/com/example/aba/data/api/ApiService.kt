@@ -19,7 +19,6 @@ interface ApiService {
     @POST("predictions/a/")
     fun uploadRecording(
         @Header("Authorization") token: String,
-        @Part("predict") predict: File,
         @Part file: MultipartBody.Part,
     ): Call<UploadRecordingResponse>
 

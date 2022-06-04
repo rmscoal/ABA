@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class UploadRecordingResponse(
 
 	@field:SerializedName("result")
-	val result: Int? = null,
+	val result: Float? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null,
