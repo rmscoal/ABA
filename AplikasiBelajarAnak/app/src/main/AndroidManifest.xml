@@ -20,7 +20,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.latihan.DetailSusunHurufActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.latihanmengejahuruf.HasilRecordAudioActivity2"
             android:exported="false" />
