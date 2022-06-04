@@ -4,7 +4,7 @@
   Here, it will be written as a Promise function. 
 */
 
-const con = require('./database');
+const pool = require('./database');
 
 /* This function will be used for the req.body.eksplorHurufData is an object with string keys. 
 For example, the req.body is: 
@@ -34,9 +34,13 @@ const updateEksplorHurufObj = (id, obj) => {
   // however without slicing it works just fine... 
   return new Promise((resolve, reject) => {
     var query = `UPDATE achievements SET eksplor_huruf=JSON_MERGE_PATCH(eksplor_huruf, '{${queryObjString}}') WHERE achievements.user_id=${id}`;
-    con.query(query, (err, result) => {
+    pool.getConnection((err, connection) => {
       if (err) reject(err);
-      resolve(result);
+      connection.query(query, (err, result) => {
+        connection.release();
+        if (err) reject(err);
+        resolve(result);
+      })
     })
   })
 }

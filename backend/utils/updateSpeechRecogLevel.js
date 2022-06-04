@@ -5,19 +5,7 @@ of the alphabet. This
 Here it will written as a Promise.
 */
 
-
-const con = require('./database');
-
-/* This function will be used for the req.body.eksplorHurufData is an object with string keys. 
-For example, the req.body is: 
-  {
-    eksplorHurufData: {
-      a: true,
-      b: true,
-      c: true 
-    }
-  }
-*/
+const pool = require('./database');
 
 const updateSpeechRecogLevel = (level, obj, id) => {
     var queryObjString = '';
@@ -27,9 +15,13 @@ const updateSpeechRecogLevel = (level, obj, id) => {
     return new Promise((resolve, reject) => {
         var columnName = 'latMengejaHuruflvl' + level;
         var query = `UPDATE achievements SET ${columnName} = JSON_MERGE_PATCH(${columnName}, '{${queryObjString}}') WHERE achievements.user_id = ${id}`;
-        con.query(query, (err, result) => {
+        pool.getConnection((err, connection) => {
+          if (err) reject(err);
+          connection.query(query, (err, result) => {
+            connection.release();
             if (err) reject(err);
             resolve(result);
+          })
         })
     })
 }

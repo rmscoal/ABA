@@ -4,14 +4,18 @@
   Here, it will be written as a Promise function. 
 */
 
-const con = require('./database');
+const pool = require('./database');
 
 const makeNewUser = (uid,name) => {
   return new Promise((resolve, reject) => {
     var query = `insert into users (uid,nama_user) values ('${uid}','${name}')`;
-    con.query(query, (err, result) => {
+    pool.getConnection((err, connection) => {
       if (err) reject(err);
-      resolve(result);
+      connection.query(query, (err, result) => {
+        connection.release();
+        if (err) reject(err);
+        resolve(result);
+      })
     })
   })
 }

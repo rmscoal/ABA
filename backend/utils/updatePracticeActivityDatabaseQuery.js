@@ -5,16 +5,20 @@
   Here, it will be written as a Promise function. 
 */
 
-const con = require('./database');
+const pool = require('./database');
 
 // get the current score of the user in practice sections
 const getPractiveActivity = (activityName, level, id) => {
     var columnName = activityName+'lvl'+level;
     return new Promise((resolve, reject) => {
         var query = `SELECT ${columnName} FROM achievements WHERE user_id = ${id}`; 
-        con.query(query, (err, result) => {
+        pool.getConnection((err, connection) => {
             if (err) reject(err);
-            resolve(result);
+            connection.query(query, (err, result) => {
+              connection.release();
+              if (err) reject(err);
+              resolve(result);
+            })
         })
     })
 }
@@ -24,9 +28,13 @@ const updatePracticeActivityPlusOne = (activityName, level, id) => {
     var columnName = activityName+'lvl'+level;
     return new Promise((resolve, reject) => {
         var query = `UPDATE achievements SET ${columnName} = ${columnName} + 1 WHERE user_id = ${id}`; 
-        con.query(query, (err, result) => {
+        pool.getConnection((err, connection) => {
             if (err) reject(err);
-            resolve(result);
+            connection.query(query, (err, result) => {
+              connection.release();
+              if (err) reject(err);
+              resolve(result);
+            })
         })
     })
 }
