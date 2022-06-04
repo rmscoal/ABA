@@ -70,7 +70,6 @@ class HurufActivity : AppCompatActivity() {
         with(binding){
             hurufA.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.a, 1)
-                Toast.makeText(this@HurufActivity, "A", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,5f,5f,0,0,1f)
@@ -82,7 +81,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufB.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.b, 1)
-                Toast.makeText(this@HurufActivity, "B", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -90,7 +88,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufC.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.c, 1)
-                Toast.makeText(this@HurufActivity, "C", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -98,7 +95,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufD.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.d, 1)
-                Toast.makeText(this@HurufActivity, "D", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -106,7 +102,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufE.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.e, 1)
-                Toast.makeText(this@HurufActivity, "E", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -114,7 +109,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufF.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.f, 1)
-                Toast.makeText(this@HurufActivity, "F", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -122,7 +116,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufG.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.g, 1)
-                Toast.makeText(this@HurufActivity, "G", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -130,7 +123,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufH.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.h, 1)
-                Toast.makeText(this@HurufActivity, "H", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -138,7 +130,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufI.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.i, 1)
-                Toast.makeText(this@HurufActivity, "I", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -146,7 +137,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufJ.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.j, 1)
-                Toast.makeText(this@HurufActivity, "J", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -154,7 +144,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufK.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.k, 1)
-                Toast.makeText(this@HurufActivity, "K", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -162,7 +151,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufL.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.l, 1)
-                Toast.makeText(this@HurufActivity, "L", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -170,7 +158,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufM.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.m, 1)
-                Toast.makeText(this@HurufActivity, "m", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -178,7 +165,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufN.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.n, 1)
-                Toast.makeText(this@HurufActivity, "N", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -186,7 +172,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufO.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.o, 1)
-                Toast.makeText(this@HurufActivity, "O", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -194,7 +179,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufP.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.p, 1)
-                Toast.makeText(this@HurufActivity, "Q", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -202,7 +186,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufQ.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.q, 1)
-                Toast.makeText(this@HurufActivity, "Q", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -210,7 +193,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufR.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.r, 1)
-                Toast.makeText(this@HurufActivity, "R", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -218,7 +200,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufS.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.s, 1)
-                Toast.makeText(this@HurufActivity, "S", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -226,7 +207,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufT.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.t, 1)
-                Toast.makeText(this@HurufActivity, "T", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -234,7 +214,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufU.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.u, 1)
-                Toast.makeText(this@HurufActivity, "U", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -242,7 +221,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufV.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.v, 1)
-                Toast.makeText(this@HurufActivity, "V", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -250,7 +228,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufW.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.w, 1)
-                Toast.makeText(this@HurufActivity, "W", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -258,7 +235,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufX.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.x, 1)
-                Toast.makeText(this@HurufActivity, "X", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -266,7 +242,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufY.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.y, 1)
-                Toast.makeText(this@HurufActivity, "Y", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
@@ -274,7 +249,6 @@ class HurufActivity : AppCompatActivity() {
             }
             hurufZ.setOnClickListener {
                 soundId = sp.load(this@HurufActivity, R.raw.z, 1)
-                Toast.makeText(this@HurufActivity, "Z", Toast.LENGTH_SHORT).show()
 
                 if (spLoaded){
                     sp.play(soundId,1f,1f,0,0,1f)
