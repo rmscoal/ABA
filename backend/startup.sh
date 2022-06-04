@@ -9,6 +9,7 @@ sudo apt install python3-pip
 sudo pip install numpy
 sudo pip install librosa
 sudo pip install tensorflowjs
+sudo pip install pandas
 sudo apt install ffmpeg
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash

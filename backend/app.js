@@ -13,6 +13,7 @@ const userRoute = require('./routes/userRoute');
 const achievementRoute = require('./routes/achievementRoute');
 const predictionRoute = require('./routes/predictionRoute');
 const healthRoute = require('./routes/healthRoute');
+const rimakataRoute = require('./routes/rimakataRoute');
 
 /* 
   @ UTILS 
@@ -24,14 +25,12 @@ const hostname = require('./utils/host');
   @ IMPORT MIDDLEWARE FOR FIREBASE AUTHORIZATION
 */
 const middlewareFirebase = require('./middleware/firebaseAdmin.js');
-// const { app } = require('firebase-admin');
 
 /* 
   @ APP 
 */
 const app = express();
 
-// app.use(middlewareFirebase.decodeToken); // use firebaseAdmin that is exported as a class
 app.use(express.json());
 app.use(express.urlencoded({extended: false})); // Don't forget to set the header Content-Type: application/json
 
@@ -41,6 +40,7 @@ app.use(express.urlencoded({extended: false})); // Don't forget to set the heade
 app.use('/users', middlewareFirebase.decodeToken, userRoute);
 app.use('/achievements', middlewareFirebase.decodeToken, achievementRoute);
 app.use('/predictions', middlewareFirebase.decodeToken, predictionRoute);
+app.use('/rimakatawords', middlewareFirebase.decodeToken, rimakataRoute);
 app.use('/healthchecks', healthRoute);
 
 /* 

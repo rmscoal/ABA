@@ -44,7 +44,7 @@ const predictHandler = async (req,res,next) => {
     })
 
     // get the file path of the uploaded wav file
-    let file = req.file;
+    let file = req.files[0];
     
     // if file does not exist
     if (!file) return res.status(500).json({

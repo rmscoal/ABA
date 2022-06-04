@@ -27,7 +27,7 @@ const predictHandler = require('../handlers/predictHandler');
   @ ROUTES AND ITS HANDLERS 
 */
 router.route('/:letter')
-    .post(upload.single('predict'), async (req,res,next) => {
+    .post(upload.any(), async (req,res,next) => {
         var {letter} = req.params; 
 
         // generate an array of A-Z
