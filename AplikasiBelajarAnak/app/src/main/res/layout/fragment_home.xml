@@ -112,7 +112,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/con_home"/>
 
                 <ImageView
-
+                    android:id="@+id/con_belajar_angka"
                     android:layout_width="0dp"
                     android:layout_height="220dp"
                     android:layout_weight="1"
@@ -145,7 +145,7 @@
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:id="@+id/con_latihan"
+                android:id="@+id/con_latihan_menyusun_huruf"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginStart="15dp"
@@ -168,7 +168,7 @@
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:id="@+id/con_tips"
+                android:id="@+id/con_latihan_mengeja_huruf"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginStart="15dp"

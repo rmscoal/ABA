@@ -5,13 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.example.aba.R
 import com.example.aba.data.preferences.UserModel
 import com.example.aba.databinding.FragmentHomeBinding
-import com.example.aba.databinding.FragmentSettingBinding
-import com.example.aba.ui.huruf.HurufActivity
+import com.example.aba.ui.belajar.huruf.HurufActivity
+import com.example.aba.ui.latihan.SusunHurufActivity
+import com.example.aba.ui.latihanmengejahuruf.RecordAudioActivity
 import com.example.aba.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -63,7 +64,17 @@ class HomeFragment : Fragment() {
             startActivity(Intent(activity,HurufActivity::class.java))
         }
 
-        binding.conLatihan
+        binding.conBelajarAngka.setOnClickListener {
+            Toast.makeText(activity,"Coming Soon!",Toast.LENGTH_SHORT).show()
+        }
+
+        binding.conLatihanMenyusunHuruf.setOnClickListener {
+            startActivity(Intent(activity,SusunHurufActivity::class.java))
+        }
+        binding.conLatihanMengejaHuruf.setOnClickListener{
+            startActivity(Intent(activity,RecordAudioActivity::class.java))
+        }
+
         return binding.root
     }
 

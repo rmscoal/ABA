@@ -28,8 +28,8 @@
             android:name=".ui.latihan.SusunHurufActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.latihan.SusunKataActivity"
-            android:exported="false" />
+            android:name=".ui.belajar.kata.KataActivity"
+            android:exported="true" />
 
         <activity
             android:name=".ui.latihanmengejahuruf.RecordAudioActivity"
@@ -41,13 +41,13 @@
             android:name=".ui.settings.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.kataactivity.KataActivity"
+            android:name=".ui.belajar.kata.DetailKataActivity"
             android:exported="false" />
         <activity
             android:name=".ui.detailhuruf.DetailHurufActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.huruf.HurufActivity"
+            android:name="com.example.aba.ui.belajar.huruf.HurufActivity"
             android:exported="true" />
         <activity
             android:name=".ui.login.LoginActivity"

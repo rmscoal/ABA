@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".ui.huruf.HurufActivity">
+    tools:context=".ui.belajar.huruf.HurufActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
