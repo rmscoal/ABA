@@ -1,25 +1,22 @@
 package com.example.aba.ui.latihanmengejahuruf
 
+
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.AudioFormat
 import android.media.MediaPlayer
 import android.media.MediaRecorder
-import com.example.aba.data.database.UploadRecordingResponse
-
-
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Build
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-
 import com.example.aba.data.api.ApiConfig
+import com.example.aba.data.database.UploadRecordingResponse
 import com.example.aba.data.preferences.UserModel
 import com.example.aba.databinding.ActivityRecordAudioBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -59,7 +56,7 @@ class RecordAudioActivity : AppCompatActivity() {
         f.mkdir()
 
         ///storage/emulated/0/ABA/test.wav
-        output = Environment.getExternalStorageDirectory().toString() + "/ABA/test.wav"
+        output = Environment.getExternalStorageDirectory().toString() + "/ABA/test.m4a"
         Log.d("path","$output")
 
         //set file to upload
@@ -106,9 +103,10 @@ class RecordAudioActivity : AppCompatActivity() {
         try {
             mediaRecorder = MediaRecorder()
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                mediaRecorder?.setAudioSource(MediaRecorder.AudioSource.MIC)
-                mediaRecorder?.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
-                mediaRecorder?.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
+                mediaRecorder?.setAudioSource(MediaRecorder.AudioSource.MIC);
+                mediaRecorder?.setOutputFormat(AudioFormat.ENCODING_PCM_16BIT);
+                mediaRecorder?.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
+                mediaRecorder?.setAudioChannels(2)
                 mediaRecorder?.setOutputFile(output)
             }
             mediaRecorder?.prepare()
@@ -146,7 +144,7 @@ class RecordAudioActivity : AppCompatActivity() {
 
             val file = getFile as File
 
-            val requestAudioFile = file.asRequestBody("audio/*".toMediaTypeOrNull())
+            val requestAudioFile = file.asRequestBody("audio/mp4".toMediaTypeOrNull())
             Log.d("audio","$requestAudioFile")
             val audioMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
                 "predict",

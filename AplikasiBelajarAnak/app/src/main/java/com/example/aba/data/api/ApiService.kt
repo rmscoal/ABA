@@ -3,7 +3,6 @@ package com.example.aba.data.api
 import com.example.aba.data.database.UploadRecordingResponse
 import com.example.aba.data.response.UserResponse
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 import java.io.File
@@ -16,7 +15,7 @@ interface ApiService {
     ): Call<UserResponse>
 
     @Multipart
-    @POST("predictions/a/")
+    @POST("predictions/m/")
     fun uploadRecording(
         @Header("Authorization") token: String,
         @Part("predict") predict: File,

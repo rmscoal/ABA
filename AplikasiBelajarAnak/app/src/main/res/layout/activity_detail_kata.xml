@@ -40,9 +40,10 @@
         android:layout_height="220dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_deskripsi"
-        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintVertical_bias="0.206"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
