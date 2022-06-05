@@ -1,3 +1,4 @@
 *.env
 getPredictResult.js
 classify.py
+delete.py

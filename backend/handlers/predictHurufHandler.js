@@ -21,7 +21,7 @@ const logger = winston.createLogger({
 })
 
 // current next() is not implemented
-const predictHandler = async (req,res,next) => {
+const predictHurufHandler = async (req,res,next) => {
     if (!req.user) {
         // sends back response to user
         return res.status(401).json({
@@ -37,7 +37,7 @@ const predictHandler = async (req,res,next) => {
     const {letter} = req;
     
     // checks the header content-type
-    if (!req.is('multipart/form-data')) return res.status(404).json({
+    if (!req.is('multipart/form-data')) return res.status(400).json({
         status: 'fail',
         type: 'server/wrong-header-type',
         message: 'Please speicfy the header content-type to be \'multipart/form-data.\''
@@ -305,4 +305,4 @@ const predictHandler = async (req,res,next) => {
         })
 }
 
-module.exports = predictHandler;
+module.exports = predictHurufHandler;

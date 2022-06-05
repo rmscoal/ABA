@@ -20,13 +20,13 @@ const upload = multer({storage: fileStorageEngine});
 /* 
   @ IMPORT HANDLERS 
 */
-const predictHandler = require('../handlers/predictHandler');
-
+const predictHurufHandler = require('../handlers/predictHurufHandler');
+const predictKataHandler = require('../handlers/predictKataHandler');
 
 /* 
   @ ROUTES AND ITS HANDLERS 
 */
-router.route('/:letter')
+router.route('/huruf/:letter')
     .post(upload.any(), async (req,res,next) => {
         var {letter} = req.params; 
 
@@ -50,6 +50,31 @@ router.route('/:letter')
                 return next();
             }
         }
-    }, predictHandler);
+    }, predictHurufHandler);
+
+router.route('/kata/:word')
+    .post(upload.any(), async (req, res, next) => {
+        // get the word from the parameter
+        var {word} = req.params;
+        // array to check the parameter given
+        const arr = ['ADIK', 'AYAH', 'IBU', 'KAKAK', 'KELUARGA'];
+        // check the parameter with the given array
+        if (!arr.includes(word.toUpperCase())) {
+            // sends back response to user
+            return res.status(404).json({
+                status: 'fail',
+                type: 'server/param-not-found',
+                message: 'You have inserted the wrong parameter for this URI.'
+            })
+        } else {
+            if (word === word.toUpperCase()) {
+                req.word = word.toLowerCase();
+                return next();
+            } else {
+                req.word = word;
+                return next();
+            }
+        }
+    }, predictKataHandler);
 
 module.exports = router; 
