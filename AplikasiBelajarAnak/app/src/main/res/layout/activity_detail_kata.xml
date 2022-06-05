@@ -6,29 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".ui.belajar.kata.DetailKataActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/bg_iv_green"
+        android:foregroundGravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/bt_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_marginStart="40dp"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:textColor="@color/dark_green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/belajar_kata"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/bt_back"
+            app:layout_constraintStart_toEndOf="@+id/bt_back"
+            app:layout_constraintTop_toTopOf="@+id/bt_back" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
-        android:textColor="@color/dark_green"
         android:id="@+id/tv_lema"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="50dp"
+        android:textColor="@color/dark_green"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.154"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
         tools:text="sam.ba" />
 
-
     <TextView
-        android:textColor="@color/dark_green"
         android:id="@+id/tv_deskripsi"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/dark_green"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_lema"
-        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tv_lema"
         app:layout_constraintTop_toBottomOf="@+id/tv_lema"
         tools:text="tarian rakyat Brazil yang berasal dari tari-tarian
@@ -36,27 +72,14 @@
 
     <ImageView
         android:id="@+id/tv_image"
-        android:layout_width="220dp"
-        android:layout_height="220dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_deskripsi"
         app:layout_constraintVertical_bias="0.206"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:textColor="@color/dark_green"
-        android:gravity="center"
-        android:id="@+id/tv_kalimat"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:textSize="16sp"
-        tools:text="Tari samba itu menggunakan jimbe dan terompet"
-        app:layout_constraintEnd_toEndOf="@+id/tv_image"
-        app:layout_constraintStart_toStartOf="@+id/tv_image"
-        app:layout_constraintTop_toBottomOf="@+id/tv_image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

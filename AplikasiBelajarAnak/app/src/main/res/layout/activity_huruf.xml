@@ -17,32 +17,28 @@
         android:background="@drawable/bg_iv_green"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
-        <TextView
-            android:text="@string/belajar_huruf"
-            android:textColor="@color/dark_green"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="30dp"
-            android:textSize="30sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-<!--        tambah-->
+        android:layout_height="110dp">
+
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="30dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:background="@drawable/bg_et_white"
-                android:layout_width="300dp"
-                android:layout_height="40dp"/>
-            <ImageView
-                android:layout_width="40dp"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent">
+            <ImageButton
+                android:background="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24"/>
+            <TextView
+                android:text="@string/belajar_huruf"
+                android:textColor="@color/dark_green"
+
                 android:layout_marginStart="20dp"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-                android:layout_height="40dp"/>
+                android:textSize="30sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
+
 
     </LinearLayout>
 

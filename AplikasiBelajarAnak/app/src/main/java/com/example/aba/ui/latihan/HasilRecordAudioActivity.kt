@@ -1,12 +1,12 @@
 package com.example.aba.ui.latihan
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import com.example.aba.R
 
-class SusunHurufActivity : AppCompatActivity() {
+class HasilRecordAudioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_susun_huruf)
+        setContentView(R.layout.activity_hasil_record_audio)
     }
 }

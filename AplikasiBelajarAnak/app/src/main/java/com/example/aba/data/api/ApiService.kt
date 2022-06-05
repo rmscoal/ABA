@@ -1,6 +1,8 @@
 package com.example.aba.data.api
 
-import com.example.aba.data.database.UploadRecordingResponse
+import com.example.aba.data.response.RimaKataResponse
+import com.example.aba.data.response.HurufRecordingResponse
+import com.example.aba.data.response.KataRecordingResponse
 import com.example.aba.data.response.UserResponse
 import okhttp3.MultipartBody
 import retrofit2.Call
@@ -13,24 +15,28 @@ interface ApiService {
         @Header("Authorization") token: String,
     ): Call<UserResponse>
 
-    @Multipart
-    @POST("predictions/m/")
-    fun uploadRecording(
+    //belajar kata
+    @GET("rimakatawords/")
+    fun cariRimaKata(
         @Header("Authorization") token: String,
+    ): Call<RimaKataResponse>
+
+    //latihan mengeja huruf
+    @Multipart
+    @POST("predictions/huruf/{recordhuruf}")
+    fun hurufRecording(
+        @Header("Authorization") token: String,
+        @Path("recordhuruf") recordhuruf: String,
         @Part file: MultipartBody.Part,
-    ): Call<UploadRecordingResponse>
+    ): Call<HurufRecordingResponse>
 
+    //latihan mengeja kata
+    @Multipart
+    @POST("predictions/kata/{recordkata}")
+    fun kataRecording(
+        @Header("Authorization") token: String,
+        @Path("recordkata") recordkata: String,
+        @Part file: MultipartBody.Part,
+    ): Call<KataRecordingResponse>
 
-//    @GET("users")
-//    suspend fun getUsers(
-//        @Header("Authorization") token: String,
-//        @Query("page") page: Int,
-//        @Query("size") size: Int,
-//    ): ListStoryResponse
-
-//    @GET("stories")
-//    fun getLocation(
-//        @Header("Authorization") token: String,
-//        @Query("location") location: Int? = 0
-//    ): Call<ListStoryResponse>
 }

@@ -1,12 +1,12 @@
-package com.example.aba.ui.latihanmengejahuruf
+package com.example.aba.ui.latihan.menyusunhuruf
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aba.R
 
-class HasilRecordAudioActivity2 : AppCompatActivity() {
+class DetailSusunHurufActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_hasil_record_audio2)
+        setContentView(R.layout.activity_detail_susun_huruf)
     }
 }

@@ -4,15 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_et_green.xml" value="0.202" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_iv_dark_green.xml" value="0.2485" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_iv_pink.xml" value="0.23" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_iv_white.xml" value="0.2485" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_iv_yellow.xml" value="0.23" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.2485" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_audio_test.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_detail_huruf.xml" value="0.2463768115942029" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_detail_kata.xml" value="0.25" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_hasil_record_audio.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_hasil_record_audio2.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_home.xml" value="0.2" />
-        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_huruf.xml" value="0.20557081208316988" />
-        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_kata.xml" value="0.33" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_huruf.xml" value="0.18" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_kata.xml" value="0.25" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_login.xml" value="0.19427083333333334" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_main.xml" value="0.2463768115942029" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_pencapaian.xml" value="0.1671875" />
@@ -26,6 +30,7 @@
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_pencapaian.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_profile.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_setting.xml" value="0.27291666666666664" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/item_row_kata.xml" value="0.27291666666666664" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/toolbar.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/menu/menu_nav_bottom.xml" value="0.27291666666666664" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/menu/nav_bottom.xml" value="0.27291666666666664" />
@@ -63,7 +68,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16_PREVIEW" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -7,8 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aba.R
 import com.example.aba.data.preferences.KataModel
+import com.example.aba.data.response.KataModel2
 
-class ListKataAdapter(private val listKataAdapter: ArrayList<KataModel>?) : RecyclerView.Adapter<ListKataAdapter.ListViewHolder>() {
+class ListKataAdapter(private val listKataAdapter: ArrayList<KataModel2>?) : RecyclerView.Adapter<ListKataAdapter.ListViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -40,6 +41,6 @@ class ListKataAdapter(private val listKataAdapter: ArrayList<KataModel>?) : Recy
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: KataModel)
+        fun onItemClicked(data: KataModel2)
     }
 }

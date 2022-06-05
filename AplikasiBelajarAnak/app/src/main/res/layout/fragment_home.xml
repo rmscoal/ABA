@@ -142,7 +142,28 @@
                     android:layout_height="wrap_content"
                     android:text="@string/angka"/>
             </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/con_belajar_kata"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:gravity="center"
+                android:background="@drawable/bg_iv_yellow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView">
 
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:textSize="30sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/belajar_kata"/>
+            </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
                 android:id="@+id/con_latihan_menyusun_huruf"

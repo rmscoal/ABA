@@ -1,4 +1,4 @@
-package com.example.aba.ui.latihanmengejahuruf
+package com.example.aba.ui.latihan.mengejahuruf
 
 
 import android.Manifest
@@ -17,9 +17,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.aba.data.api.ApiConfig
-import com.example.aba.data.database.UploadRecordingResponse
+import com.example.aba.data.response.HurufRecordingResponse
 import com.example.aba.data.preferences.UserModel
 import com.example.aba.databinding.ActivityRecordAudioBinding
+import com.example.aba.ui.latihan.HasilRecordAudioActivity
+import com.example.aba.ui.latihan.HasilRecordAudioActivity2
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -33,7 +35,7 @@ import java.io.File
 import java.io.IOException
 import kotlin.math.roundToInt
 
-class RecordAudioActivity : AppCompatActivity() {
+class RecordMengejaHurufActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRecordAudioBinding
     private lateinit var auth: FirebaseAuth
     private var userModel= UserModel()
@@ -154,33 +156,34 @@ class RecordAudioActivity : AppCompatActivity() {
                 file.name,
                 requestAudioFile
             )
+            val huruf = "a"
             val auth = "Bearer $token"
             Log.d("filename","$file")
-            val service = ApiConfig().getApiService().uploadRecording(auth,audioMultipart)
-            service.enqueue(object : Callback<UploadRecordingResponse> {
+            val service = ApiConfig().getApiService().hurufRecording(auth,huruf,audioMultipart)
+            service.enqueue(object : Callback<HurufRecordingResponse> {
                 override fun onResponse(
-                    call: Call<UploadRecordingResponse>,
-                    response: Response<UploadRecordingResponse>
+                    call: Call<HurufRecordingResponse>,
+                    response: Response<HurufRecordingResponse>
                 ) {
                     if (response.isSuccessful) {
                         val responseBody = response.body()
                         if (responseBody != null) {
                             Log.d("responUpload",responseBody.toString())
                             updateUI(responseBody)
-                            //Toast.makeText(this@RecordAudioActivity, resources.getString(R.string.berhasil_upload), Toast.LENGTH_SHORT).show()
+                            //Toast.makeText(this@RecordMengejaHurufActivity, resources.getString(R.string.berhasil_upload), Toast.LENGTH_SHORT).show()
                             //showLoading(false)
-                            //startActivity(Intent(this@RecordAudioActivity, ListStoryActivity::class.java))
+                            //startActivity(Intent(this@RecordMengejaHurufActivity, ListStoryActivity::class.java))
                             //finish()
                         }
                     } else {
-                        Toast.makeText(this@RecordAudioActivity, response.message(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@RecordMengejaHurufActivity, response.message(), Toast.LENGTH_SHORT).show()
                         Log.d("gagalff",response.message())
                     //showLoading(false)
                     }
                 }
-                override fun onFailure(call: Call<UploadRecordingResponse>, t: Throwable) {
+                override fun onFailure(call: Call<HurufRecordingResponse>, t: Throwable) {
                     Log.d("gagal",t.localizedMessage)
-                    //Toast.makeText(this@RecordAudioActivity, resources.getString(R.string.gagal), Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this@RecordMengejaHurufActivity, resources.getString(R.string.gagal), Toast.LENGTH_SHORT).show()
                     //showLoading(false)
                 }
             })
@@ -189,11 +192,11 @@ class RecordAudioActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateUI(responseBody: UploadRecordingResponse) {
+    private fun updateUI(responseBody: HurufRecordingResponse) {
         if(responseBody.result?.roundToInt() == 1 ){
-            startActivity(Intent(this,HasilRecordAudioActivity::class.java))
+            startActivity(Intent(this, HasilRecordAudioActivity::class.java))
         }
-        else startActivity(Intent(this,HasilRecordAudioActivity2::class.java))
+        else startActivity(Intent(this, HasilRecordAudioActivity2::class.java))
     }
 
 }

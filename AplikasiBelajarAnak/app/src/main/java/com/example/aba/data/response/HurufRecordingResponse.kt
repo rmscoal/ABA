@@ -1,8 +1,8 @@
-package com.example.aba.data.database
+package com.example.aba.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class UploadRecordingResponse(
+data class HurufRecordingResponse(
 
 	@field:SerializedName("result")
 	val result: Float? = null,

@@ -19,22 +19,22 @@
         android:theme="@style/Theme.ABA"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.latihan.DetailSusunHurufActivity"
+            android:name=".ui.latihan.menyusunhuruf.DetailSusunHurufActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.latihanmengejahuruf.HasilRecordAudioActivity2"
+            android:name="com.example.aba.ui.latihan.HasilRecordAudioActivity2"
             android:exported="false" />
         <activity
-            android:name=".ui.latihanmengejahuruf.HasilRecordAudioActivity"
+            android:name="com.example.aba.ui.latihan.HasilRecordAudioActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.latihan.SusunHurufActivity"
+            android:name=".ui.latihan.menyusunhuruf.SusunHurufActivity"
             android:exported="false" />
         <activity
             android:name=".ui.belajar.kata.KataActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.latihanmengejahuruf.RecordAudioActivity"
+            android:name="com.example.aba.ui.latihan.mengejahuruf.RecordMengejaHurufActivity"
             android:exported="true" />
         <activity
             android:name=".ui.pencapaian.PencapaianActivity"
@@ -46,9 +46,6 @@
             android:name=".ui.belajar.kata.DetailKataActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.detailhuruf.DetailHurufActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.belajar.huruf.HurufActivity"
             android:exported="true" />
         <activity
@@ -56,14 +53,14 @@
             android:exported="true" />
         <activity
             android:name=".ui.register.RegisterActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="true" />
         <activity
             android:name=".ui.splashscreen.SplashScreenActivity"
             android:exported="true"
-            android:theme="@style/SplashScreen"></activity>
+            android:theme="@style/SplashScreen" />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true">
