@@ -29,21 +29,14 @@ class SusunHurufActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        val layoutManager1 = GridLayoutManager(this,4)
-        val layoutManager2 = GridLayoutManager(this,4)
-        val layoutManager3 = GridLayoutManager(this,4)
-        val itemDecoration1 = DividerItemDecoration(this, layoutManager1.orientation)
-        val itemDecoration2 = DividerItemDecoration(this, layoutManager2.orientation)
-        val itemDecoration3 = DividerItemDecoration(this, layoutManager3.orientation)
+        val layoutManager1 = GridLayoutManager(this,3)
+        val layoutManager2 = GridLayoutManager(this,3)
+        val layoutManager3 = GridLayoutManager(this,3)
 
         //Level1
         binding.rvLevel1.layoutManager = layoutManager1
         binding.rvLevel2.layoutManager = layoutManager2
         binding.rvLevel3.layoutManager = layoutManager3
-
-        binding.rvLevel1.addItemDecoration(itemDecoration1)
-        binding.rvLevel2.addItemDecoration(itemDecoration2)
-        binding.rvLevel3.addItemDecoration(itemDecoration3)
 
         setListKataLevel1()
         setListKataLevel2()

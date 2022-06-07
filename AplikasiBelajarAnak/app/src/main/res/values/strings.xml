@@ -19,11 +19,7 @@
 
     <string name="text_1">Hello Guys!</string>
 
-    <string name="text_2">
-        Nice to meet you, Lets start learning!
-        <br><b>Login</b> if you already have an account.</br>
-        <br><b>Register</b> to get started with the app.</br>
-    </string>
+    <string name="text_2"><br>Nice to meet you, Lets start learning!\n</br><br>Login if you already have an account.\n</br><br>Register to get started with the app.\n</br></string>
     <string name="register">Register</string>
     <string name="login">Login</string>
     <string name="image1">imageview1</string>
@@ -89,5 +85,8 @@
 
     <string name="latihan_mengeja">Latihan Mengeja Huruf</string>
     <string name="belajar_kata">Belajar Kata</string>
+    <string name="developer">Develop by javEdu</string>
+    <string name="or">or</string>
+    <string name="latihan_mengeja_kata">Latihan Mengeja Kata</string>
 
 </resources>

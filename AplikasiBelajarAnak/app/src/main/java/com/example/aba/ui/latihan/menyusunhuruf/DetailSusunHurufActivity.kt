@@ -36,9 +36,7 @@ class DetailSusunHurufActivity : AppCompatActivity() {
         val urlFromIntent = intent.getStringExtra(URL)
 
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
-        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvHuruf.layoutManager = layoutManager
-        binding.rvHuruf.addItemDecoration(itemDecoration)
 
         //set kata and avatar
         binding.tvLema.text = lemaFromIntent

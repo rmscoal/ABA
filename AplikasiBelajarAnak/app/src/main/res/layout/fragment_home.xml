@@ -9,8 +9,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:fillViewport="true"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,80 +18,91 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:id="@+id/con_home"
-                android:background="@drawable/bg_iv_green"
                 android:layout_width="match_parent"
-                android:layout_height="230dp"
+                android:layout_height="300dp"
+                android:background="@drawable/bg_iv_green"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:textSize="20sp"
-                    android:layout_marginTop="15dp"
-                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/selamat_datang"/>
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/coolvetica_rg"
+                    android:text="@string/selamat_datang"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:id="@+id/iv_avatar"
-                    android:layout_width="75dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_round_tag_faces_24"
-                    android:layout_height="75dp">
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_round_tag_faces_24">
 
                 </ImageView>
 
                 <TextView
                     android:id="@+id/iv_nama"
-                    android:textSize="20sp"
-                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/username"/>
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/lobster"
+                    android:text="@string/username"
+                    android:textColor="@color/black"
+                    android:textSize="40sp" />
+
                 <LinearLayout
-                    android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
                     <ImageView
-                        android:layout_weight="1"
                         android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:src="@drawable/baseline_progress_black_24dp"
-                        android:layout_height="30dp">
-                    </ImageView>
+                        android:src="@drawable/baseline_progress_black_24dp" />
+
                     <ImageView
-                        android:layout_weight="1"
                         android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:src="@drawable/baseline_achievement_black_24dp"
-                        android:layout_height="30dp">
-                    </ImageView>
+                        android:src="@drawable/baseline_achievement_black_24dp" />
 
                 </LinearLayout>
+
                 <LinearLayout
-                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
                     <TextView
                         android:id="@+id/tv_progress"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:textSize="20sp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        tools:text="Progress"/>
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        tools:text="Progress" />
 
                     <TextView
                         android:id="@+id/tv_pencapaian"
-                        android:textSize="20sp"
-                        android:gravity="center"
-                        android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        tools:text="Pencapaian"/>
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        tools:text="Pencapaian" />
                 </LinearLayout>
 
 
@@ -100,26 +111,29 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <ImageView
                     android:id="@+id/con_belajar_huruf"
                     android:layout_width="0dp"
                     android:layout_height="220dp"
                     android:layout_marginStart="20dp"
-                    android:layout_weight="1"
                     android:layout_marginTop="20dp"
+                    android:layout_weight="1"
                     android:background="@drawable/bg_iv_pink"
+                    android:src="@mipmap/ic_img_a_foreground"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/con_home"/>
+                    app:layout_constraintTop_toBottomOf="@+id/con_home" />
 
                 <ImageView
                     android:id="@+id/con_belajar_angka"
                     android:layout_width="0dp"
                     android:layout_height="220dp"
-                    android:layout_weight="1"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
                     android:background="@drawable/bg_iv_blue"
+                    android:src="@mipmap/ic_img_satu_foreground"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/con_home" />
 
@@ -128,90 +142,168 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:gravity="center">
+
                 <TextView
-                    android:textSize="20sp"
-                    android:layout_marginStart="80dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/huruf"/>
+                    android:fontFamily="@font/lobster"
+                    android:text="@string/huruf"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
                 <TextView
-                    android:textSize="20sp"
-                    android:layout_marginStart="150dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/angka"/>
+                    android:layout_marginStart="120dp"
+                    android:fontFamily="@font/lobster"
+                    android:text="@string/angka"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
             </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
+
+            <FrameLayout
                 android:id="@+id/con_belajar_kata"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="15dp"
+                android:background="@drawable/bg_iv_green"
                 android:gravity="center"
-                android:background="@drawable/bg_iv_yellow"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView">
 
+                <ImageView
+                    android:layout_width="390dp"
+                    android:layout_height="190dp"
+                    android:alpha="0.65"
+                    android:src="@drawable/img_belajar_kata" />
+
                 <TextView
-                    android:layout_gravity="center_vertical"
-                    android:textSize="30sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/belajar_kata"/>
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/lobster"
+                    android:shadowColor="@color/text_shadow_white"
+                    android:shadowDx="-7"
+                    android:shadowDy="-7"
+                    android:shadowRadius="7"
+                    android:text="@string/belajar_kata"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+            </FrameLayout>
+
+            <FrameLayout
                 android:id="@+id/con_latihan_menyusun_huruf"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="15dp"
-                android:gravity="center"
                 android:background="@drawable/bg_iv_yellow"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/img_latihan_menyusun_huruf" />
+
                 <TextView
-                    android:layout_gravity="center_vertical"
-                    android:textSize="30sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/latihan_menyusun"/>
-            </LinearLayout>
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/lobster"
+                    android:gravity="center"
+                    android:shadowColor="@color/text_shadow_white"
+                    android:shadowDx="-7"
+                    android:shadowDy="-7"
+                    android:shadowRadius="7"
+                    android:text="@string/latihan_menyusun"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+            </FrameLayout>
 
-            <LinearLayout
-                android:orientation="horizontal"
+            <FrameLayout
                 android:id="@+id/con_latihan_mengeja_huruf"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginBottom="200dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="15dp"
-                android:gravity="center"
                 android:background="@drawable/bg_iv_yellow"
+                android:gravity="center"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.65"
+                    android:src="@drawable/img_latihan_mengeja_huruf" />
+
                 <TextView
-                    android:layout_gravity="center_vertical"
-                    android:textSize="30sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/latihan_mengeja"/>
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/lobster"
+                    android:shadowColor="@color/text_shadow_white"
+                    android:shadowDx="-7"
+                    android:shadowDy="-7"
+                    android:shadowRadius="7"
+                    android:text="@string/latihan_mengeja"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
 
-            </LinearLayout>
+            </FrameLayout>
 
+            <FrameLayout
+                android:id="@+id/con_latihan_mengeja_kata"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="200dp"
+                android:background="@drawable/bg_iv_yellow"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.6"
+                    android:src="@drawable/img_latihan_mengeja_kata" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/lobster"
+                    android:shadowColor="@color/text_shadow_white"
+                    android:shadowDx="-7"
+                    android:shadowDy="-7"
+                    android:shadowRadius="7"
+                    android:text="@string/latihan_mengeja_kata"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+            </FrameLayout>
         </LinearLayout>
     </ScrollView>
 

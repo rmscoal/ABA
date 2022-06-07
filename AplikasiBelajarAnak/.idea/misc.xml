@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2685" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_et_green.xml" value="0.202" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_iv_blue.xml" value="0.2685" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_iv_dark_green.xml" value="0.2485" />
@@ -13,11 +14,15 @@
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_iv_yellow.xml" value="0.23" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/bg_tv_green.xml" value="0.2685" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.2485" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.248" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/ic_baseline_keyboard_double_arrow_right_24.xml" value="0.2685" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/ic_baseline_keyboard_double_arrow_right_50.xml" value="0.2685" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.248" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/ic_baseline_mic_24.xml" value="0.2485" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/ic_baseline_refresh_24.xml" value="0.2685" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.2685" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/ic_baseline_stop_24.xml" value="0.2775" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2685" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout-v23/activity_record_mengeja_huruf.xml" value="0.27291666666666664" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_audio_test.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_detail_huruf.xml" value="0.2463768115942029" />
@@ -28,18 +33,18 @@
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_huruf.xml" value="0.18" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_kata.xml" value="0.25" />
-        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_login.xml" value="0.19427083333333334" />
-        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_main.xml" value="0.2463768115942029" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_pencapaian.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_record_audio.xml" value="0.25885416666666666" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_record_mengeja_huruf.xml" value="0.33" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_record_mengeja_kata.xml" value="0.27291666666666664" />
-        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_register.xml" value="0.19427083333333334" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_settings.xml" value="0.1421875" />
-        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_splash_screen.xml" value="0.19427083333333334" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_splash_screen.xml" value="0.18" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_susun_huruf.xml" value="0.25" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_susun_kata.xml" value="0.1671875" />
-        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_home.xml" value="0.1671875" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_home.xml" value="0.27405857740585776" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_pencapaian.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_profile.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/fragment_setting.xml" value="0.27291666666666664" />
@@ -48,6 +53,7 @@
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/toolbar.xml" value="0.1671875" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/menu/menu_nav_bottom.xml" value="0.27291666666666664" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/menu/nav_bottom.xml" value="0.27291666666666664" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.248" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.23" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/AplikasiBelajarAnak/AplikasiBelajarAnak/app/src/main/res/drawable/bg_iv_blue.xml" value="0.183" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/AplikasiBelajarAnak/AplikasiBelajarAnak/app/src/main/res/drawable/bg_iv_green.xml" value="0.183" />
