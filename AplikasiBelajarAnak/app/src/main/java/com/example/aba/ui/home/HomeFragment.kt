@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.example.aba.data.preferences.UserModel
+import com.example.aba.data.model.UserModel
 import com.example.aba.databinding.FragmentHomeBinding
 import com.example.aba.ui.belajar.huruf.HurufActivity
 import com.example.aba.ui.belajar.kata.KataActivity

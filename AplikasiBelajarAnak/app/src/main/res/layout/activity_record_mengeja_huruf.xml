@@ -16,26 +16,25 @@
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="80dp"
             android:background="@drawable/bg_iv_white"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="25dp"
-                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
                 android:contentDescription="@string/pencapaian"
                 android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
                 android:text="@string/mengeja"
-                android:gravity="center"
+                android:layout_gravity="center"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -68,6 +67,8 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
                 android:id="@+id/bt_stop_record"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
@@ -77,9 +78,12 @@
                 app:layout_constraintEnd_toStartOf="@+id/bt_start_record"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/huruf_a"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                android:focusable="true"
+                tools:targetApi="m" />
 
             <ImageButton
+                android:clickable="true"
                 android:id="@+id/bt_start_record"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
@@ -88,9 +92,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/huruf_a"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                android:focusable="true" />
 
             <ImageButton
+                android:clickable="true"
                 android:id="@+id/bt_play_record"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
@@ -100,7 +106,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/bt_start_record"
                 app:layout_constraintTop_toBottomOf="@+id/huruf_a"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                android:focusable="true" />
 
             <TextView
                 android:id="@+id/tv_stop"
@@ -141,32 +148,27 @@
                 android:id="@+id/tv_lihat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
-                android:layout_marginEnd="80dp"
-                android:textColor="@color/black"
+                android:background="@drawable/bg_tv_green"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="5dp"
                 android:text="@string/lihat_hasil"
+                android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="71dp"
-                android:layout_marginEnd="55dp"
+                android:id="@+id/imageView3"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="60dp"
+                android:clickable="true"
                 android:contentDescription="@string/pencapaian"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tv_lihat"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="71dp"
-                android:layout_marginEnd="50dp"
-                android:contentDescription="@string/pencapaian"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:focusable="true"
+                android:src="@drawable/ic_baseline_keyboard_double_arrow_right_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -174,12 +176,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_gravity="bottom"
-        android:layout_alignParentBottom="true"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
         app:menu="@menu/menu_nav_bottom" />
 
 </RelativeLayout>

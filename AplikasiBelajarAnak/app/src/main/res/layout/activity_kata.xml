@@ -27,23 +27,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:padding="10dp">
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="30dp"-->
+<!--                android:padding="10dp">-->
 
-                <TextView
-                    android:id="@+id/tv_kata"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/bg_iv_dark_green"
-                    android:text="Kata"
-                    android:textColor="@color/white"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:textSize="20sp" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_kata"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@drawable/bg_iv_dark_green"-->
+<!--                    android:text="Kata"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:paddingLeft="10dp"-->
+<!--                    android:paddingRight="10dp"-->
+<!--                    android:textSize="20sp" />-->
+<!--            </LinearLayout>-->
 
         </LinearLayout>
 

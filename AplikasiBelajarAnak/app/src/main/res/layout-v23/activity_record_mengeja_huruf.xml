@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.latihan.mengejahuruf.RecordMengejaHurufActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/bg_iv_white"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="25dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/pencapaian"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mengeja"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/tv_lv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/black"
+                android:text="@string/level1.1"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/huruf_a"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/alfa_a"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:id="@+id/bt_stop_record"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/ic_baseline_stop_24"
+                app:layout_constraintEnd_toStartOf="@+id/bt_start_record"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/huruf_a"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:focusable="true" />
+
+            <ImageButton
+                android:clickable="true"
+                android:id="@+id/bt_start_record"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/ic_baseline_mic_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/huruf_a"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:focusable="true" />
+
+            <ImageButton
+                android:clickable="true"
+                android:id="@+id/bt_play_record"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/ic_baseline_play_arrow_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/bt_start_record"
+                app:layout_constraintTop_toBottomOf="@+id/huruf_a"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:focusable="true" />
+
+            <TextView
+                android:id="@+id/tv_stop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/black"
+                android:text="@string/hentikan_rekaman"
+                app:layout_constraintEnd_toStartOf="@+id/textView5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bt_stop_record" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/black"
+                android:text="@string/rekam"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bt_start_record" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:textColor="@color/black"
+                android:text="@string/putar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView5"
+                app:layout_constraintTop_toBottomOf="@+id/bt_play_record" />
+
+            <TextView
+                android:id="@+id/tv_lihat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_tv_green"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="5dp"
+                android:text="@string/lihat_hasil"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="60dp"
+                android:clickable="true"
+                android:contentDescription="@string/pencapaian"
+                android:focusable="true"
+                android:src="@drawable/ic_baseline_keyboard_double_arrow_right_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        app:menu="@menu/menu_nav_bottom" />
+
+</RelativeLayout>
+
+
+

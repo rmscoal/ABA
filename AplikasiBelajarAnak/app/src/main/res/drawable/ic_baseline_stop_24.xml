@@ -7,4 +7,11 @@
   <path
       android:fillColor="@android:color/black"
       android:pathData="M6,6h12v12H6z"/>
+  <group>
+    <clip-path
+        android:pathData="M0,0h250v250h-250z"/>
+    <path
+        android:pathData="M240,240L15,240a226.612,226.612 0,0 1,4.571 -45.346A223.763,223.763 0,0 1,53.426 114.2a225.659,225.659 0,0 1,98.993 -81.518,223.933 223.933,0 0,1 42.235,-13.11A226.68,226.68 0,0 1,240 15L240,240Z"
+        android:fillColor="#F8675D"/>
+  </group>
 </vector>

@@ -1,6 +1,7 @@
 package com.example.aba.data.preferences
 
 import android.content.Context
+import com.example.aba.data.model.UserModel
 
 internal class UserPreferences(context: Context) {
     companion object {

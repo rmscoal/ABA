@@ -1,8 +1,8 @@
-package com.example.aba.data.preferences
+package com.example.aba.data.model
 
 import com.beust.klaxon.Json
 
-data class EksplorHuruf(
+data class EksplorHurufModel(
     @Json(index = 1) var a: Boolean,
     @Json(index = 2) var b: Boolean,
     @Json(index = 3) var c: Boolean,

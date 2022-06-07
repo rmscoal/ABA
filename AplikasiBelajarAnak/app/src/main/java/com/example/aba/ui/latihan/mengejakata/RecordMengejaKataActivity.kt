@@ -1,25 +1,20 @@
-package com.example.aba.ui.latihan.mengejahuruf
+package com.example.aba.ui.latihan.mengejakata
 
-
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.media.AudioFormat
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.example.aba.data.api.ApiConfig
-import com.example.aba.data.response.HurufRecordingResponse
 import com.example.aba.data.model.UserModel
-import com.example.aba.databinding.ActivityRecordMengejaHurufBinding
+import com.example.aba.data.response.HurufRecordingResponse
+import com.example.aba.databinding.ActivityRecordMengejaKataBinding
 import com.example.aba.ui.latihan.HasilRecordAudioActivity
 import com.example.aba.ui.latihan.HasilRecordAudioActivity2
 import com.google.firebase.auth.FirebaseAuth
@@ -35,8 +30,8 @@ import java.io.File
 import java.io.IOException
 import kotlin.math.roundToInt
 
-class RecordMengejaHurufActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityRecordMengejaHurufBinding
+class RecordMengejaKataActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityRecordMengejaKataBinding
     private lateinit var auth: FirebaseAuth
     private var userModel= UserModel()
     private var output: String? = null
@@ -48,7 +43,7 @@ class RecordMengejaHurufActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRecordMengejaHurufBinding.inflate(layoutInflater)
+        binding = ActivityRecordMengejaKataBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //set user
@@ -66,41 +61,41 @@ class RecordMengejaHurufActivity : AppCompatActivity() {
         //set file to upload
         getFile = File(output!!)
 
-        binding.btStartRecord.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                val permissions = arrayOf(android.Manifest.permission.RECORD_AUDIO, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE)
-                ActivityCompat.requestPermissions(this, permissions,0)
-            } else {
-                startRecording()
-            }
-        }
-
-        binding.btStopRecord.setOnClickListener{
-            stopRecording()
-        }
-
-        binding.btPlayRecord.setOnClickListener {
-            playRecording()
-        }
-
-        binding.tvLihat.setOnClickListener {
-            val user = auth.currentUser
-            user!!.getIdToken(true)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val idToken: String? = task.result.token
-                        Log.d("token di login",idToken!!)
-                        //showLoading(true)
-                        uploadRecording(idToken!!)
-                        // Send token to your backend via HTTPS
-                        // ...
-                    } else {
-                        // Handle error -> task.getException();
-                    }
-                }
-        }
+//        binding.btStartRecord.setOnClickListener {
+//            if (ContextCompat.checkSelfPermission(this,
+//                    Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
+//                    Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//                val permissions = arrayOf(android.Manifest.permission.RECORD_AUDIO, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+//                ActivityCompat.requestPermissions(this, permissions,0)
+//            } else {
+//                startRecording()
+//            }
+//        }
+//
+//        binding.btStopRecord.setOnClickListener{
+//            stopRecording()
+//        }
+//
+//        binding.btPlayRecord.setOnClickListener {
+//            playRecording()
+//        }
+//
+//        binding.tvLihat.setOnClickListener {
+//            val user = auth.currentUser
+//            user!!.getIdToken(true)
+//                .addOnCompleteListener { task ->
+//                    if (task.isSuccessful) {
+//                        val idToken: String? = task.result.token
+//                        Log.d("token di login",idToken!!)
+//                        //showLoading(true)
+//                        uploadRecording(idToken!!)
+//                        // Send token to your backend via HTTPS
+//                        // ...
+//                    } else {
+//                        // Handle error -> task.getException();
+//                    }
+//                }
+//        }
     }
 
     private fun startRecording() {
@@ -176,9 +171,9 @@ class RecordMengejaHurufActivity : AppCompatActivity() {
                             //finish()
                         }
                     } else {
-                        Toast.makeText(this@RecordMengejaHurufActivity, response.message(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@RecordMengejaKataActivity, response.message(), Toast.LENGTH_SHORT).show()
                         Log.d("gagalff",response.message())
-                    //showLoading(false)
+                        //showLoading(false)
                     }
                 }
                 override fun onFailure(call: Call<HurufRecordingResponse>, t: Throwable) {

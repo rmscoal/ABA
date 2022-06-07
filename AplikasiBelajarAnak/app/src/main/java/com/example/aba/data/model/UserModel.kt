@@ -1,4 +1,4 @@
-package com.example.aba.data.preferences
+package com.example.aba.data.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

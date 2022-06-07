@@ -6,19 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
-import com.beust.klaxon.Json
-import com.beust.klaxon.JsonObject
-import com.beust.klaxon.Klaxon
 import com.example.aba.R
 import com.example.aba.data.api.ApiConfig
-import com.example.aba.data.preferences.EksplorAngka
-import com.example.aba.data.preferences.EksplorHuruf
-import com.example.aba.data.preferences.UserModel
+import com.example.aba.data.model.UserModel
 import com.example.aba.data.preferences.UserPreferences
 import com.example.aba.data.response.UserResponse
 import com.example.aba.databinding.ActivityLoginBinding
 import com.example.aba.ui.home.HomeActivity
-import com.example.aba.ui.settings.SettingsActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -28,7 +22,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -184,7 +177,7 @@ class LoginActivity : AppCompatActivity() {
 
 //    private fun parseEksplorHuruftoJSON(){
 //        val eksplorHuruf = userModel.eksplor_huruf
-//        val hasil = Klaxon().parse<EksplorHuruf>(
+//        val hasil = Klaxon().parse<EksplorHurufModel>(
 ////            """
 ////            {
 ////            "status":"success",

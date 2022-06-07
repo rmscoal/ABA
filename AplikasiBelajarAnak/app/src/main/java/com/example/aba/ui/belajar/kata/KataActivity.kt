@@ -9,12 +9,9 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.aba.data.api.ApiConfig
-import com.example.aba.data.preferences.KataModel
-import com.example.aba.data.response.KataModel2
+import com.example.aba.data.model.KataModel
 import com.example.aba.data.response.RimaKataResponse
-import com.example.aba.data.response.UserResponse
 import com.example.aba.databinding.ActivityKataBinding
-import com.example.aba.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -39,7 +36,6 @@ class KataActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-
         val layoutManager1 = GridLayoutManager(this,4)
         val layoutManager2 = GridLayoutManager(this,4)
         val layoutManager3 = GridLayoutManager(this,4)
@@ -59,10 +55,6 @@ class KataActivity : AppCompatActivity() {
         binding.rvKataSulit.layoutManager = layoutManager3
         binding.rvKataSulit.addItemDecoration(itemDecoration3)
 
-//        setListKataGampang()
-//        setListKataSedang()
-//        setListKataSulit()
-
         // Initialize Firebase Auth
         auth = Firebase.auth
 
@@ -74,50 +66,47 @@ class KataActivity : AppCompatActivity() {
         }
     }
 
-    private fun setListKataGampang(listKataGampang: ArrayList<KataModel2>) {
+    private fun setListKataGampang(listKataGampang: ArrayList<KataModel>) {
         //mudah
-//        val listKataGampang = getKataFromJson(fileName = "gampang.json")
         Log.i("gampang",listKataGampang.size.toString())
         binding.rvKataMudah.layoutManager = GridLayoutManager(this,4)
         val kataGampang = ListKataAdapter(listKataGampang)
         binding.rvKataMudah.adapter = kataGampang
 
        kataGampang.setOnItemClickCallback(object : ListKataAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: KataModel2) {
+            override fun onItemClicked(data: KataModel) {
                 showDetailKata(data)
             }
         })
     }
 
-    private fun setListKataSedang(listKataSedang: ArrayList<KataModel2>){
+    private fun setListKataSedang(listKataSedang: ArrayList<KataModel>){
         //sedang
-//        val listKataSedang = getKataFromJson(fileName = "sedang.json")
         Log.i("array",listKataSedang.toString())
         binding.rvKataSedang.layoutManager = GridLayoutManager(this,3)
         val kataSedang = ListKataAdapter(listKataSedang)
         binding.rvKataSedang.adapter = kataSedang
 
         kataSedang.setOnItemClickCallback(object : ListKataAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: KataModel2) {
+            override fun onItemClicked(data: KataModel) {
                 showDetailKata(data)
             }
         })
     }
-    private fun setListKataSulit(listKataSulit: ArrayList<KataModel2>){
+    private fun setListKataSulit(listKataSulit: ArrayList<KataModel>){
         //sulit
-//        val listKataSulit = getKataFromJson(fileName = "sulit.json")
         Log.i("sulit",listKataSulit.size.toString())
         binding.rvKataSulit.layoutManager = GridLayoutManager(this,3)
         val kataSulit = ListKataAdapter(listKataSulit)
         binding.rvKataSulit.adapter = kataSulit
 
         kataSulit.setOnItemClickCallback(object : ListKataAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: KataModel2) {
+            override fun onItemClicked(data: KataModel) {
                 showDetailKata(data)
             }
         })
     }
-    private fun showDetailKata(data: KataModel2){
+    private fun showDetailKata(data: KataModel){
         val intentToDetail = Intent(this, DetailKataActivity::class.java)
         intentToDetail.putExtra(LEMA, data.lema)
         intentToDetail.putExtra(NILAI, data.nilai)
@@ -125,40 +114,7 @@ class KataActivity : AppCompatActivity() {
         startActivity(intentToDetail,
             ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle())
     }
-//    private fun getJsonDataFromAsset(context: Context, fileName: String): String? {
-//        val jsonString: String
-//        try {
-//            jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
-//        } catch (ioException: IOException) {
-//            ioException.printStackTrace()
-//            return null
-//        }
-//        return jsonString
-//    }
 
-    private fun getKataFromJson(context:Context = applicationContext,fileName: String): ArrayList<KataModel2>{
-        val filteredArray: ArrayList<KataModel2> = ArrayList()
-        val jsonString: String = context.assets.open(fileName).bufferedReader().use { it.readText() }
-
-        Log.i("data", jsonString)
-        val gson = Gson()
-        val listKataType = object : TypeToken<ArrayList<KataModel2>>() {}.type
-
-        val kata = gson.fromJson(jsonString, listKataType) as ArrayList<KataModel2>
-        Log.i("ler", "$kata")
-        kata.forEachIndexed {
-                idx, it -> Log.i("data", "> Item $idx:\n$it")
-        }
-
-        for(i in kata){
-            if (filteredArray.size < 10){
-                filteredArray.add(i)
-            }
-            else break
-        }
-
-        return filteredArray
-    }
     private fun refreshKata(){
         val user = auth.currentUser
         user!!.getIdToken(true)

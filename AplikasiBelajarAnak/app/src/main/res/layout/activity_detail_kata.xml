@@ -71,7 +71,7 @@
            penduduk asli Afrika" />
 
     <ImageView
-        android:id="@+id/tv_image"
+        android:id="@+id/iv_image"
         android:layout_width="250dp"
         android:layout_height="250dp"
         app:layout_constraintBottom_toBottomOf="parent"

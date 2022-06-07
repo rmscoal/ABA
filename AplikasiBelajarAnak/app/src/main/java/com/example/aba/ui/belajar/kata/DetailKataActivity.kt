@@ -24,7 +24,7 @@ class DetailKataActivity : AppCompatActivity() {
             Glide.with(this)
                 .load(intent.getStringExtra(URL))
                 .fitCenter()
-                .into(binding.tvImage)
+                .into(binding.ivImage)
         }
     }
 }

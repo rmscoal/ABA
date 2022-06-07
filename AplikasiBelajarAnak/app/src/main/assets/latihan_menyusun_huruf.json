@@ -1,0 +1,33 @@
+{
+  "level1": [
+    {
+      "lema": "ibu",
+      "nilai": "-",
+      "url": "https://i.pinimg.com/564x/30/6c/a6/306ca60fb7a9e5e9f238fc241103979a.jpg"
+    },
+    {
+      "lema": "ayah",
+      "nilai": "-",
+      "url": "https://thumbs.dreamstime.com/b/father-carrying-little-baby-character-design-super-dad-concept-vector-illustration-79201996.jpg"
+    }
+  ],
+  "level2": [
+    {
+      "lema": "kakak",
+      "nilai": "-",
+      "url": "NA"
+    },
+    {
+      "lema": "nenek",
+      "nilai": "-",
+      "url": "NA"
+    }
+  ],
+  "level3": [
+    {
+      "lema": "keluarga",
+      "nilai": "-",
+      "url": "NA"
+    }
+  ]
+}

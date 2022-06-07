@@ -8,7 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aba.R
-import com.example.aba.data.preferences.UserModel
+import com.example.aba.data.model.UserModel
 import com.example.aba.databinding.ActivityHurufBinding
 import com.example.aba.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth

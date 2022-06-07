@@ -12,7 +12,8 @@
     <color name="blue">#9ADCFF</color>
     <color name="green">#B4F2E1</color>
     <color name="yellow">#FFF89A</color>
-    <color name="dark_yellow">#534D00</color>
 
+    <color name="dark_yellow">#534D00</color>
     <color name="dark_green">#008C66</color>
+    <color name="dark_pink">#530019</color>
 </resources>

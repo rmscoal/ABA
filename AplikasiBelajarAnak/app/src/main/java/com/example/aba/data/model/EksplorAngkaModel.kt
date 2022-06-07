@@ -1,8 +1,8 @@
-package com.example.aba.data.preferences
+package com.example.aba.data.model
 
 import com.beust.klaxon.Json
 
-data class EksplorAngka(
+data class EksplorAngkaModel(
     @Json(index = 1) var nol: Boolean,
     @Json(index = 2) var satu: Boolean,
     @Json(index = 3) var dua: Boolean,

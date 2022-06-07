@@ -19,24 +19,25 @@
         android:theme="@style/Theme.ABA"
         android:usesCleartextTraffic="true">
         <activity
-
-            android:name=".ui.latihan.menyusunhuruf.DetailSusunHurufActivity"
-            android:exported="true" />
-
-        <activity
-            android:name="com.example.aba.ui.latihan.HasilRecordAudioActivity2"
+            android:name=".ui.latihan.mengejakata.RecordMengejaKataActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.aba.ui.latihan.HasilRecordAudioActivity"
+            android:name=".ui.latihan.menyusunhuruf.DetailSusunHurufActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.latihan.HasilRecordAudioActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".ui.latihan.HasilRecordAudioActivity"
             android:exported="false" />
         <activity
             android:name=".ui.latihan.menyusunhuruf.SusunHurufActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.belajar.kata.KataActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.aba.ui.latihan.mengejahuruf.RecordMengejaHurufActivity"
+            android:name=".ui.latihan.mengejahuruf.RecordMengejaHurufActivity"
             android:exported="true" />
         <activity
             android:name=".ui.pencapaian.PencapaianActivity"
