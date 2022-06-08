@@ -43,14 +43,7 @@ class SettingsActivity : AppCompatActivity() {
                     // Handle error -> task.getException();
                 }
             }
-        binding.button.setOnClickListener {
-            signOut()
-        }
+
     }
-    private fun signOut() {
-        auth.signOut()
-        GoogleSignIn.getClient(this, GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()).signOut()
-        startActivity(Intent(this, LoginActivity::class.java))
-        finish()
-    }
+
 }

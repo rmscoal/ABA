@@ -6,8 +6,6 @@ import android.os.Bundle
 import androidx.core.content.res.ResourcesCompat
 import com.example.aba.R
 import com.example.aba.databinding.ActivityHasilMenyusunHurufBinding
-import com.example.aba.databinding.ActivityHasilRecordMengejaHurufBinding
-import com.example.aba.ui.latihan.mengejahuruf.RecordMengejaHurufActivity
 
 class HasilMenyusunHurufActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHasilMenyusunHurufBinding
@@ -18,6 +16,7 @@ class HasilMenyusunHurufActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHasilMenyusunHurufBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         val hasil = intent.getBooleanExtra(RESULT,false)
 
@@ -31,7 +30,12 @@ class HasilMenyusunHurufActivity : AppCompatActivity() {
         }
 
         binding.btBack.setOnClickListener {
-            startActivity(Intent(this, DetailSusunHurufActivity::class.java))
+            startActivity(Intent(this, DetailLatihanMenyusunHurufActivity::class.java))
+            finish()
+        }
+
+        binding.btBackTop.setOnClickListener {
+            startActivity(Intent(this, DetailLatihanMenyusunHurufActivity::class.java))
             finish()
         }
     }

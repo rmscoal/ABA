@@ -13,34 +13,38 @@
         android:orientation="vertical"
         android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:background="@drawable/bg_iv_green"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="110dp">
-
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:gravity="center_vertical"
-            android:layout_height="match_parent">
-            <ImageButton
-                android:background="@null"
+            android:layout_height="80dp"
+            android:background="@drawable/bg_iv_green"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/bt_back"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:src="@drawable/ic_baseline_arrow_back_ios_24"/>
+                android:layout_marginStart="25dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/pencapaian"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+
             <TextView
-                android:text="@string/belajar_huruf"
-                android:textColor="@color/dark_green"
-
-                android:layout_marginStart="20dp"
-                android:textSize="30sp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/coolvetica_rg"
+                android:textColor="@color/black"
+                android:layout_marginStart="20dp"
+                android:text="@string/belajar_huruf"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </LinearLayout>
-
-
-    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"

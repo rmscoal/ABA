@@ -6,11 +6,10 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.aba.databinding.ActivityDetailSusunHurufBinding
-import com.example.aba.ui.latihan.mengejahuruf.HasilRecordMengejaHurufActivity
+import com.example.aba.databinding.ActivityDetailLatihanMenyusunHurufBinding
 
-class DetailSusunHurufActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityDetailSusunHurufBinding
+class DetailLatihanMenyusunHurufActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityDetailLatihanMenyusunHurufBinding
     companion object{
         private var LEMA = "lema"
         private var URL = "url"
@@ -19,8 +18,9 @@ class DetailSusunHurufActivity : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetailSusunHurufBinding.inflate(layoutInflater)
+        binding = ActivityDetailLatihanMenyusunHurufBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         //get lema and url from intent
         val lemaFromIntent = intent.getStringExtra(LEMA)
@@ -57,6 +57,10 @@ class DetailSusunHurufActivity : AppCompatActivity() {
                 i.putExtra(RESULT,false)
                 startActivity(i)
             }
+        }
+
+        binding.btBack.setOnClickListener {
+            startActivity(Intent(this,LatihanMenyusunHurufActivity::class.java))
         }
     }
 

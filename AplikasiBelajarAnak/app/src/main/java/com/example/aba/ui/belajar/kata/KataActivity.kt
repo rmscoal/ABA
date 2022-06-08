@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.aba.data.api.ApiConfig
 import com.example.aba.data.model.KataModel
 import com.example.aba.data.response.RimaKataResponse
-import com.example.aba.databinding.ActivityKataBinding
+import com.example.aba.databinding.ActivityBelajarKataBinding
+import com.example.aba.ui.home.HomeActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -23,7 +24,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class KataActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityKataBinding
+    private lateinit var binding: ActivityBelajarKataBinding
     private lateinit var auth: FirebaseAuth
 
     companion object{
@@ -33,7 +34,7 @@ class KataActivity : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityKataBinding.inflate(layoutInflater)
+        binding = ActivityBelajarKataBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
 
@@ -56,6 +57,10 @@ class KataActivity : AppCompatActivity() {
 
         binding.btRefresh.setOnClickListener {
             refreshKata()
+        }
+
+        binding.btBack.setOnClickListener {
+            startActivity(Intent(this,HomeActivity::class.java))
         }
     }
 
@@ -130,8 +135,10 @@ class KataActivity : AppCompatActivity() {
     private fun showLoading(b: Boolean) {
         if (b) {
             binding.progressbar.visibility = View.VISIBLE
+            binding.btRefresh.visibility = View.GONE
         } else {
             binding.progressbar.visibility = View.GONE
+            binding.btRefresh.visibility = View.VISIBLE
         }
     }
 

@@ -6,17 +6,17 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.aba.data.model.LatihanMenyusunHurufModel
 import com.example.aba.data.model.KataModel
-import com.example.aba.databinding.ActivitySusunHurufBinding
+import com.example.aba.databinding.ActivityLatihanMenyusunHurufBinding
 import com.example.aba.ui.belajar.kata.ListKataAdapter
+import com.example.aba.ui.home.HomeActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class SusunHurufActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySusunHurufBinding
+class LatihanMenyusunHurufActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityLatihanMenyusunHurufBinding
     companion object{
         private var LEMA = "lema"
         private var NILAI = "nilai"
@@ -25,7 +25,7 @@ class SusunHurufActivity : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySusunHurufBinding.inflate(layoutInflater)
+        binding = ActivityLatihanMenyusunHurufBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
 
@@ -41,6 +41,10 @@ class SusunHurufActivity : AppCompatActivity() {
         setListKataLevel1()
         setListKataLevel2()
         setListKataLevel3()
+
+        binding.btBack.setOnClickListener {
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
 
     }
     private fun setListKataLevel1() {
@@ -121,7 +125,7 @@ class SusunHurufActivity : AppCompatActivity() {
     }
 
     private fun showDetailSusunHuruf(data: KataModel){
-        val intentToDetail = Intent(this, DetailSusunHurufActivity::class.java)
+        val intentToDetail = Intent(this, DetailLatihanMenyusunHurufActivity::class.java)
         intentToDetail.putExtra(LEMA, data.lema)
         intentToDetail.putExtra(NILAI, data.nilai)
         intentToDetail.putExtra(URL, data.url)

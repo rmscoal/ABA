@@ -18,7 +18,7 @@ class HasilRecordMengejaKataActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHasilRecordMengejaKataBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar?.hide()
         val hasil = intent.getBooleanExtra(RESULT,false)
 
         if (hasil){
@@ -31,6 +31,10 @@ class HasilRecordMengejaKataActivity : AppCompatActivity() {
         }
 
         binding.btBack.setOnClickListener {
+            startActivity(Intent(this, RecordMengejaKataActivity::class.java))
+            finish()
+        }
+        binding.btBackTop.setOnClickListener {
             startActivity(Intent(this, RecordMengejaKataActivity::class.java))
             finish()
         }

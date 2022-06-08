@@ -28,13 +28,13 @@
             android:name=".ui.latihan.mengejakata.RecordMengejaKataActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.latihan.menyusunhuruf.DetailSusunHurufActivity"
+            android:name=".ui.latihan.menyusunhuruf.DetailLatihanMenyusunHurufActivity"
             android:exported="true" />
         <activity
             android:name=".ui.latihan.mengejahuruf.HasilRecordMengejaHurufActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.latihan.menyusunhuruf.SusunHurufActivity"
+            android:name=".ui.latihan.menyusunhuruf.LatihanMenyusunHurufActivity"
             android:exported="true" />
         <activity
             android:name=".ui.belajar.kata.KataActivity"

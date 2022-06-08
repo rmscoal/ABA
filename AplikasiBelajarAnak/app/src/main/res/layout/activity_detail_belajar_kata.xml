@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.belajar.kata.DetailKataActivity">
 
     <LinearLayout
@@ -16,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/bt_back"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackgroundBorderless"
@@ -72,11 +74,26 @@
         android:id="@+id/iv_image"
         android:layout_width="250dp"
         android:layout_height="250dp"
-android:layout_marginTop="30dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="@+id/tv_deskripsi"
         app:layout_constraintStart_toStartOf="@+id/tv_deskripsi"
         app:layout_constraintTop_toBottomOf="@+id/tv_deskripsi"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/ilustrasiKata" />
 
+    <TextView
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:id="@+id/tv_warning"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/coolvetica_rg"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:text="@string/belum_tersedia"
+        app:layout_constraintEnd_toEndOf="@+id/iv_image"
+        app:layout_constraintStart_toStartOf="@+id/iv_image"
+        app:layout_constraintTop_toBottomOf="@+id/iv_image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

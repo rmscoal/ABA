@@ -20,6 +20,7 @@ import com.example.aba.data.model.UserModel
 import com.example.aba.data.response.HurufRecordingResponse
 import com.example.aba.data.response.KataRecordingResponse
 import com.example.aba.databinding.ActivityRecordMengejaKataBinding
+import com.example.aba.ui.home.HomeActivity
 import com.example.aba.ui.latihan.mengejahuruf.HasilRecordMengejaHurufActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -53,7 +54,8 @@ class RecordMengejaKataActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRecordMengejaKataBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar?.hide()
+        
         //set user
         auth = Firebase.auth
 
@@ -103,6 +105,9 @@ class RecordMengejaKataActivity : AppCompatActivity() {
                         // Handle error -> task.getException();
                     }
                 }
+        }
+        binding.btBack.setOnClickListener {
+            startActivity(Intent(this,HomeActivity::class.java))
         }
     }
 

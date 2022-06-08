@@ -12,9 +12,8 @@ import com.example.aba.data.model.UserModel
 import com.example.aba.databinding.FragmentHomeBinding
 import com.example.aba.ui.belajar.huruf.HurufActivity
 import com.example.aba.ui.belajar.kata.KataActivity
-import com.example.aba.ui.latihan.menyusunhuruf.SusunHurufActivity
+import com.example.aba.ui.latihan.menyusunhuruf.LatihanMenyusunHurufActivity
 import com.example.aba.ui.latihan.mengejahuruf.RecordMengejaHurufActivity
-import com.example.aba.ui.latihan.mengejakata.RecordMengejaKataActivity
 import com.example.aba.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -71,7 +70,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.conLatihanMenyusunHuruf.setOnClickListener {
-            startActivity(Intent(activity, SusunHurufActivity::class.java))
+            startActivity(Intent(activity, LatihanMenyusunHurufActivity::class.java))
         }
         binding.conLatihanMengejaHuruf.setOnClickListener{
             startActivity(Intent(activity,RecordMengejaHurufActivity::class.java))

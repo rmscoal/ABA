@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg_iv_green"
-    tools:context=".ui.latihan.menyusunhuruf.SusunHurufActivity">
+    tools:context=".ui.latihan.menyusunhuruf.LatihanMenyusunHurufActivity">
 
   <LinearLayout
       android:layout_width="match_parent"
@@ -24,6 +24,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
       <ImageView
+          android:id="@+id/bt_back"
           android:clickable="true"
           android:focusable="true"
           android:foreground="?android:attr/selectableItemBackgroundBorderless"

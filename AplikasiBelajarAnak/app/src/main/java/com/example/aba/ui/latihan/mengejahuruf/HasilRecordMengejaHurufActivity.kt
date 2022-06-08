@@ -17,6 +17,7 @@ class HasilRecordMengejaHurufActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHasilRecordMengejaHurufBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         val hasil = intent.getBooleanExtra(RESULT,false)
 
@@ -30,6 +31,10 @@ class HasilRecordMengejaHurufActivity : AppCompatActivity() {
         }
 
         binding.btBack.setOnClickListener {
+            startActivity(Intent(this,RecordMengejaHurufActivity::class.java))
+            finish()
+        }
+        binding.btBackTop.setOnClickListener {
             startActivity(Intent(this,RecordMengejaHurufActivity::class.java))
             finish()
         }

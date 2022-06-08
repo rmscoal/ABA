@@ -21,6 +21,7 @@ import com.example.aba.data.api.ApiConfig
 import com.example.aba.data.response.HurufRecordingResponse
 import com.example.aba.data.model.UserModel
 import com.example.aba.databinding.ActivityRecordMengejaHurufBinding
+import com.example.aba.ui.home.HomeActivity
 import com.example.aba.ui.latihan.mengejakata.RecordMengejaKataActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -52,6 +53,7 @@ class RecordMengejaHurufActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRecordMengejaHurufBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         showLoading(false)
 
@@ -104,6 +106,9 @@ class RecordMengejaHurufActivity : AppCompatActivity() {
                         // Handle error -> task.getException();
                     }
                 }
+        }
+        binding.btBack.setOnClickListener {
+            startActivity(Intent(this,HomeActivity::class.java))
         }
     }
 

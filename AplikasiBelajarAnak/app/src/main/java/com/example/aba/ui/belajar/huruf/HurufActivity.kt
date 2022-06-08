@@ -2,14 +2,17 @@ package com.example.aba.ui.belajar.huruf
 
 import android.content.Intent
 import android.media.AudioAttributes
+import android.media.MediaPlayer
 import android.media.SoundPool
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aba.R
 import com.example.aba.data.model.UserModel
 import com.example.aba.databinding.ActivityHurufBinding
+import com.example.aba.ui.home.HomeActivity
 import com.example.aba.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -24,11 +27,9 @@ class HurufActivity : AppCompatActivity() {
     //userModel
     private var userModel= UserModel()
 
-    //soundPool
-    private lateinit var sp: SoundPool
-    private lateinit var aa: AudioAttributes
-    private var soundId: Int = 0
-    private var spLoaded = false
+    //mediaPlayer
+    private lateinit var mPlayer: MediaPlayer
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,216 +47,129 @@ class HurufActivity : AppCompatActivity() {
         }
 //        val mUser = FirebaseAuth.getInstance().currentUser
 
-        aa= AudioAttributes.Builder()
-            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-            .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
-            .build()
-
-        //soundPool
-        sp = SoundPool.Builder()
-            .setMaxStreams(4)
-            .setAudioAttributes(aa)
-            .build()
-        sp.setOnLoadCompleteListener { _, _, status ->
-            if (status == 0) {
-                spLoaded = true
-            } else {
-                Toast.makeText(this@HurufActivity, "Gagal load", Toast.LENGTH_SHORT).show()
-            }
-
-        }
         getToken()
         sendProgress()
 
         with(binding){
             hurufA.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.a, 1)
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.a)
+                mPlayer.start()
 
-                if (spLoaded){
-                    sp.play(soundId,5f,5f,0,0,1f)
-                }
                 //ketika dipencet
             //  edit text bertambah
                 // simpan huruf di user pref
                 //
             }
             hurufB.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.b, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.b)
+                mPlayer.start()
             }
             hurufC.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.c, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.c)
+                mPlayer.start()
             }
             hurufD.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.d, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.d)
+                mPlayer.start()
             }
             hurufE.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.e, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.e)
+                mPlayer.start()
             }
             hurufF.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.f, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.f)
+                mPlayer.start()
             }
             hurufG.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.g, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.g)
+                mPlayer.start()
             }
             hurufH.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.h, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.h)
+                mPlayer.start()
             }
             hurufI.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.i, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.i)
+                mPlayer.start()
             }
             hurufJ.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.j, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.j)
+                mPlayer.start()
             }
             hurufK.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.k, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.k)
+                mPlayer.start()
             }
             hurufL.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.l, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.l)
+                mPlayer.start()
             }
             hurufM.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.m, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.m)
+                mPlayer.start()
             }
             hurufN.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.n, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.n)
+                mPlayer.start()
             }
             hurufO.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.o, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.o)
+                mPlayer.start()
             }
             hurufP.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.p, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.p)
+                mPlayer.start()
             }
             hurufQ.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.q, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.q)
+                mPlayer.start()
             }
             hurufR.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.r, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.r)
+                mPlayer.start()
             }
             hurufS.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.s, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.s)
+                mPlayer.start()
             }
             hurufT.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.t, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.t)
+                mPlayer.start()
             }
             hurufU.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.u, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.u)
+                mPlayer.start()
             }
             hurufV.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.v, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.v)
+                mPlayer.start()
             }
             hurufW.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.w, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.w)
+                mPlayer.start()
             }
             hurufX.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.x, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.x)
+                mPlayer.start()
             }
             hurufY.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.y, 1)
-
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.y)
+                mPlayer.start()
             }
             hurufZ.setOnClickListener {
-                soundId = sp.load(this@HurufActivity, R.raw.z, 1)
+                mPlayer = MediaPlayer.create(this@HurufActivity,R.raw.z)
+                mPlayer.start()
+            }
 
-                if (spLoaded){
-                    sp.play(soundId,1f,1f,0,0,1f)
-                }
+
+            //lainnya
+            btBack.setOnClickListener {
+                startActivity(Intent(this@HurufActivity,HomeActivity::class.java))
             }
         }
+
     }
+
     private fun sendProgress(){
         val token = userModel.token
         Log.d("token", "$token")
