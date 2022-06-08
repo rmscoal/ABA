@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -36,24 +37,16 @@ class KataActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        val layoutManager1 = GridLayoutManager(this,4)
-        val layoutManager2 = GridLayoutManager(this,4)
-        val layoutManager3 = GridLayoutManager(this,4)
-        val itemDecoration1 = DividerItemDecoration(this, layoutManager1.orientation)
-        val itemDecoration2 = DividerItemDecoration(this, layoutManager2.orientation)
-        val itemDecoration3 = DividerItemDecoration(this, layoutManager3.orientation)
+        showLoading(false)
 
         //mudah
-        binding.rvKataMudah.layoutManager = layoutManager1
-        binding.rvKataMudah.addItemDecoration(itemDecoration1)
+        binding.rvKataMudah.layoutManager = GridLayoutManager(this,4)
 
         //sedang
-        binding.rvKataSedang.layoutManager = layoutManager2
-        binding.rvKataSedang.addItemDecoration(itemDecoration2)
+        binding.rvKataSedang.layoutManager = GridLayoutManager(this,3)
 
         //sulit
-        binding.rvKataSulit.layoutManager = layoutManager3
-        binding.rvKataSulit.addItemDecoration(itemDecoration3)
+        binding.rvKataSulit.layoutManager = GridLayoutManager(this,2)
 
         // Initialize Firebase Auth
         auth = Firebase.auth
@@ -69,7 +62,7 @@ class KataActivity : AppCompatActivity() {
     private fun setListKataGampang(listKataGampang: ArrayList<KataModel>) {
         //mudah
         Log.i("gampang",listKataGampang.size.toString())
-        binding.rvKataMudah.layoutManager = GridLayoutManager(this,4)
+
         val kataGampang = ListKataAdapter(listKataGampang)
         binding.rvKataMudah.adapter = kataGampang
 
@@ -83,7 +76,7 @@ class KataActivity : AppCompatActivity() {
     private fun setListKataSedang(listKataSedang: ArrayList<KataModel>){
         //sedang
         Log.i("array",listKataSedang.toString())
-        binding.rvKataSedang.layoutManager = GridLayoutManager(this,3)
+
         val kataSedang = ListKataAdapter(listKataSedang)
         binding.rvKataSedang.adapter = kataSedang
 
@@ -96,7 +89,7 @@ class KataActivity : AppCompatActivity() {
     private fun setListKataSulit(listKataSulit: ArrayList<KataModel>){
         //sulit
         Log.i("sulit",listKataSulit.size.toString())
-        binding.rvKataSulit.layoutManager = GridLayoutManager(this,3)
+
         val kataSulit = ListKataAdapter(listKataSulit)
         binding.rvKataSulit.adapter = kataSulit
 
@@ -123,7 +116,7 @@ class KataActivity : AppCompatActivity() {
                     val idToken: String? = task.result.token
                     Log.d("token di login",idToken!!)
 
-                    //showLoading(true)
+                    showLoading(true)
                     getKataFromAPI(idToken)
 
                     // Send token to your backend via HTTPS
@@ -133,8 +126,17 @@ class KataActivity : AppCompatActivity() {
                 }
             }
     }
+
+    private fun showLoading(b: Boolean) {
+        if (b) {
+            binding.progressbar.visibility = View.VISIBLE
+        } else {
+            binding.progressbar.visibility = View.GONE
+        }
+    }
+
     private fun getKataFromAPI(token: String) {
-//        showLoading(true)
+        showLoading(true)
         val auth = "Bearer $token"
         val client = ApiConfig().getApiService().cariRimaKata(auth)
         client.enqueue(object : Callback<RimaKataResponse> {
@@ -142,7 +144,7 @@ class KataActivity : AppCompatActivity() {
                 call: Call<RimaKataResponse>,
                 response: Response<RimaKataResponse>
             ) {
-//                showLoading(false)
+                showLoading(false)
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody != null) {
@@ -152,8 +154,6 @@ class KataActivity : AppCompatActivity() {
                         val jsonStringSedang = responseBody.data.sedang
                         val jsonStringSulit = responseBody.data.sulit
 
-//                        Log.d("test",jsonStringMudah)
-//                        Log.d("test",jsonStringSulit)
                         setListKataGampang(jsonStringMudah)
                         setListKataSedang(jsonStringSedang)
                         setListKataSulit(jsonStringSulit)
@@ -163,8 +163,7 @@ class KataActivity : AppCompatActivity() {
                 }
             }
             override fun onFailure(call: Call<RimaKataResponse>, t: Throwable) {
-//                showLoading(false)
-//                showNoUser(true)
+                showLoading(false)
                 Log.e("gagal", "onFailure: ${t.message}")
             }
         })

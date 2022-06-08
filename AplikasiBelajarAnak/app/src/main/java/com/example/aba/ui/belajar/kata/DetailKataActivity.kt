@@ -2,7 +2,9 @@ package com.example.aba.ui.belajar.kata
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.res.ResourcesCompat
 import com.bumptech.glide.Glide
+import com.example.aba.R
 import com.example.aba.databinding.ActivityDetailKataBinding
 
 class DetailKataActivity : AppCompatActivity() {
@@ -20,7 +22,10 @@ class DetailKataActivity : AppCompatActivity() {
 
         binding.tvLema.text = intent.getStringExtra(LEMA)
         binding.tvDeskripsi.text = intent.getStringExtra(NILAI)
-        if (URL!="NA"){
+        if (intent.getStringExtra(URL)=="NA"){
+            binding.ivImage.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.logo, null))
+        }
+        else{
             Glide.with(this)
                 .load(intent.getStringExtra(URL))
                 .fitCenter()

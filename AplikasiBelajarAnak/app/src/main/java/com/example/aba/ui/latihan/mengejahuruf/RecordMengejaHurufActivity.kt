@@ -11,6 +11,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -20,8 +21,7 @@ import com.example.aba.data.api.ApiConfig
 import com.example.aba.data.response.HurufRecordingResponse
 import com.example.aba.data.model.UserModel
 import com.example.aba.databinding.ActivityRecordMengejaHurufBinding
-import com.example.aba.ui.latihan.HasilRecordAudioActivity
-import com.example.aba.ui.latihan.HasilRecordAudioActivity2
+import com.example.aba.ui.latihan.mengejakata.RecordMengejaKataActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -44,23 +44,27 @@ class RecordMengejaHurufActivity : AppCompatActivity() {
     private var state: Boolean = false
 
     private var getFile: File? = null
-
+    companion object{
+        private const val RESULT = "RESULT"
+    }
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRecordMengejaHurufBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        showLoading(false)
+
         //set user
         auth = Firebase.auth
 
         //create directory in folder ABA
         val folder = Environment.getExternalStorageDirectory().toString()
-        val f = File(folder,"ABA")
+        val f = File(folder,"ABARecordingHuruf")
         f.mkdir()
 
         ///storage/emulated/0/ABA/test.wav
-        output = Environment.getExternalStorageDirectory().toString() + "/ABA/test.m4a"
+        output = Environment.getExternalStorageDirectory().toString() + "/ABARecordingHuruf/huruf.m4a"
         Log.d("path","$output")
 
         //set file to upload
@@ -92,7 +96,7 @@ class RecordMengejaHurufActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         val idToken: String? = task.result.token
                         Log.d("token di login",idToken!!)
-                        //showLoading(true)
+                        showLoading(true)
                         uploadRecording(idToken!!)
                         // Send token to your backend via HTTPS
                         // ...
@@ -171,20 +175,20 @@ class RecordMengejaHurufActivity : AppCompatActivity() {
                             Log.d("responUpload",responseBody.toString())
                             updateUI(responseBody)
                             //Toast.makeText(this@RecordMengejaHurufActivity, resources.getString(R.string.berhasil_upload), Toast.LENGTH_SHORT).show()
-                            //showLoading(false)
+                            showLoading(false)
                             //startActivity(Intent(this@RecordMengejaHurufActivity, ListStoryActivity::class.java))
                             //finish()
                         }
                     } else {
                         Toast.makeText(this@RecordMengejaHurufActivity, response.message(), Toast.LENGTH_SHORT).show()
                         Log.d("gagalff",response.message())
-                    //showLoading(false)
+                    showLoading(false)
                     }
                 }
                 override fun onFailure(call: Call<HurufRecordingResponse>, t: Throwable) {
                     Log.d("gagal",t.localizedMessage)
                     //Toast.makeText(this@RecordMengejaHurufActivity, resources.getString(R.string.gagal), Toast.LENGTH_SHORT).show()
-                    //showLoading(false)
+                    showLoading(false)
                 }
             })
         } else {
@@ -193,10 +197,21 @@ class RecordMengejaHurufActivity : AppCompatActivity() {
     }
 
     private fun updateUI(responseBody: HurufRecordingResponse) {
-        if(responseBody.result?.roundToInt() == 1 ){
-            startActivity(Intent(this, HasilRecordAudioActivity::class.java))
+        val i = Intent(this, HasilRecordMengejaHurufActivity::class.java)
+        if (responseBody.result?.roundToInt() == 1) {
+            i.putExtra(RESULT, true)
+            startActivity(Intent(this, HasilRecordMengejaHurufActivity::class.java))
+        } else {
+            i.putExtra(RESULT, false)
+            startActivity(Intent(this, HasilRecordMengejaHurufActivity::class.java))
         }
-        else startActivity(Intent(this, HasilRecordAudioActivity2::class.java))
     }
 
+    private fun showLoading(b: Boolean) {
+        if (b) {
+            binding.progressbar.visibility = View.VISIBLE
+        } else {
+            binding.progressbar.visibility = View.GONE
+        }
+    }
 }

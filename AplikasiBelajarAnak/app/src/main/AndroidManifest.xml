@@ -19,16 +19,19 @@
         android:theme="@style/Theme.ABA"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.latihan.menyusunhuruf.HasilMenyusunHurufActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.latihan.mengejakata.HasilRecordMengejaKataActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.latihan.mengejakata.RecordMengejaKataActivity"
             android:exported="false" />
         <activity
             android:name=".ui.latihan.menyusunhuruf.DetailSusunHurufActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.latihan.HasilRecordAudioActivity2"
-            android:exported="false" />
-        <activity
-            android:name=".ui.latihan.HasilRecordAudioActivity"
+            android:name=".ui.latihan.mengejahuruf.HasilRecordMengejaHurufActivity"
             android:exported="false" />
         <activity
             android:name=".ui.latihan.menyusunhuruf.SusunHurufActivity"
@@ -64,15 +67,15 @@
             android:name=".ui.splashscreen.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/SplashScreen">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ui.main.MainActivity"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
 
 </manifest>

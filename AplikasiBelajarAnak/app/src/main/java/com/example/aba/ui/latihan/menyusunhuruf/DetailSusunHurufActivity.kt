@@ -4,27 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.aba.R
-import com.example.aba.data.model.KataModel
-import com.example.aba.databinding.ActivityDetailKataBinding
 import com.example.aba.databinding.ActivityDetailSusunHurufBinding
-import com.example.aba.databinding.ActivityLoginBinding
-import com.example.aba.databinding.ActivitySusunHurufBinding
-import com.example.aba.ui.belajar.kata.DetailKataActivity
-import com.example.aba.ui.belajar.kata.ListKataAdapter
-import com.example.aba.ui.latihan.HasilRecordAudioActivity
-import com.example.aba.ui.latihan.HasilRecordAudioActivity2
+import com.example.aba.ui.latihan.mengejahuruf.HasilRecordMengejaHurufActivity
 
 class DetailSusunHurufActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailSusunHurufBinding
     companion object{
         private var LEMA = "lema"
         private var URL = "url"
-        private var RESULT = ""
+        private var SUSUN = ""
+        private const val RESULT = "RESULT"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,15 +48,20 @@ class DetailSusunHurufActivity : AppCompatActivity() {
         setHuruf(arraylistLema)
 
         binding.btHasil.setOnClickListener {
-            if (RESULT == lemaFromIntent){
-                startActivity(Intent(this,HasilRecordAudioActivity::class.java))
+            val i = Intent(this, HasilMenyusunHurufActivity::class.java)
+            if (SUSUN == lemaFromIntent){
+                i.putExtra(RESULT,true)
+                startActivity(i)
             }
-            else startActivity(Intent(this,HasilRecordAudioActivity2::class.java))
+            else {
+                i.putExtra(RESULT,false)
+                startActivity(i)
+            }
         }
     }
 
     private fun resetWadah() {
-        RESULT = ""
+        SUSUN = ""
         finish()
         overridePendingTransition(0, 0)
         startActivity(intent)
@@ -89,12 +85,12 @@ class DetailSusunHurufActivity : AppCompatActivity() {
     }
 
     private fun updateWadah(data: Char) {
-        RESULT += data
-        binding.tvWadah.text = RESULT
+        SUSUN += data
+        binding.tvWadah.text = SUSUN
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        RESULT = ""
+        SUSUN = ""
     }
 }

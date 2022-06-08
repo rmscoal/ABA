@@ -1,6 +1,8 @@
 package com.example.aba.ui.latihan.mengejakata
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.media.AudioFormat
 import android.media.MediaPlayer
 import android.media.MediaRecorder
@@ -11,12 +13,14 @@ import android.os.Environment
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.aba.data.api.ApiConfig
 import com.example.aba.data.model.UserModel
 import com.example.aba.data.response.HurufRecordingResponse
+import com.example.aba.data.response.KataRecordingResponse
 import com.example.aba.databinding.ActivityRecordMengejaKataBinding
-import com.example.aba.ui.latihan.HasilRecordAudioActivity
-import com.example.aba.ui.latihan.HasilRecordAudioActivity2
+import com.example.aba.ui.latihan.mengejahuruf.HasilRecordMengejaHurufActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -40,6 +44,10 @@ class RecordMengejaKataActivity : AppCompatActivity() {
 
     private var getFile: File? = null
 
+    companion object{
+        private const val RESULT = "RESULT"
+    }
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,51 +59,51 @@ class RecordMengejaKataActivity : AppCompatActivity() {
 
         //create directory in folder ABA
         val folder = Environment.getExternalStorageDirectory().toString()
-        val f = File(folder,"ABA")
+        val f = File(folder,"ABARecordingKata")
         f.mkdir()
 
         ///storage/emulated/0/ABA/test.wav
-        output = Environment.getExternalStorageDirectory().toString() + "/ABA/test.m4a"
+        output = Environment.getExternalStorageDirectory().toString() + "/ABARecordingKata/kata.m4a"
         Log.d("path","$output")
 
         //set file to upload
         getFile = File(output!!)
 
-//        binding.btStartRecord.setOnClickListener {
-//            if (ContextCompat.checkSelfPermission(this,
-//                    Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
-//                    Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//                val permissions = arrayOf(android.Manifest.permission.RECORD_AUDIO, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE)
-//                ActivityCompat.requestPermissions(this, permissions,0)
-//            } else {
-//                startRecording()
-//            }
-//        }
-//
-//        binding.btStopRecord.setOnClickListener{
-//            stopRecording()
-//        }
-//
-//        binding.btPlayRecord.setOnClickListener {
-//            playRecording()
-//        }
-//
-//        binding.tvLihat.setOnClickListener {
-//            val user = auth.currentUser
-//            user!!.getIdToken(true)
-//                .addOnCompleteListener { task ->
-//                    if (task.isSuccessful) {
-//                        val idToken: String? = task.result.token
-//                        Log.d("token di login",idToken!!)
-//                        //showLoading(true)
-//                        uploadRecording(idToken!!)
-//                        // Send token to your backend via HTTPS
-//                        // ...
-//                    } else {
-//                        // Handle error -> task.getException();
-//                    }
-//                }
-//        }
+        binding.btStartRecord.setOnClickListener {
+            if (ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                val permissions = arrayOf(android.Manifest.permission.RECORD_AUDIO, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                ActivityCompat.requestPermissions(this, permissions,0)
+            } else {
+                startRecording()
+            }
+        }
+
+        binding.btStopRecord.setOnClickListener{
+            stopRecording()
+        }
+
+        binding.btPlayRecord.setOnClickListener {
+            playRecording()
+        }
+
+        binding.tvLihat.setOnClickListener {
+            val user = auth.currentUser
+            user!!.getIdToken(true)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val idToken: String? = task.result.token
+                        Log.d("token di login",idToken!!)
+                        //showLoading(true)
+                        uploadRecording(idToken!!)
+                        // Send token to your backend via HTTPS
+                        // ...
+                    } else {
+                        // Handle error -> task.getException();
+                    }
+                }
+        }
     }
 
     private fun startRecording() {
@@ -151,14 +159,14 @@ class RecordMengejaKataActivity : AppCompatActivity() {
                 file.name,
                 requestAudioFile
             )
-            val huruf = "a"
+            val kata = "ayah"
             val auth = "Bearer $token"
             Log.d("filename","$file")
-            val service = ApiConfig().getApiService().hurufRecording(auth,huruf,audioMultipart)
-            service.enqueue(object : Callback<HurufRecordingResponse> {
+            val service = ApiConfig().getApiService().kataRecording(auth,kata,audioMultipart)
+            service.enqueue(object : Callback<KataRecordingResponse> {
                 override fun onResponse(
-                    call: Call<HurufRecordingResponse>,
-                    response: Response<HurufRecordingResponse>
+                    call: Call<KataRecordingResponse>,
+                    response: Response<KataRecordingResponse>
                 ) {
                     if (response.isSuccessful) {
                         val responseBody = response.body()
@@ -176,7 +184,7 @@ class RecordMengejaKataActivity : AppCompatActivity() {
                         //showLoading(false)
                     }
                 }
-                override fun onFailure(call: Call<HurufRecordingResponse>, t: Throwable) {
+                override fun onFailure(call: Call<KataRecordingResponse>, t: Throwable) {
                     Log.d("gagal",t.localizedMessage)
                     //Toast.makeText(this@RecordMengejaHurufActivity, resources.getString(R.string.gagal), Toast.LENGTH_SHORT).show()
                     //showLoading(false)
@@ -187,11 +195,16 @@ class RecordMengejaKataActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateUI(responseBody: HurufRecordingResponse) {
+    private fun updateUI(responseBody: KataRecordingResponse) {
+        val i = Intent(this, HasilRecordMengejaKataActivity::class.java)
         if(responseBody.result?.roundToInt() == 1 ){
-            startActivity(Intent(this, HasilRecordAudioActivity::class.java))
+            i.putExtra(RESULT,true)
+            startActivity(Intent(this, HasilRecordMengejaKataActivity::class.java))
         }
-        else startActivity(Intent(this, HasilRecordAudioActivity2::class.java))
+        else {
+            i.putExtra(RESULT,false)
+            startActivity(Intent(this, HasilRecordMengejaKataActivity::class.java))
+        }
     }
 
 }

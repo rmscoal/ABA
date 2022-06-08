@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.latihan.menyusunhuruf.HasilMenyusunHurufActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/bg_iv_white"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/coolvetica_rg"
+                android:text="@string/latihan_menyusun"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tv_hasil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:text="@string/hasil_benar"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:fontFamily="@font/lobster"
+                android:textSize="40sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_hasil"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:background="@drawable/img_benar"
+                app:layout_constraintEnd_toEndOf="@+id/tv_hasil"
+                app:layout_constraintStart_toStartOf="@+id/tv_hasil"
+                app:layout_constraintTop_toBottomOf="@+id/tv_hasil" />
+
+            <TextView
+                android:id="@+id/tv_lihat"
+                android:layout_width="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/level1.2"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/coolvetica_rg"
+                app:layout_constraintBottom_toBottomOf="@+id/bt_next"
+                app:layout_constraintEnd_toStartOf="@+id/bt_next"
+                app:layout_constraintTop_toTopOf="@+id/bt_next" />
+
+            <ImageView
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:id="@+id/bt_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:layout_marginEnd="40dp"
+                android:contentDescription="@string/pencapaian"
+                android:src="@drawable/ic_baseline_keyboard_double_arrow_right_48"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_hasil" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/ulangi"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/coolvetica_rg"
+                app:layout_constraintBottom_toBottomOf="@+id/bt_back"
+                app:layout_constraintStart_toEndOf="@+id/bt_back"
+                app:layout_constraintTop_toTopOf="@+id/bt_back" />
+
+            <ImageView
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:id="@+id/bt_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="80dp"
+                android:src="@drawable/ic_baseline_keyboard_double_arrow_left_48"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_hasil" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/bottom_navigation"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        app:menu="@menu/menu_nav_bottom" />-->
+
+</RelativeLayout>

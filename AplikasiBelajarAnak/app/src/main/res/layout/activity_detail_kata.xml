@@ -6,54 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".ui.belajar.kata.DetailKataActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linearLayout3"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/bg_iv_green"
-        android:foregroundGravity="center_vertical"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="80dp"
+        android:background="@drawable/bg_iv_white"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/bt_back"
+        <ImageView
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:layout_marginStart="40dp"
-            android:src="@drawable/ic_baseline_arrow_back_ios_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginStart="25dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/pencapaian"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
         <TextView
-            android:id="@+id/textView2"
-            android:textColor="@color/dark_green"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/coolvetica_rg"
+            android:textColor="@color/black"
+            android:layout_marginStart="20dp"
             android:text="@string/belajar_kata"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="@+id/bt_back"
-            app:layout_constraintStart_toEndOf="@+id/bt_back"
-            app:layout_constraintTop_toTopOf="@+id/bt_back" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_lema"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="40dp"
         android:layout_marginEnd="50dp"
-        android:textColor="@color/dark_green"
-        android:textSize="40sp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/coolvetica_rg"
+        android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         tools:text="sam.ba" />
 
     <TextView
@@ -61,8 +58,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/coolvetica_rg"
         android:textColor="@color/dark_green"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_lema"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tv_lema"
@@ -74,11 +72,10 @@
         android:id="@+id/iv_image"
         android:layout_width="250dp"
         android:layout_height="250dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_deskripsi"
+        app:layout_constraintStart_toStartOf="@+id/tv_deskripsi"
         app:layout_constraintTop_toBottomOf="@+id/tv_deskripsi"
-        app:layout_constraintVertical_bias="0.206"
         tools:srcCompat="@tools:sample/avatars" />
 
 

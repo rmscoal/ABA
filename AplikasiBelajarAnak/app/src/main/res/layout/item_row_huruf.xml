@@ -15,15 +15,15 @@
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
         android:background="@drawable/bg_iv_pink"
-        android:padding="10dp">
+        android:padding="5dp">
         <TextView
             android:id="@+id/tv_huruf"
             android:layout_width="match_parent"
             android:gravity="center"
-            android:layout_gravity="center_vertical"
-            android:textSize="45sp"
+            android:fontFamily="@font/coolvetica_rg"
+            android:textSize="60sp"
             android:textColor="@color/white"
-            android:text="A"
+            android:text="a"
             android:layout_height="match_parent"/>
     </LinearLayout>
 

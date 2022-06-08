@@ -73,20 +73,15 @@
     <string name="putar">Putar</string>
     <string name="ulangi">Ulangi</string>
     <string name="lihat_hasil">Lihat Hasil</string>
-    <string name="lihat_hasil2">
-        <br> Hore, </br>
-        <br> Kamu Benar! </br></string>
+    <string name="hasil_benar"><br>Hore, \n</br><br>Kamu Benar!</br></string>
 
-    <string name="lihat_hasil3">
-        <br> Yahh, </br>
-        <br> Kamu Belum Benar, </br>
-        <br> Yuk Ulangi lagi! </br>
-    </string>
+    <string name="hasil_salah"><br>Yahh,\n</br><br>Kamu Belum Benar,\n</br><br>Yuk Ulangi lagi!</br></string>
 
     <string name="latihan_mengeja">Latihan Mengeja Huruf</string>
     <string name="belajar_kata">Belajar Kata</string>
     <string name="developer">Develop by javEdu</string>
     <string name="or">or</string>
     <string name="latihan_mengeja_kata">Latihan Mengeja Kata</string>
+    <string name="latihan_mengeja_huruf">Latihan Mengeja Huruf</string>
 
 </resources>

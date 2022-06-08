@@ -17,4 +17,10 @@
     <style name="SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
     </style>
+    <style name="white" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">@color/white</item>
+    </style>
+    <style name="green" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">@color/dark_green</item>
+    </style>
 </resources>

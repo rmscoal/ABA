@@ -14,6 +14,7 @@ import com.example.aba.ui.belajar.huruf.HurufActivity
 import com.example.aba.ui.belajar.kata.KataActivity
 import com.example.aba.ui.latihan.menyusunhuruf.SusunHurufActivity
 import com.example.aba.ui.latihan.mengejahuruf.RecordMengejaHurufActivity
+import com.example.aba.ui.latihan.mengejakata.RecordMengejaKataActivity
 import com.example.aba.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -79,8 +80,14 @@ class HomeFragment : Fragment() {
         binding.conBelajarKata.setOnClickListener {
             startActivity(Intent(activity,KataActivity::class.java))
         }
+
         binding.tvPencapaian.setOnClickListener{
 
+        }
+
+        binding.conLatihanMengejaKata.setOnClickListener{
+            Toast.makeText(activity,"Coming Soon :D",Toast.LENGTH_SHORT).show()
+//            startActivity(Intent(activity,RecordMengejaKataActivity::class.java))
         }
         return binding.root
     }

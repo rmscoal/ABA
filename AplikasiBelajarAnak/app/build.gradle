@@ -38,10 +38,10 @@ android {
     viewBinding {
         enabled = true
     }
-    aaptOptions {
-        noCompress "tflite"
-        noCompress "lite"
-    }
+//    aaptOptions {
+//        noCompress "tflite"
+//        noCompress "lite"
+//    }
 }
 
 dependencies {
@@ -87,6 +87,4 @@ dependencies {
     implementation 'com.beust:klaxon:5.5'
     implementation 'com.google.code.gson:gson:2.8.9'
 
-    //tensorflow
-    implementation 'org.tensorflow:tensorflow-lite:+'
 }

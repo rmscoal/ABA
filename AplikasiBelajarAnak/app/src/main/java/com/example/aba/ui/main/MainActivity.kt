@@ -3,6 +3,7 @@ package com.example.aba.ui.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.aba.databinding.ActivityMainBinding
 import com.example.aba.ui.login.LoginActivity
 import com.example.aba.ui.register.RegisterActivity
@@ -22,8 +23,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btRegis.setOnClickListener {
-            registerUser()
-            startActivity(Intent(this, RegisterActivity::class.java))
+            Toast.makeText(this,"Coming Soon :D",Toast.LENGTH_SHORT).show()
+//            registerUser()
+//            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 
