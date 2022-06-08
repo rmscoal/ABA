@@ -11,10 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.example.aba.data.api.ApiConfig
 import com.example.aba.data.model.UserModel
 import com.example.aba.data.response.HurufRecordingResponse
@@ -55,7 +57,9 @@ class RecordMengejaKataActivity : AppCompatActivity() {
         binding = ActivityRecordMengejaKataBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
-        
+
+        showLoading(false)
+
         //set user
         auth = Firebase.auth
 
@@ -97,7 +101,7 @@ class RecordMengejaKataActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         val idToken: String? = task.result.token
                         Log.d("token di login",idToken!!)
-                        //showLoading(true)
+                        showLoading(true)
                         uploadRecording(idToken!!)
                         // Send token to your backend via HTTPS
                         // ...
@@ -109,6 +113,12 @@ class RecordMengejaKataActivity : AppCompatActivity() {
         binding.btBack.setOnClickListener {
             startActivity(Intent(this,HomeActivity::class.java))
         }
+
+       Glide.with(this@RecordMengejaKataActivity)
+           .load("https://thumbs.dreamstime.com/b/father-carrying-little-baby-character-design-super-dad-concept-vector-illustration-79201996.jpg")
+           .fitCenter()
+           .into(binding.ivKata)
+
     }
 
     private fun startRecording() {
@@ -179,20 +189,20 @@ class RecordMengejaKataActivity : AppCompatActivity() {
                             Log.d("responUpload",responseBody.toString())
                             updateUI(responseBody)
                             //Toast.makeText(this@RecordMengejaHurufActivity, resources.getString(R.string.berhasil_upload), Toast.LENGTH_SHORT).show()
-                            //showLoading(false)
+                            showLoading(false)
                             //startActivity(Intent(this@RecordMengejaHurufActivity, ListStoryActivity::class.java))
                             //finish()
                         }
                     } else {
                         Toast.makeText(this@RecordMengejaKataActivity, response.message(), Toast.LENGTH_SHORT).show()
                         Log.d("gagalff",response.message())
-                        //showLoading(false)
+                        showLoading(false)
                     }
                 }
                 override fun onFailure(call: Call<KataRecordingResponse>, t: Throwable) {
                     Log.d("gagal",t.localizedMessage)
                     //Toast.makeText(this@RecordMengejaHurufActivity, resources.getString(R.string.gagal), Toast.LENGTH_SHORT).show()
-                    //showLoading(false)
+                    showLoading(false)
                 }
             })
         } else {
@@ -209,6 +219,14 @@ class RecordMengejaKataActivity : AppCompatActivity() {
         else {
             i.putExtra(RESULT,false)
             startActivity(Intent(this, HasilRecordMengejaKataActivity::class.java))
+        }
+    }
+
+    private fun showLoading(b: Boolean) {
+        if (b) {
+            binding.progressbar.visibility = View.VISIBLE
+        } else {
+            binding.progressbar.visibility = View.GONE
         }
     }
 

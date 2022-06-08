@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -67,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/coolvetica_rg"
-                android:text="@string/kata"
+                android:text="@string/ayah"
                 android:textColor="@color/black"
                 android:textSize="40sp"
                 android:layout_marginTop="20dp"
@@ -76,10 +76,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_lv" />
 
             <ImageView
-                android:id="@+id/huruf_a"
+                android:id="@+id/iv_kata"
                 android:layout_width="250dp"
                 android:layout_height="250dp"
-                android:background="@drawable/alfa_a"
+                tools:src="@tools:sample/avatars"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="30dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +96,7 @@
                 android:background="@drawable/ic_baseline_stop_24"
                 app:layout_constraintEnd_toStartOf="@+id/bt_start_record"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/huruf_a"
+                app:layout_constraintTop_toBottomOf="@+id/iv_kata"
                 android:focusable="true"
                 tools:targetApi="m" />
 
@@ -110,7 +110,7 @@
                 android:background="@drawable/ic_baseline_mic_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/huruf_a"
+                app:layout_constraintTop_toBottomOf="@+id/iv_kata"
                 tools:ignore="SpeakableTextPresentCheck"
                 android:focusable="true" />
 
@@ -125,7 +125,7 @@
                 android:background="@drawable/ic_baseline_play_arrow_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/bt_start_record"
-                app:layout_constraintTop_toBottomOf="@+id/huruf_a"
+                app:layout_constraintTop_toBottomOf="@+id/iv_kata"
                 tools:ignore="SpeakableTextPresentCheck"
                 android:focusable="true" />
 
@@ -202,15 +202,26 @@
 
     </LinearLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/bottom_navigation"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        app:menu="@menu/menu_nav_bottom" />-->
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:theme="@style/green"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        app:menu="@menu/menu_nav_bottom" />
-
-</RelativeLayout>
+        android:layout_marginTop="100dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

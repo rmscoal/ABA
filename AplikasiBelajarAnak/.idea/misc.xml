@@ -28,6 +28,8 @@
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/drawable/stroke_text.xml" value="0.248" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout-v23/activity_record_mengeja_huruf.xml" value="0.27291666666666664" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_audio_test.xml" value="0.1671875" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_belajar_kata.xml" value="0.1723684210526316" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_detail_belajar_kata.xml" value="0.22" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_detail_huruf.xml" value="0.2463768115942029" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_detail_kata.xml" value="0.25" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_detail_latihan_menyusun_huruf.xml" value="0.1723684210526316" />
@@ -40,7 +42,7 @@
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_huruf.xml" value="0.18" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_kata.xml" value="0.18" />
-        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_latihan_menyusun_huruf.xml" value="0.1723684210526316" />
+        <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_latihan_menyusun_huruf.xml" value="0.1" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Bangkit 2022/CAPSTONE PROJECT/ABA/AplikasiBelajarAnak/app/src/main/res/layout/activity_pencapaian.xml" value="0.1671875" />
