@@ -64,154 +64,154 @@
 <p>Finally, on time efficiency when making a new compute instance, we made a shell script such that it automatically runs when a new VM is created for <strong>Managed Instance Group</strong>. The shell script can be seen in <strong><em>backend/startup.sh</em></strong>. Lastly, we use <strong>pm2</strong> -- a daemon process manager that will help you manage and keep your application online -- to ensure that our app is running! To do this we install pm2 globally with npm (available in the startup script) and then run app.js with pm2 by doing <code>pm2 start app.js</code>.
 <h6>Now let's take a deeper look at our backend code</h6>
 <p>We currently have 5 routes, where 4 of them requires firebase authentication token since these will be used in the app. Meanwhile, the <code>'/'</code> as mentioned is for the health checks.</p>
-```js
-/* 
-  @ ROUTES
-*/
-app.use('/users', middlewareFirebase.decodeToken, userRoute);
-app.use('/achievements', middlewareFirebase.decodeToken, achievementRoute);
-app.use('/predictions', middlewareFirebase.decodeToken, predictionRoute);
-app.use('/rimakatawords', middlewareFirebase.decodeToken, rimakataRoute);
-app.use('/', healthRoute);
-```
+<code>
+    /* 
+    @ ROUTES
+    */
+    app.use('/users', middlewareFirebase.decodeToken, userRoute);
+    app.use('/achievements', middlewareFirebase.decodeToken, achievementRoute);
+    app.use('/predictions', middlewareFirebase.decodeToken, predictionRoute);
+    app.use('/rimakatawords', middlewareFirebase.decodeToken, rimakataRoute);
+    app.use('/', healthRoute);
+</code>
 <p> The code for middlewareFirebase is located in <strong><em>backend/middleware</em></strong> folder. We designed this to be a class. The route that has <code>GET</code> method is <code>'/users'</code> and <code>'/rimakatawords'</code>. Meanwhile, the route <code>'/achievements'</code> has <code>PUT</code> method. Lastly, the <code>'/predictions'</code> has <code>POST</code> method.</p>
 <p>Without further due, let's see the successes result with these routes.</p>
 <h6>Users HTTP Response</h6>
-```
-{
-    "status":"success",
-    "message":"Query user data successfully done!",
-    "data": {
-        "nama_user":"rifky.satyana08",
-        "achv_id":1,
-        "user_id":2,
-        "eksplor_huruf":["a","b","c"],
-        "eksplor_angka":["dua","nol","satu","tujuh"],
-        "latMenyusunKatalvl1":5,
-        "latMenyusunKatalvl2":1,
-        "latMenyusunKatalvl3":0,
-        "latMengejaHuruflvl1":["a","n","u"],
-        "latMengejaHuruflvl2":["b","c"],
-        "latMengejaHuruflvl3":["r","z"]
+<code>
+    {
+        "status":"success",
+        "message":"Query user data successfully done!",
+        "data": {
+            "nama_user":"rifky.satyana08",
+            "achv_id":1,
+            "user_id":2,
+            "eksplor_huruf":["a","b","c"],
+            "eksplor_angka":["dua","nol","satu","tujuh"],
+            "latMenyusunKatalvl1":5,
+            "latMenyusunKatalvl2":1,
+            "latMenyusunKatalvl3":0,
+            "latMengejaHuruflvl1":["a","n","u"],
+            "latMengejaHuruflvl2":["b","c"],
+            "latMengejaHuruflvl3":["r","z"]
+        }
     }
-}
-```
+</code>
 <h6>Rimakatawords HTTP Response</h6>
-```
-{
-    "status": "success",
-    "message": "Here are the data!",
-    "data": {
-        "mudah": [
-            {
-                "lema": "hela",
-                "nilai": "menghela",
-                "url": "NA"
-            },
-            {
-                "lema": "gaun",
-                "nilai": "baju wanita model Eropa",
-                "url": "NA"
-            },
-            {
-                "lema": "onak",
-                "nilai": "rotan yang berduri",
-                "url": "NA"
-            },
-            {
-                "lema": "biji",
-                "nilai": "isi buah (yang apabila ditanam dapat tumbuh)",
-                "url": "NA"
+<code>
+        {
+            "status": "success",
+            "message": "Here are the data!",
+            "data": {
+                "mudah": [
+                    {
+                        "lema": "hela",
+                        "nilai": "menghela",
+                        "url": "NA"
+                    },
+                    {
+                        "lema": "gaun",
+                        "nilai": "baju wanita model Eropa",
+                        "url": "NA"
+                    },
+                    {
+                        "lema": "onak",
+                        "nilai": "rotan yang berduri",
+                        "url": "NA"
+                    },
+                    {
+                        "lema": "biji",
+                        "nilai": "isi buah (yang apabila ditanam dapat tumbuh)",
+                        "url": "NA"
+                    }
+                ],
+                "sedang": [
+                    {
+                        "lema": "serah",
+                        "nilai": "berserah",
+                        "url": "NA"
+                    },
+                    {
+                        "lema": "lurah",
+                        "nilai": "kepala pemerintahan tingkat terendah",
+                        "url": "NA"
+                    },
+                    {
+                        "lema": "daerah",
+                        "nilai": "bagian permukaan bumi dalam kaitannya dengan keadaan alam dsb yang khusus",
+                        "url": "NA"
+                    },
+                    {
+                        "lema": "merah",
+                        "nilai": "warna dasar yang serupa dengan warna darah",
+                        "url": "NA"
+                    }
+                ],
+                "sulit": [
+                    {
+                        "lema": "musyawarah",
+                        "nilai": "pembahasan bersama dengan maksud mencapai keputusan atas penyelesaian masalah",
+                        "url": "NA"
+                    },
+                    {
+                        "lema": "anugerah",
+                        "nilai": "pemberian atau ganjaran dari pihak atas (orang besar dsb) kepada pihak bawah (orang rendah dsb)",
+                        "url": "NA"
+                    },
+                    {
+                        "lema": "prasejarah",
+                        "nilai": "bagian ilmu sejarah tentang zaman ketika manusia hidup dalam kebudayaan yang belum mengenal tulisan",
+                        "url": "NA"
+                    },
+                    {
+                        "lema": "antardaerah",
+                        "nilai": "antara daerah yang satu dan yang lain",
+                        "url": "NA"
+                    }
+                ]
             }
-        ],
-        "sedang": [
-            {
-                "lema": "serah",
-                "nilai": "berserah",
-                "url": "NA"
-            },
-            {
-                "lema": "lurah",
-                "nilai": "kepala pemerintahan tingkat terendah",
-                "url": "NA"
-            },
-            {
-                "lema": "daerah",
-                "nilai": "bagian permukaan bumi dalam kaitannya dengan keadaan alam dsb yang khusus",
-                "url": "NA"
-            },
-            {
-                "lema": "merah",
-                "nilai": "warna dasar yang serupa dengan warna darah",
-                "url": "NA"
-            }
-        ],
-        "sulit": [
-            {
-                "lema": "musyawarah",
-                "nilai": "pembahasan bersama dengan maksud mencapai keputusan atas penyelesaian masalah",
-                "url": "NA"
-            },
-            {
-                "lema": "anugerah",
-                "nilai": "pemberian atau ganjaran dari pihak atas (orang besar dsb) kepada pihak bawah (orang rendah dsb)",
-                "url": "NA"
-            },
-            {
-                "lema": "prasejarah",
-                "nilai": "bagian ilmu sejarah tentang zaman ketika manusia hidup dalam kebudayaan yang belum mengenal tulisan",
-                "url": "NA"
-            },
-            {
-                "lema": "antardaerah",
-                "nilai": "antara daerah yang satu dan yang lain",
-                "url": "NA"
-            }
-        ]
-    }
-}
-```
+        }
+</code>
 <h6>Achievements HTTP Response</h6>
-```
-{
-    "status": "success",
-    "message": "User's achievements on eksplor huruf successfully updated!"
-}
-```
+<code>
+    {
+        "status": "success",
+        "message": "User's achievements on eksplor huruf successfully updated!"
+    }
+</code>
 <h6>Predictions HTTP Response</h6>
 <p>If the user successfully pronounce the alphabet</p>
-```
-{
-    "status": "success",
-    "message": "We have succesfully predict your recording. User's achievements on latihan mengeja huruf successfully updated!",
-    "result": 1,
-    "updated": true
-}
-```
+<code>
+    {
+        "status": "success",
+        "message": "We have succesfully predict your recording. User's achievements on latihan mengeja huruf successfully updated!",
+        "result": 1,
+        "updated": true
+    }
+</code>
 <p>If the user unsuccessfully pronounce the alphabet</p>
-```
-{
-    "status": "success",
-    "message": "We have successfully predict the recording! See you're result.",
-    "result": 0
-}
-```
+<code>
+    {
+        "status": "success",
+        "message": "We have successfully predict the recording! See you're result.",
+        "result": 0
+    }
+</code>
 <p>We also generate errors such as bad request in a constructive way so that the frontend can handle it the way it should.</p>
 <h6>Error handling HTTP Response Examples</h6>
 <p>Firebase Errors</p>
-```
-{
-    "status":"fail",
-    "type":"auth/id-token-expired",
-    "message":"Firebase ID token has expired. Get a fresh ID token from your client app and try again (auth/id-token-expired). See https://firebase.google.com/docs/auth/admin/verify-id-tokens for details on how to retrieve an ID token."
-}
-```
+<code>
+    {
+        "status":"fail",
+        "type":"auth/id-token-expired",
+        "message":"Firebase ID token has expired. Get a fresh ID token from your client app and try again (auth/id-token-expired). See https://firebase.google.com/docs/auth/admin/verify-id-tokens for details on how to retrieve an ID token."
+    }
+</code>
 <p>File uploaded is not supported by the server.</p>
-```
-{
-    "status":"fail",
-    "type":"server/file-not-supported",
-    "message":"We only receive audio file type. You're file type was: video"
-}
-```
+<code>
+    {
+        "status":"fail",
+        "type":"server/file-not-supported",
+        "message":"We only receive audio file type. You're file type was: video"
+    }
+</code>
 <p>There are many more error handling in the code. We'll leave for you readers to check it out in the codes! Thank you and have a great day.</p>
