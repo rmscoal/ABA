@@ -28,6 +28,13 @@
 <h3>Learning Section</h3>
 <h4>Eksplor Huruf and Eksplor Angka</h4>
 <p>To use this feature, toddler can click the alphabets on the screen and the app will output a pronunciation of that particular alphabet. This will not only teach toddler about the alphabet by sight, but also by hearing such that children will memorize how the alphabet is pronounce.</p>
+<h4>KBBI Anak</h4>
+<p> KBBI Anak is a feature for toddler to explore Indonesian words that we have designed to be child-friendly. In this feature, toddlers can know the word, know the meaning of the word, and imagine what the word is like in real-life since we included illustrations with the word.</p>
+<h3>Practice Section</h3>
+<h4>Latihan Menyusun Huruf</h4>
+<p>This feature is a designed as a practice for toddlers after what they have learnt in eksplor huruf. Here toddlers can implement the knowledge of letters.</p>
+<h4>Latihan Mengeja Huruf</h4>
+<p>This feature is designed for toddlers to practice pronouncing the alphabets. Here, toddlers can implement the knowledge of how should the alphabets be pronounced in Indonesian. Hence, this touches cognitive and psychomotor abilities.</p>
 
 <h2>Machine Learning Documentation</h2>
 <h3>KBBI Anak</h2>
@@ -47,3 +54,10 @@
 <h3>Latihan Mengeja Kata</h3>
 <p><strong>Latihan Mengeja Kata</strong> is ABA's feature that involves speech recognition. The required dataset for this feature is an audio dataset. This dataset contains the pronounciation of 5 words which are "Adik", "Ayah", "Ibu", "Kakak", and "Keluarga" which was collected by our team members. There are 200 audio files (in wav extension) that used in the training process.</p>
 <p>First thing to do is labeling each dataset from 0 to 4 which represent each word respectively. After that we need to extract a feature from audio file called Mel-Frequency Ceptral Coefficients (MFCCs) and then begin to build the model. The model used is a deep learning model containing 2 convolution layers and 1 connected layer. The resulting model is pretty good due to the fact that the average accuracy sits approximately at 90%.</p>
+
+<h2>Cloud Computing Documentation</h2>
+<p>The cloud computing team is responsible on designing the API for the frontend, a.k.a android application. All of the CC codes are available in the <strong>backend folder</strong>. We use Node.js and Express.js as the framework. The main code of this can bee seen in <strong>app.js</strong> file. The routes and handlers can be seen in <strong><em>backend/routes</em></strong> and <strong><em>backend/handlers</em></strong> folders respectively.
+<p>The cloud computing team is also responsible for the machine learning deployments. With the help of <code>tensorflowjs</code>, we were able to do this. In <strong>Latihan Mengeja Huruf</strong> feature, the android application sends the recording in a .m4a format. Using <strong>ffmpeg</strong> we were able to convert this file into .wav format. Then, we run a python script -- can be seen in <strong><em>backend/utils/index.py</em></strong> to collect the MFCC matric from the audio file. Finally, we flatten this matrix into an array then make it into a Tensor and insert it to the model that is available in <strong><em>backend/models</em></strong>.</p>
+<p>The cloud computing team also design the infrastructure of the cloud using Google Cloud Platform. The initial plan, was to use <strong>Regional TCP Load Balancers</strong>. Hence, we updated our code and make a new route that is <code>'/'</code> that acts the health checks done by the load balancer. This route is to ensure that the app is healthy and able to send request to the backend services.</p>
+<p>Currently, below is the diagram of the design of our GCP's services.</p>
+<img src="/static/gcp.png" height="400px" width="auto"/>
