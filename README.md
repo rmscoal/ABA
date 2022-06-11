@@ -1,74 +1,34 @@
-<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/home.jpeg" width="100" height="100" align="right" />
+<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/logo.jpeg" width=100 height=100 align="left"/>
+<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/home2.jpeg"/>
+<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/mengeja%huruf.jpeg"/>
+<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/mengeja%kata.jpeg"/>
+<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/menyusunhuruf.jpeg"/>
 
+# ABA Android App
+Capstone Project Bangkit 2022
 
-# Jagawana-AndroidApp
-Capstone project Bangkit 2021
-
-[![Mockup](https://img.shields.io/badge/mockup-PSDMockups-informational.svg)](https://www.psdmockups.com/mobile-android-samsung-smartphone-psd-mockup/)
-[![Ringtone](https://img.shields.io/badge/ringtone-Zedge-informational.svg)](https://www.zedge.net/ringtone/03b5aaa6-a9fc-3a09-9543-122667669467)
-![Build](https://img.shields.io/badge/build-passing-success.svg)
-![Server](https://img.shields.io/badge/server_status-Active-critical.svg)
-![Version](https://img.shields.io/badge/kotlin-1.5.0-informational.svg)
-
-
-![Jagawana](https://github.com/Bobby-Anggunawan/Jagawana-AndroidApp/blob/master/readme_assets/AppScreenshot.jpg)
+![ABA](https://github.com/rmscoal/ABA/blob/md/readme_assets/home2.jpeg)
 
 ## About Our App
 
-This is a client application of Jagawana, an illegal logging prevention app. This app displays where the IoT device is located and displays all the events captured by the connected IoT device. This application also in real time notifies the user if an emergency event occurs and shows the location of the event.
+ABA is an application to help toddlers learn to read and write by using multisensory materials. ABA is designed to stimulate active learning that focuses on toddler the toddler learning development stage. We use the Montessori learning methods that provides and environment to increases their curiosity, independence, and exploration that is added with hands-on practices. The method develops two learning domains: cognitive -- which the knowledge of absorbing information and how that develops by appliances; and psychomotor -- which is physicality and how that develops by appliances. In tracking the toddlers' competency development, we rely on Bloom's Taxonomy.
 
-### Team Members
+### Another ABA's Path
 
-* Bobby Anggunawan (A1721801) - Mobile Programming (Android) - STMIK Mikroskil
-* Marsya Yeece Jenniffer (A3092763) - Mobile Programming (Android) - Universitas Sam Ratulangi
-* Jeffry Haryanto Gunawan (C2442279) - Cloud Computing - Universitas Kristen Petra
-* Rini Aprilianty Riadi (C2142092) - Cloud Computing - Universitas Islam Indonesia
-* Harisno (M0080883) - Machine Learning - Universitas Gadjah Mada
-* Nico Renaldo (M0080886) - Machine Learning - Universitas Gadjah Mada
+* [Cloud Computing](https://github.com/rmscoal/ABA)
+* [Machine Learning](https://github.com/rmscoal/ABA/tree/ML)
 
-### Another Jagawana Github Path
-
-* [Cloud](https://github.com/jeffrywu28/jagawana-cloud)
-* [Internet of Things](https://github.com/nicorenaldo/jagawana-iot)
-* [Machine Learning](https://github.com/nicorenaldo/jagawana-ml)
-
-## How To Make Thing Like We Made
-
-### How To Build This Project
-
-If you build this application an error will occur. That's because this application requires an API Key to display the Google Map. Follow this tutorial to generate Google map api key
->[Set up in Cloud Console](https://developers.google.com/maps/documentation/android-sdk/start#set_up_in_cloud_console)(Note: ignore the other steps from this link)
-Once you have the api key, follow these steps:
-* In the main menu, select File > New > Android Resource File
-* Name it google_maps_api and in the source set field select debug
-
-![Add Api Key](https://github.com/Bobby-Anggunawan/Jagawana-AndroidApp/blob/master/readme_assets/add_api_key.JPG)
-
-* Fill the file with the code below and replace YourApiKeyHere with the api key you created in the previous step 
-```xml
-<resources>
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">YourApiKeyHere</string>
-</resources>
-```
-* Repeat the above steps from step 1. But this time in the source set field select release.
-* Now you can build this project as usual with android studio 
-
-### Tutorial List
-
-* [How to make a RecyclerView](https://github.com/Bobby-Anggunawan/Jagawana-AndroidApp/wiki/How-to-make-a-RecyclerView)
 
 ### Libraries We Use
 
-| Library name                                                          | Usages                                            | Dependency                                                          |
-| -------------                                                         | -------------                                     | -------------                                                       |
-| [OkHttp](https://square.github.io/okhttp/)                            | Make a data request to the server                 | implementation "com.squareup.okhttp3:okhttp:4.9.1"                  |
-| [Gson](https://github.com/google/gson)                                | Convert json obtained from okhttp into an object  | implementation 'com.google.code.gson:gson:2.8.6'                    |
-| [Navigation component](https://developer.android.com/guide/navigation)| navigation between pages                          | implementation("androidx.navigation:navigation-fragment-ktx:2.3.5") |
-|                                                                       |                                                   | implementation("androidx.navigation:navigation-ui-ktx:2.3.5")       |
-
-### UI Libraries We Use
-
-| Library name                                                      | Dependency                                                    | Demo                                                                                                                                |
-| -------------                                                     | -------------                                                 | -------------                                                                                                                       |
-| [Material Design](https://material.io/)                           | ***Auto added by android studio***                            | ![Jagawana Appbar](https://github.com/Bobby-Anggunawan/Jagawana-AndroidApp/blob/master/readme_assets/MaterialDesign.PNG)            |
-| [SmoothBottomBar](https://github.com/ibrahimsn98/SmoothBottomBar) | implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.6' | ![Jagawana SmoothBottomBar](https://github.com/Bobby-Anggunawan/Jagawana-AndroidApp/blob/master/readme_assets/BottomNavigation.PNG) |
+| Library name                                                                                      | Usages                                                              | Dependency                                                          |
+| -------------                                                                                     | -------------                                                       | -------------                                                       |
+| [Retrofit](https://square.github.io/retrofit/)                                                    | A type-safe HTTP client for Android and Java                        | implementation 'com.squareup.retrofit2:retrofit:2.9.0'              |
+| [Gson](https://github.com/google/gson)                                                            | Convert json obtained from okhttp into an object                    | implementation 'com.google.code.gson:gson:2.8.9'                    |
+| [OkHttp](https://square.github.io/okhttp/)                                                        | Create HTTP Request to the server                                   | implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"     |
+| [MediaRecorder](https://developer.android.com/guide/topics/media/mediarecorder?hl=en)             | Capturing and encoding a variety of common audio and video formats  | Built-in library                                                    |
+| [MediaPlayer](https://developer.android.com/reference/android/media/MediaPlayer)                  | Control playback of audio/video files and streams.                  | Built-in library                                                    |
+| [Firebase](https://firebase.google.com/docs)                                                      | Sign in and manage users using Google login providers               | implementation 'com.google.firebase:firebase-auth-ktx:21.0.4'       |
+|                                                                                                   |                                                                     | implementation platform('com.google.firebase:firebase-bom:30.0.1')  |
+|                                                                                                   |                                                                     | implementation platform('com.google.firebase:firebase-bom:30.0.1')  |
+| [Glide](https://github.com/bumptech/glide)                                                        | Fetching, decoding, and displaying images                           | implementation 'com.github.bumptech.glide:glide:4.13.1'             |
