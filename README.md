@@ -62,9 +62,9 @@
 <p>Currently, below is the diagram of the design of our GCP's services.</p>
 <img src="/static/gcp2.png" height="400px" width="auto"/>
 <p>Finally, on time efficiency when making a new compute instance, we made a shell script such that it automatically runs when a new VM is created for <strong>Managed Instance Group</strong>. The shell script can be seen in <strong><em>backend/startup.sh</em></strong>. Lastly, we use <strong>pm2</strong> -- a daemon process manager that will help you manage and keep your application online -- to ensure that our app is running! To do this we install pm2 globally with npm (available in the startup script) and then run app.js with pm2 by doing <code>pm2 start app.js</code>.</p>
-<h6>Now let's take a deeper look at our backend code</h6>
+<h4><strong>Now let's take a deeper look at our backend code</strong></h4>
 <p>We currently have 5 routes, where 4 of them requires firebase authentication token since these will be used in the app. Meanwhile, the <code>'/'</code> as mentioned is for the health checks.</p> &nbsp;&nbsp;
-<pre><code>
+<pre><code>app.js
 /* 
 @ ROUTES
 */
@@ -76,7 +76,7 @@ app.use('/', healthRoute);
 </pre></code>
 <p> The code for middlewareFirebase is located in <strong><em>backend/middleware</em></strong> folder. We designed this to be a class. The route that has <code>GET</code> method is <code>'/users'</code> and <code>'/rimakatawords'</code>. Meanwhile, the route <code>'/achievements'</code> has <code>PUT</code> method. Lastly, the <code>'/predictions'</code> has <code>POST</code> method.</p>
 <p>Without further due, let's see the successes result with these routes.</p>
-<h6>Users HTTP Response</h6>
+<h5><strong>Users HTTP Response</strong></h5>
 <pre><code>
 {
     "status":"success",
@@ -96,8 +96,8 @@ app.use('/', healthRoute);
     }
 }
 </pre></code>
-<h6>Rimakatawords HTTP Response</h6>
-```json
+<h5><strong>Rimakatawords HTTP Response</strong></h5>
+<pre><code>
 {
     "status": "success",
     "message": "Here are the data!",
@@ -170,48 +170,48 @@ app.use('/', healthRoute);
         ]
     }
 }
-```
-<h6>Achievements HTTP Response</h6>
-```json
+</pre></code>
+<h5><strong>Achievements HTTP Response</strong></h5>
+<pre><code>
 {
     "status": "success",
     "message": "User's achievements on eksplor huruf successfully updated!"
 }
-```
-<h6>Predictions HTTP Response</h6>
+</pre></code>
+<h5><strong>Predictions HTTP Response</strong></h5>
 <p>If the user successfully pronounce the alphabet</p>
-```json
+<pre><code>
 {
     "status": "success",
     "message": "We have succesfully predict your recording. User's achievements on latihan mengeja huruf successfully updated!",
     "result": 1,
     "updated": true
 }
-```
+</pre></code>
 <p>If the user unsuccessfully pronounce the alphabet</p>
-```json
+<pre><code>
 {
     "status": "success",
     "message": "We have successfully predict the recording! See you're result.",
     "result": 0
 }
-```
+</pre></code>
 <p>We also generate errors such as bad request in a constructive way so that the frontend can handle it the way it should.</p>
-<h6>Error handling HTTP Response Examples</h6>
+<h5><strong>Error handling HTTP Response Examples</strong></h5>
 <p>Firebase Errors</p>
-```json
+<pre><code>
 {
     "status":"fail",
     "type":"auth/id-token-expired",
     "message":"Firebase ID token has expired. Get a fresh ID token from your client app and try again (auth/id-token-expired). See https://firebase.google.com/docs/auth/admin/verify-id-tokens for details on how to retrieve an ID token."
 }
-```
+</pre></code>
 <p>File uploaded is not supported by the server.</p>
-```json
+<pre><code>
 {
     "status":"fail",
     "type":"server/file-not-supported",
     "message":"We only receive audio file type. You're file type was: video"
 }
-```
+</pre></code>
 <p>There are many more error handling in the code. We'll leave for you readers to check it out in the codes! Thank you and have a great day.</p>
