@@ -20,7 +20,7 @@
             <ul>
                 <li>Latihan Menyusun Huruf</li>
                 <li>Latihan Mengeja Huruf</li>
-                <li>Latihan Mengeja Kata (Not shown in the presentation)</li>
+                <li>Latihan Mengeja Kata (Demo is shown in the presentation)</li>
             </ul>
         </li>
     </ol>
