@@ -18,7 +18,7 @@
 
 <h2>How to use ABA?</h2>
 
-<p>ABA is currently an android application that uses Google Cloud Platform as the cloud service. There are currently 4 vital features in ABA, namely
+<p>ABA is currently an android application that uses Google Cloud Platform as the cloud service. There are currently 4 vital features in ABA, namely</p>
     <ol>
         <li><strong>Learning Section</strong>
             <ul>
@@ -47,7 +47,7 @@
 <p>This feature is designed for toddlers to practice pronouncing the alphabets. Here, toddlers can implement the knowledge of how should the alphabets be pronounced in Indonesian. Hence, this touches cognitive and psychomotor abilities.</p>
 
 <h2>Machine Learning Documentation</h2>
-<h3>KBBI Anak</h2>
+<h3>KBBI Anak</h3>
 <ol>
     <li><strong>KBBI Anak</strong>
         <ul>KBBI Anak is taken from 109 children's e-books from the following <a href="https://badanbahasa.kemdikbud.go.id/produk-detail/751/bahan-bacaan-literasi/">link</a>. Each e-book is extracted and merged into one file using <a href="https://pymupdf.readthedocs.io/">PyMuPDF</a>. Then, we stemming each word into a basic word using <a href = "https://github.com/sastrawi/sastrawi">Sastrawi</a>. Next, we matched each word with the KBBI dataset by <a href = "https://datahub.io/aps2201/kateglo_scrape">Kateglo</a>. We only use words found in the KBBI. We also added the meaning of each word in the KBBI. We only use verbs and nouns in KBBI. All of this we do so that toddlers get words that are easy for them to understand. Next, we also add an illustration to each word. KBBI Anak have more than 3000 words that are ready to be learned.</ul>
@@ -66,7 +66,7 @@
 <p>First thing to do is labeling each dataset from 0 to 4 which represent each word respectively. After that we need to extract a feature from audio file called Mel-Frequency Ceptral Coefficients (MFCCs) and then begin to build the model. The model used is a deep learning model containing 2 convolution layers and 1 connected layer. The resulting model is pretty good due to the fact that the average accuracy sits approximately at 90%.</p>
 
 <h2>Cloud Computing Documentation</h2>
-<p>The cloud computing team is responsible on designing the API for the frontend, a.k.a android application. All of the CC codes are available in the <strong>backend folder</strong>. We use Node.js and Express.js as the framework. The main code of this can bee seen in <strong>app.js</strong> file. The routes and handlers can be seen in <strong><em>backend/routes</em></strong> and <strong><em>backend/handlers</em></strong> folders respectively.
+<p>The cloud computing team is responsible on designing the API for the frontend, a.k.a android application. All of the CC codes are available in the <strong>backend folder</strong>. We use Node.js and Express.js as the framework. The main code of this can bee seen in <strong>app.js</strong> file. The routes and handlers can be seen in <strong><em>backend/routes</em></strong> and <strong><em>backend/handlers</em></strong> folders respectively.</p>
 <p>The cloud computing team is also responsible for the machine learning deployments. With the help of <code>tensorflowjs</code>, we were able to do this. In <strong>Latihan Mengeja Huruf</strong> feature, the android application sends the recording in a .m4a format and we were able to catch the file sent using <strong>multer</strong>. Then, using <strong>ffmpeg</strong> we were able to convert this file into .wav format. Then, we run a python script -- can be seen in <strong><em>backend/utils/index.py</em></strong> to collect the MFCC matric from the audio file. Finally, we flatten this matrix into an array then make it into a Tensor and insert it to the model that is available in <strong><em>backend/models</em></strong>.</p>
 <p>The cloud computing team also design the infrastructure of the cloud using Google Cloud Platform. The initial plan, was to use <strong>Regional TCP Load Balancers</strong>. Hence, we updated our code and make a new route that is <code>'/'</code> that acts the health checks done by the load balancer. This route is to ensure that the app is healthy and able to send request to the backend services.</p>
 <p>Currently, below is the diagram of the design of our GCP's services.</p>
