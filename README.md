@@ -1,8 +1,12 @@
-<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/logo.jpeg" width=100 height=100 align="left"/>
-<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/home2.jpeg"/>
-<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/mengeja%huruf.jpeg"/>
-<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/mengeja%kata.jpeg"/>
-<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/menyusunhuruf.jpeg"/>
+<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/logo.png" width=100 height=100 align="left"/>
+<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/home.jpeg" width=auto height=300/>
+<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/home2.jpeg" width=auto height=300/>
+<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/mengeja%20huruf.jpeg" width=auto height=300/>
+<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/mengeja%20kata.jpeg" width=auto height=300/>
+<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/menyusunhuruf.jpeg" width=auto height=300/>
+<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/belajarkata.jpeg" width=auto height=300/>
+<img src="https://github.com/rmscoal/ABA/blob/md/readme_assets/detailbelajarkata.jpeg" width=auto height=300/>
+
 
 # ABA Android App
 Capstone Project Bangkit 2022
