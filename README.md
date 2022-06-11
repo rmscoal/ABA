@@ -65,153 +65,153 @@
 <h6>Now let's take a deeper look at our backend code</h6>
 <p>We currently have 5 routes, where 4 of them requires firebase authentication token since these will be used in the app. Meanwhile, the <code>'/'</code> as mentioned is for the health checks.</p>
 ```js
-    /* 
-    @ ROUTES
-    */
-    app.use('/users', middlewareFirebase.decodeToken, userRoute);
-    app.use('/achievements', middlewareFirebase.decodeToken, achievementRoute);
-    app.use('/predictions', middlewareFirebase.decodeToken, predictionRoute);
-    app.use('/rimakatawords', middlewareFirebase.decodeToken, rimakataRoute);
-    app.use('/', healthRoute);
+/* 
+@ ROUTES
+*/
+app.use('/users', middlewareFirebase.decodeToken, userRoute);
+app.use('/achievements', middlewareFirebase.decodeToken, achievementRoute);
+app.use('/predictions', middlewareFirebase.decodeToken, predictionRoute);
+app.use('/rimakatawords', middlewareFirebase.decodeToken, rimakataRoute);
+app.use('/', healthRoute);
 ```
 <p> The code for middlewareFirebase is located in <strong><em>backend/middleware</em></strong> folder. We designed this to be a class. The route that has <code>GET</code> method is <code>'/users'</code> and <code>'/rimakatawords'</code>. Meanwhile, the route <code>'/achievements'</code> has <code>PUT</code> method. Lastly, the <code>'/predictions'</code> has <code>POST</code> method.</p>
 <p>Without further due, let's see the successes result with these routes.</p>
 <h6>Users HTTP Response</h6>
 ```json
-    {
-        "status":"success",
-        "message":"Query user data successfully done!",
-        "data": {
-            "nama_user":"rifky.satyana08",
-            "achv_id":1,
-            "user_id":2,
-            "eksplor_huruf":["a","b","c"],
-            "eksplor_angka":["dua","nol","satu","tujuh"],
-            "latMenyusunKatalvl1":5,
-            "latMenyusunKatalvl2":1,
-            "latMenyusunKatalvl3":0,
-            "latMengejaHuruflvl1":["a","n","u"],
-            "latMengejaHuruflvl2":["b","c"],
-            "latMengejaHuruflvl3":["r","z"]
-        }
+{
+    "status":"success",
+    "message":"Query user data successfully done!",
+    "data": {
+        "nama_user":"rifky.satyana08",
+        "achv_id":1,
+        "user_id":2,
+        "eksplor_huruf":["a","b","c"],
+        "eksplor_angka":["dua","nol","satu","tujuh"],
+        "latMenyusunKatalvl1":5,
+        "latMenyusunKatalvl2":1,
+        "latMenyusunKatalvl3":0,
+        "latMengejaHuruflvl1":["a","n","u"],
+        "latMengejaHuruflvl2":["b","c"],
+        "latMengejaHuruflvl3":["r","z"]
     }
+}
 ```
 <h6>Rimakatawords HTTP Response</h6>
 ```json
-        {
-            "status": "success",
-            "message": "Here are the data!",
-            "data": {
-                "mudah": [
-                    {
-                        "lema": "hela",
-                        "nilai": "menghela",
-                        "url": "NA"
-                    },
-                    {
-                        "lema": "gaun",
-                        "nilai": "baju wanita model Eropa",
-                        "url": "NA"
-                    },
-                    {
-                        "lema": "onak",
-                        "nilai": "rotan yang berduri",
-                        "url": "NA"
-                    },
-                    {
-                        "lema": "biji",
-                        "nilai": "isi buah (yang apabila ditanam dapat tumbuh)",
-                        "url": "NA"
-                    }
-                ],
-                "sedang": [
-                    {
-                        "lema": "serah",
-                        "nilai": "berserah",
-                        "url": "NA"
-                    },
-                    {
-                        "lema": "lurah",
-                        "nilai": "kepala pemerintahan tingkat terendah",
-                        "url": "NA"
-                    },
-                    {
-                        "lema": "daerah",
-                        "nilai": "bagian permukaan bumi dalam kaitannya dengan keadaan alam dsb yang khusus",
-                        "url": "NA"
-                    },
-                    {
-                        "lema": "merah",
-                        "nilai": "warna dasar yang serupa dengan warna darah",
-                        "url": "NA"
-                    }
-                ],
-                "sulit": [
-                    {
-                        "lema": "musyawarah",
-                        "nilai": "pembahasan bersama dengan maksud mencapai keputusan atas penyelesaian masalah",
-                        "url": "NA"
-                    },
-                    {
-                        "lema": "anugerah",
-                        "nilai": "pemberian atau ganjaran dari pihak atas (orang besar dsb) kepada pihak bawah (orang rendah dsb)",
-                        "url": "NA"
-                    },
-                    {
-                        "lema": "prasejarah",
-                        "nilai": "bagian ilmu sejarah tentang zaman ketika manusia hidup dalam kebudayaan yang belum mengenal tulisan",
-                        "url": "NA"
-                    },
-                    {
-                        "lema": "antardaerah",
-                        "nilai": "antara daerah yang satu dan yang lain",
-                        "url": "NA"
-                    }
-                ]
+{
+    "status": "success",
+    "message": "Here are the data!",
+    "data": {
+        "mudah": [
+            {
+                "lema": "hela",
+                "nilai": "menghela",
+                "url": "NA"
+            },
+            {
+                "lema": "gaun",
+                "nilai": "baju wanita model Eropa",
+                "url": "NA"
+            },
+            {
+                "lema": "onak",
+                "nilai": "rotan yang berduri",
+                "url": "NA"
+            },
+            {
+                "lema": "biji",
+                "nilai": "isi buah (yang apabila ditanam dapat tumbuh)",
+                "url": "NA"
             }
-        }
+        ],
+        "sedang": [
+            {
+                "lema": "serah",
+                "nilai": "berserah",
+                "url": "NA"
+            },
+            {
+                "lema": "lurah",
+                "nilai": "kepala pemerintahan tingkat terendah",
+                "url": "NA"
+            },
+            {
+                "lema": "daerah",
+                "nilai": "bagian permukaan bumi dalam kaitannya dengan keadaan alam dsb yang khusus",
+                "url": "NA"
+            },
+            {
+                "lema": "merah",
+                "nilai": "warna dasar yang serupa dengan warna darah",
+                "url": "NA"
+            }
+        ],
+        "sulit": [
+            {
+                "lema": "musyawarah",
+                "nilai": "pembahasan bersama dengan maksud mencapai keputusan atas penyelesaian masalah",
+                "url": "NA"
+            },
+            {
+                "lema": "anugerah",
+                "nilai": "pemberian atau ganjaran dari pihak atas (orang besar dsb) kepada pihak bawah (orang rendah dsb)",
+                "url": "NA"
+            },
+            {
+                "lema": "prasejarah",
+                "nilai": "bagian ilmu sejarah tentang zaman ketika manusia hidup dalam kebudayaan yang belum mengenal tulisan",
+                "url": "NA"
+            },
+            {
+                "lema": "antardaerah",
+                "nilai": "antara daerah yang satu dan yang lain",
+                "url": "NA"
+            }
+        ]
+    }
+}
 ```
 <h6>Achievements HTTP Response</h6>
 ```json
-    {
-        "status": "success",
-        "message": "User's achievements on eksplor huruf successfully updated!"
-    }
+{
+    "status": "success",
+    "message": "User's achievements on eksplor huruf successfully updated!"
+}
 ```
 <h6>Predictions HTTP Response</h6>
 <p>If the user successfully pronounce the alphabet</p>
 ```json
-    {
-        "status": "success",
-        "message": "We have succesfully predict your recording. User's achievements on latihan mengeja huruf successfully updated!",
-        "result": 1,
-        "updated": true
-    }
+{
+    "status": "success",
+    "message": "We have succesfully predict your recording. User's achievements on latihan mengeja huruf successfully updated!",
+    "result": 1,
+    "updated": true
+}
 ```
 <p>If the user unsuccessfully pronounce the alphabet</p>
 ```json
-    {
-        "status": "success",
-        "message": "We have successfully predict the recording! See you're result.",
-        "result": 0
-    }
+{
+    "status": "success",
+    "message": "We have successfully predict the recording! See you're result.",
+    "result": 0
+}
 ```
 <p>We also generate errors such as bad request in a constructive way so that the frontend can handle it the way it should.</p>
 <h6>Error handling HTTP Response Examples</h6>
 <p>Firebase Errors</p>
 ```json
-    {
-        "status":"fail",
-        "type":"auth/id-token-expired",
-        "message":"Firebase ID token has expired. Get a fresh ID token from your client app and try again (auth/id-token-expired). See https://firebase.google.com/docs/auth/admin/verify-id-tokens for details on how to retrieve an ID token."
-    }
+{
+    "status":"fail",
+    "type":"auth/id-token-expired",
+    "message":"Firebase ID token has expired. Get a fresh ID token from your client app and try again (auth/id-token-expired). See https://firebase.google.com/docs/auth/admin/verify-id-tokens for details on how to retrieve an ID token."
+}
 ```
 <p>File uploaded is not supported by the server.</p>
 ```json
-    {
-        "status":"fail",
-        "type":"server/file-not-supported",
-        "message":"We only receive audio file type. You're file type was: video"
-    }
+{
+    "status":"fail",
+    "type":"server/file-not-supported",
+    "message":"We only receive audio file type. You're file type was: video"
+}
 ```
 <p>There are many more error handling in the code. We'll leave for you readers to check it out in the codes! Thank you and have a great day.</p>
