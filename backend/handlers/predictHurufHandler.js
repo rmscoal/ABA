@@ -129,7 +129,7 @@ const predictHurufHandler = async (req,res,next) => {
                     }
 
                     // update user's score if predict equals to 1
-                    if (predict[0]) {
+                    if (Math.round(predict[0])) {
                         // JSON file to get the levels of the requested alphabet
                         const speechRecogLevels = require('./resource/speechRecogLevels.json');
                         // set the Object values of speechRecogLevels.latMengejaHuruf.level to find the level
@@ -221,7 +221,7 @@ const predictHurufHandler = async (req,res,next) => {
                     }
 
                     // update user's score if predict equals to 1
-                    if (predict[0]) {
+                    if (Math.round(predict[0])) {
                         // JSON file to get the levels of the requested alphabet
                         const speechRecogLevels = require('./resource/speechRecogLevels.json');
                         // set the Object values of speechRecogLevels.latMengejaHuruf.level to find the level
