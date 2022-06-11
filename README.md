@@ -228,5 +228,5 @@ app.use('/', healthRoute);
 <h4><strong>Logging Results with Winston in Cloud Logging</strong></h4>
 <p> Now let's take a quick logging at our loggings in <strong>Cloud Logging</strong>.</p>
 <img src="/static/logging.png" height="300" width="auto"/>
-<p>As you can see, we monitor the response through Cloud Logging which is made available with <strong>Winston</strong> and <strong>@google-cloud/logging-winston</strong></p>.
+<p>As you can see, we monitor the response through Cloud Logging which is made available with <strong>Winston</strong> and <strong>@google-cloud/logging-winston</strong>.</p>
 
