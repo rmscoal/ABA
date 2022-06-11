@@ -63,8 +63,8 @@
 <img src="/static/gcp2.png" height="400px" width="auto"/>
 <p>Finally, on time efficiency when making a new compute instance, we made a shell script such that it automatically runs when a new VM is created for <strong>Managed Instance Group</strong>. The shell script can be seen in <strong><em>backend/startup.sh</em></strong>. Lastly, we use <strong>pm2</strong> -- a daemon process manager that will help you manage and keep your application online -- to ensure that our app is running! To do this we install pm2 globally with npm (available in the startup script) and then run app.js with pm2 by doing <code>pm2 start app.js</code>.</p>
 <h6>Now let's take a deeper look at our backend code</h6>
-We currently have 5 routes, where 4 of them requires firebase authentication token since these will be used in the app. Meanwhile, the <code>'/'</code> as mentioned is for the health checks.
-```js
+<p>We currently have 5 routes, where 4 of them requires firebase authentication token since these will be used in the app. Meanwhile, the <code>'/'</code> as mentioned is for the health checks.</p> &nbsp;&nbsp;
+<pre><code>
 /* 
 @ ROUTES
 */
@@ -73,36 +73,29 @@ app.use('/achievements', middlewareFirebase.decodeToken, achievementRoute);
 app.use('/predictions', middlewareFirebase.decodeToken, predictionRoute);
 app.use('/rimakatawords', middlewareFirebase.decodeToken, rimakataRoute);
 app.use('/', healthRoute);
-```
+</pre></code>
 <p> The code for middlewareFirebase is located in <strong><em>backend/middleware</em></strong> folder. We designed this to be a class. The route that has <code>GET</code> method is <code>'/users'</code> and <code>'/rimakatawords'</code>. Meanwhile, the route <code>'/achievements'</code> has <code>PUT</code> method. Lastly, the <code>'/predictions'</code> has <code>POST</code> method.</p>
 <p>Without further due, let's see the successes result with these routes.</p>
-<h5><strong>Users HTTP Response</strong></h5>
-```json
+<h6>Users HTTP Response</h6>
+<pre><code>
 {
-    "status": "OK",
-    "message": "Successfully extract data with OCR.",
+    "status":"success",
+    "message":"Query user data successfully done!",
     "data": {
-        "uid": "q6fvJpSVtIhS2XGqqH8L",
-        "province": "JAWA TIMUR",
-        "district": "KABUPATEN SIDOARJO",
-        "id_number": "351XXXXXXXXXXXXX",
-        "name": "MOCHAMMAD ARYA SALSABILA",
-        "place_date_of_birth": "SIDOARJO, 24-06-2001",
-        "gender": "LAKI-LAKI",
-        "blood_type": "-",
-        "address": "NGABAN",
-        "neighborhood": "005/002",
-        "village": "NGABAN",
-        "subdistrict": "TANGGULANGIN",
-        "religion": "ISLAM",
-        "marital_status": "BELUM KAWIN",
-        "occupation": "PELAJAR/MAHASISWA",
-        "nationality": "WNI",
-        "expiry_date": "SEUMUR HIDUP",
-        "attachment": "https://storage.googleapis.com/my-bucket-05062022/04062022-090807.png"
+        "nama_user":"rifky.satyana08",
+        "achv_id":1,
+        "user_id":2,
+        "eksplor_huruf":["a","b","c"],
+        "eksplor_angka":["dua","nol","satu","tujuh"],
+        "latMenyusunKatalvl1":5,
+        "latMenyusunKatalvl2":1,
+        "latMenyusunKatalvl3":0,
+        "latMengejaHuruflvl1":["a","n","u"],
+        "latMengejaHuruflvl2":["b","c"],
+        "latMengejaHuruflvl3":["r","z"]
     }
 }
-```
+</pre></code>
 <h6>Rimakatawords HTTP Response</h6>
 ```json
 {
