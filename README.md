@@ -2,6 +2,16 @@
 
 <img src="/static/ABACurrentLogo.png">
 
+<h2>Contributors</h2>
+<ul>
+    <li>Muhammad Arif Faishal Haq (M2008G0843) - Machine  Learning - Universitas Gadjah Mada
+    <li>Kadek Yuki Andika (M2008G0840) - Machine Learning - Universitas Gadjah Mada</li>
+    <li>Yohanes Vito Rizki Darujati (A2239F2147) - Mobile Development - Universitas Kristen Duta Wacana</li>
+    <li>Satrio Muslim Wibowo (A2110F1432) - Mobile Development - Institut Sains dan Teknologi Akprind</li>
+    <li>Ahmad Fatih (C7010F1126) - Cloud Computing - Universitas Indonesia</li>
+    <li>Rifky Manuel Satyana (C2008G0841) - Cloud Computing - Universitas Gadjah Mada</li>
+</ul>
+
 <h2> What is ABA </h2>
 
 <p>ABA is an application to help toddlers learn to read and write by using multisensory materials. ABA is designed to stimulate active learning that focuses on toddler the toddler learning development stage. We use the Montessori learning methods that provides and environment to increases their curiosity, independence, and exploration that is added with hands-on practices. The method develops two learning domains: cognitive -- which the knowledge of absorbing information and how that develops by appliances; and psychomotor -- which is physicality and how that develops by appliances. In tracking the toddlers' competency development, we rely on Bloom's Taxonomy.</p>
@@ -74,7 +84,7 @@ app.use('/predictions', middlewareFirebase.decodeToken, predictionRoute);
 app.use('/rimakatawords', middlewareFirebase.decodeToken, rimakataRoute);
 app.use('/', healthRoute);
 </pre></code>
-<p> The code for middlewareFirebase is located in <strong><em>backend/middleware</em></strong> folder. We designed this to be a class. The route that has <code>GET</code> method is <code>'/users'</code> and <code>'/rimakatawords'</code>. Meanwhile, the route <code>'/achievements'</code> has <code>PUT</code> method. Lastly, the <code>'/predictions'</code> has <code>POST</code> method.</p>
+<p> The code for middlewareFirebase is located in <strong><em>backend/middleware</em></strong> folder. We designed this to be a class. The routes that has <code>GET</code> method are <code>'/users'</code> and <code>'/rimakatawords'</code>. Meanwhile, the route <code>'/achievements'</code> has <code>PUT</code> method. Lastly, the <code>'/predictions'</code> has <code>POST</code> method.</p>
 <p>Without further due, let's see the successes result with these routes.</p>
 <h5><strong>Users HTTP Response</strong></h5>
 <pre><code>
