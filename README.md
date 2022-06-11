@@ -230,3 +230,7 @@ app.use('/', healthRoute);
 <img src="/static/logging.png" height="300" width="auto"/>
 <p>As you can see, we monitor the response through Cloud Logging which is made available with <strong>Winston</strong> and <strong>@google-cloud/logging-winston</strong>.</p>
 
+<h2>Mobile Development Documentation</h2>
+<p>The documentation for mobile development team is available at <a href="https://github.com/rmscoal/ABA/tree/md">MD Documentation</a>.</p>
+
+<h4><strong>That's about us! Thank you and have a great day!</strong></h4>
