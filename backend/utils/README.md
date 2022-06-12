@@ -4,4 +4,21 @@
 
 ### Utils
 
-> This folder is used for utility purposes suchs as reading data from database, update data to database, hosting, storing uploaded files, storing converted files, and running python script to get MFCC data from wave audio file.
+Utility functions for our `app.js`
+
+```js
+// greetings
+console.log("WELCOME TO UTILS FOLDER!");
+
+// introduction
+console.log("Here in this folder, we store our vital functions for our application, such as querying the database, running some python scripts for predictions, reading the uploaded audio files, and many more!");
+
+// future
+console.log("Surely there will be more utilities to come. Stay tune!");
+
+// dive deeper into handlers
+console.log("To see our codes, feel free to click the utils files to know what our code is doing.");
+
+// farewell
+console.log("That's all for now! See ya!");
+```
