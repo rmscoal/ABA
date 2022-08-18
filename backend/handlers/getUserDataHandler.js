@@ -23,7 +23,7 @@ const logger = winston.createLogger({
 const getSpecificUserData = require('../utils/getSpecificUserData'); // 
 
 // currently next() is not implemented
-const getUserDataHandler = async (req,res) => {
+const getUserDataHandler = async (req,res, _next) => {
     // req.user does not exist 
     if (!req.user) {
         // return a bad request error

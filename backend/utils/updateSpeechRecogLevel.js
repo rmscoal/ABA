@@ -7,7 +7,7 @@ Here it will written as a Promise.
 
 const pool = require('./database');
 
-const updateSpeechRecogLevel = (level, obj, id) => {
+const updateSpeechRecogLevel = (id, level, obj) => {
     var queryObjString = '';
     for (const [key, value] of Object.entries(obj)) {
         queryObjString += `"${key}"` + ':' + value;

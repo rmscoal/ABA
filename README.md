@@ -14,7 +14,9 @@
 
 <h2> What is ABA </h2>
 
-<p>ABA is an application to help toddlers learn to read and write by using multisensory materials. ABA is designed to stimulate active learning that focuses on toddler the toddler learning development stage. We use the Montessori learning methods that provides and environment to increases their curiosity, independence, and exploration that is added with hands-on practices. The method develops two learning domains: cognitive -- which the knowledge of absorbing information and how that develops by appliances; and psychomotor -- which is physicality and how that develops by appliances. In tracking the toddlers' competency development, we rely on Bloom's Taxonomy.</p>
+<p>ABA is an application to help toddlers learn to read and write by using multisensory materials. ABA is designed to stimulate active learning that focuses on the toddler learning development stage. We use the Montessori learning methods that provides and environment to increases their curiosity, independence, and exploration that is added with hands-on practices. The method develops two learning domains: cognitive -- which the knowledge of absorbing information and how that develops by appliances; and psychomotor -- which is physicality and how that develops by appliances. In tracking the toddlers' competency development, we rely on Bloom's Taxonomy.</p>
+
+To see the demo, click this link in [Youtube](https://youtu.be/sWlGEzMIPDU).
 
 <h2>How to use ABA?</h2>
 
