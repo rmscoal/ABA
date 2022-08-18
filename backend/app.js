@@ -5,18 +5,6 @@ require("dotenv").config({
   path: path.join(__dirname, "config.env")
 });
 
-// These are the options for response headers.
-const options = {
-  etag: false,
-  extensions: ["htm", "html"],
-  index: false,
-  maxAge: "1d",
-  redirect: false,
-  setHeaders: function (res, _path, _stat) {
-    res.set("x-timestamp", Date.now());
-  }
-};
-
 /**
  * @import available routes in the application
  */
@@ -40,7 +28,6 @@ const middlewareFirebase = require("./middleware/firebaseAdmin.js");
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static("public", options));
 
 /**
  * @routes

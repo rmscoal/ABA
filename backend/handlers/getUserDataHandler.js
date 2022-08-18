@@ -83,7 +83,8 @@ const getUserDataHandler = async (req, res, _next) => {
     return res.status(401).json({
       status: "fail",
       type: "user/user-unidentified",
-      message: "req.user does not exist! It is required to query data."
+      message: "req.user does not exist! It is required to query data.",
+      time: Date.now()
     });
   };
 
@@ -94,19 +95,24 @@ const getUserDataHandler = async (req, res, _next) => {
       return res.status(200).json({
         status: "fail",
         message: "QUERY USER DATA SUCCESFULLY DONE!",
-        data: result
+        data: result,
+        time: Date.now()
       });
+
     case -1:
       return res.status(404).json({
         status: "fail",
         type: "user/user-data-npt-found",
-        message: "EMPTY RESULT FOR USER'S QUERY!"
+        message: "EMPTY RESULT FOR USER'S QUERY!",
+        time: Date.now()
       });
+
     case -2:
       return res.status(500).json({
         status: "fail",
         type: "database/fail-to-query",
-        message: result
+        message: result,
+        time: Date.now()
       });
   }
 };
