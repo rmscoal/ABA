@@ -2,7 +2,7 @@ const winston = require("winston");
 const { LoggingWinston } = require("@google-cloud/logging-winston");
 
 /**
- * @logging initiate winston and google cloud logging to log activity.
+ * @logging initiate winston and google cloud logging to log activities.
  */
 const loggingWinston = new LoggingWinston();
 const logger = winston.createLogger({
