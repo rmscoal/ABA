@@ -93,13 +93,11 @@ const updatePracticeActivity = async (req, res, _next) => {
         });
       }
 
-      // if achievement is not completed
       try {
         const resultUpdate = await updatePracticeActivityPlusOne(activityName, level, id);
         if (resultUpdate.changedRows < 1 && resultUpdate.affectedRows < 1) {
-          // log to winston_log
+          // Logs error to winston.
           logger.error("database/no-affected-rows");
-          // sends back response to user
           return res.status(400).json({
             status: "fail",
             type: "database/no-affected-rows",
