@@ -160,7 +160,14 @@ class DatabaseQuery {
     });
   }
 
-  getPractiveActivity (activityName, level, id) {
+  /**
+   * Get pracice acitivity with the associate level from the database.
+   * @param {string} activityName the name of the activity.
+   * @param {string} level the level of acitivityName.
+   * @param {int} id of the user in the database.
+   * @returns Promise.
+   */
+  getPracticeActivity (activityName, level, id) {
     const columnName = activityName + "lvl" + level;
     return new Promise((resolve, reject) => {
       const query = `SELECT ${columnName} FROM achievements WHERE user_id = ${id}`;
