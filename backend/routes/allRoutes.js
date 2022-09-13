@@ -47,10 +47,10 @@ class AllRoutes {
      * @multer configurations.
     */
     const fileStorageEngine = multer.diskStorage({
-      destination: (req, file, cb) => {
+      destination: (_req, _file, cb) => {
         cb(null, path.join(__dirname, "..", "utils", "uploads"));
       },
-      filename: (req, file, cb) => {
+      filename: (_req, file, cb) => {
         cb(null, Date.now() + "--" + file.originalname);
       }
     });

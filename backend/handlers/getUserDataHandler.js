@@ -16,7 +16,7 @@ const logger = winston.createLogger({
 /**
  * @import module from the database queries folder.
  */
-const getSpecificUserData = require("../utils/getSpecificUserData");
+const databaseQuery = require("../utils/databaseQuery");
 
 /**
  * execFunction() is the executor function for getUserDataHandler() function
@@ -32,7 +32,7 @@ const getSpecificUserData = require("../utils/getSpecificUserData");
  */
 const execFunction = async (id) => {
   // With the ID obtained, query user data from the database.
-  getSpecificUserData(id)
+  databaseQuery.getSpecificUserData(id)
     .then((resultQuery) => {
       if (resultQuery.length < 1) {
         logger.error("user/user-data-not-found");

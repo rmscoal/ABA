@@ -1,175 +1,219 @@
-/* THIS FILE IS FOR PREDICTING SIMPLE WORDS IN THE APPLICATION */
+const path = require("path");
+const fs = require("fs");
+const _ = require("lodash");
 
-/* 
-    @ IMPORT MODULES
-*/
-const winston = require('winston');
-const {LoggingWinston} = require('@google-cloud/logging-winston');
-const tf = require('@tensorflow/tfjs-node');
-const path = require('path');
-const fs = require('fs');
+/**
+ * @import MFCC matrix file and database query module.
+ */
+const getMFCCData = require("../utils/getMFCCData");
 
-// initiate logging winston
+/**
+ * @logging initiate winston and google cloud logging to log activities.
+ */
+const winston = require("winston");
+const { LoggingWinston } = require("@google-cloud/logging-winston");
 const loggingWinston = new LoggingWinston();
+
 const logger = winston.createLogger({
-    level: 'info',
-    transports: [
-        new winston.transports.Console(), 
-        loggingWinston,
-    ],
-})
+  level: "info",
+  transports: [
+    new winston.transports.Console(),
+    loggingWinston
+  ]
+});
 
-/* 
-    @ IMPORT MODULES FROM OTHER FILES
-*/
-const getMFCCDataKata = require('../utils/getMFCCDataKata');
-
-// currently next() is not implemented
-const predictKataHandler = async (req, res, next) => {
-    if (!req.user) {
-        //sends back response to user
-        return res.status(401).json({
-            status: 'fail',
-            type: 'user/user-unidentified',
-            message: 'req.user does not exist!'
-        })
+/**
+ * This is a helper function used to check the type of the file and the extension.
+ * @param {object} file is the multer received from multer.
+ * @param {string} type represents the type of the file.
+ * @param {string} ext represents the extension of the file.
+ * @returns A couple of the status and the path.
+ */
+const fileTypeChecker = async (file, type, ext) => {
+  if (type !== "audio") {
+    fs.unlinkSync(file.path);
+    return (-1, null);
+  } else if (ext !== "wave") {
+    if (ext === "mp4") {
+      const converter = require("../utils/converter");
+      const temp = Object.assign({}, file);
+      try {
+        file.path = await converter(temp.path, temp.filename.split(".")[0], (errorMessage) => {}, null, () => {
+          console.log("Successfully converted to WAV file");
+        });
+        fs.unlinkSync(temp.path);
+        return (1, file.path);
+      } catch (err) {
+        fs.unlinkSync(file.path);
+        return (-2, null);
+      }
+    } else {
+      fs.unlinkSync(file.path);
+      return (-1, null);
     }
+  }
+};
 
-    // get the id of the user
-    const {id} = req.user;
-    // get the word to predict for 
-    const {word} = req;
+/**
+ * This helper functions will load the MFCC matrix data into the model
+ * and then gets the prediction.
+ * @param {string} path the file path.
+ * @param {object} model the model of the machine learning.
+ * @param {module} tf is the tensorflow module.
+ * @returns a couple of status code and prediction result.
+ */
+const predictExecutor = async (path, model, tf) => {
+  try {
+    fs.unlinkSync(path);
+    const arr = fs.readFileSync(path.join(__dirname, "..", "utils", "mfccsResult", "resultKata.json"));
+    const numpyArr = JSON.parse(JSON.parse(arr)).array;
+    const tensor = tf.tensor4d(numpyArr, [1, 88, 13, 1], "float32");
+    const predict = await model.predict(tensor).data();
+    const result = Math.round(predict[0]);
+    return (1, result);
+  } catch (err) {
+    logger.error(`An error has occured: ${err}`);
+    return (-1, err);
+  }
+};
 
-    // checks the header content-type
-    if (!req.is('multipart/form-data')) return res.status(400).json({
-        status: 'fail',
-        type: 'server/wrong-header-type',
-        message: 'Please speicfy the header content-type to be \'multipart/form-data.\''
-    })
+const updateScoreDatabase = async (letter, id) => {
+  const databaseQuery = require("../utils/databaseQuery");
+  const speechRecogLevels = require("./resource/speechRecogLevels.json");
+  const arrToFindLevel = Object.values(speechRecogLevels.latMengejaHuruf.level);
+  const level = _.findIndex(arrToFindLevel, (el) => {
+    return el.includes(letter);
+  }) + 1;
 
-    // get the file path of the uploaded wav file
-    let file = req.files[0];
-    
-    // if file does not exist
-    if (!file) return res.status(500).json({
-        status: 'fail',
-        type: 'server/file-not-found',
-        message: 'Something went wrong! File is not found!'
-    })
+  const obj = {};
+  obj[`${letter}`] = true;
 
-    var type = file.mimetype.split('/')[0]; // get the file type
-    var ext = file.mimetype.split('/')[1]; // get the extension
-
-    // checks the extension of the file that is uploaded
-    if (type !== 'audio') {
-        fs.unlinkSync(file.path); // deletes the uploaded file
-        // send response to user
-        return res.status(400).json({
-            status: 'fail',
-            type: 'server/file-not-supported',
-            message: 'We only receive audio file type. You\'re file type was: ' + type
-        })
-    }
-
-    // check if the extension is .wav or not 
-    else if (ext !== 'wave') {
-        if (ext === 'mp4') {
-            const converter = require('../utils/converter'); // get the converter module
-            var temp = Object.assign({},file); // store the temporary path of the file here
-            var converterBool = 1; // set the converter bool to 1. This means that converting process took place
-            try {
-                // get the new path of the converted
-                file.path = await converter(temp.path, temp.filename.split('.')[0], (errorMessage) => {
-
-                }, null, function () {
-                    console.log('Successfully converted to .wav file!');
-                });
-            } catch (err) {
-                // deletes the uploaded file
-                fs.unlinkSync(file.path);
-                // sends back response to user
-                return res.status(500).json({
-                    status: 'fail',
-                    type: 'server/convert-error',
-                    message: 'There was an error while converting. Here is the error message: ' + err
-                })   
-            }
-        } else {
-            // deletes the uploaded file
-            fs.unlinkSync(file.path);
-            // sends back response to the user 
-            return res.status(400).json({
-                status: 'fail',
-                type: 'server/file-not-supported',
-                message: 'We only receive wave/m4a extensions. You\'re extension was: ' + ext 
-            })
-        }
-    }
-
-   // load the model according to the alphabet requested
-   const model = await tf.loadLayersModel('file://' +  path.join(__dirname, '..', 'models', `${word.toUpperCase()}`, 'model.json')); 
-   
-   // run getting mfccdatakata
-   getMFCCDataKata(file.path)
-    .then(async (response) => {
-        try {
-            if (response) {
-                // deletes the file from path
-                fs.unlinkSync(file.path);
-                // read array from resultKata.json
-                var arr = fs.readFileSync(path.join(__dirname, '..', 'utils', 'mfccsResult', 'resultKata.json'));
-                // parse the output to json
-                var jsonArr = JSON.parse(JSON.parse(arr));
-                // get the array value from the parsed json
-                var numpyArr = jsonArr.array; 
-                // convert array into tensor 4 dimension
-                const tensor = tf.tensor4d(numpyArr, [1,88,13,1], 'float32');
-                // use the tensor for prediction using the model
-                const predict = await model.predict(tensor).data();
-                // deletes file if it goes through converter function
-                if (converterBool) {
-                    fs.unlinkSync(temp.path);
-                }
-                // log to winston_log
-                logger.info('Predict success and sent to id: ' + id);
-                // sends back response to user
-                return res.status(200).json({
-                    status: 'success',
-                    message: 'We have successfully predict your kata recording. Here is the result!',
-                    result: predict[0]
-                })
-            }
-        } catch (err) { // this catches file deleting error
-            // read array from resultKata.json
-            var arr = fs.readFileSync(path.join(__dirname, '..', 'utils', 'mfccsResult', 'resultKata.json'));
-            // parse the output to json
-            var jsonArr = JSON.parse(JSON.parse(arr));
-            // get the array value from the parsed json
-            var numpyArr = jsonArr.array; 
-            // convert array into tensor 4 dimension
-            const tensor = tf.tensor4d(numpyArr, [1,88,13,1], 'float32');
-            // use the tensor for prediction using the model
-            const predict = await model.predict(tensor).data(); 
-            // log to winston_log
-            logger.info('Predict success and sent to id: ' + id);
-            // sends back response to user
-            return res.status(200).json({
-                status: 'success',
-                message: 'We have successfully predict your kata recording. Here is the result!',
-                result: predict[0]
-            })
-        }
+  databaseQuery.updateSpeechRecogLevel(level, id, obj)
+    .then((resultQuery) => {
+      if (resultQuery.changedRows < 1 && resultQuery.affectedRows < 1) {
+        const errorMessage = "database/no-affected-rows";
+        logger.error(errorMessage);
+        return (-1, errorMessage);
+      };
+      logger.info(`Predict success and sent to ${id}`);
+      return (1, null);
     })
     .catch((err) => {
-        // log to winston_log
-        logger.error('server/fail-to-predict');
-        // send back response to user
+      logger.error("database/fail-to-query");
+      return (-1, err);
+    });
+};
+
+/**
+ * predictHurufHandler() is a function that receives id and letter located
+ * in parameter, reads matrix data from a file generated with python, loads
+ * the matrix onto the model.json generated by tensorflor.js and then sends
+ * the result of the prediction to the client side.
+ * @param {*} req the request from the client-side.
+ * @param {*} res the response it will send to the client.
+ * @param {*} _next currently next() is not implementedk
+ * @returns res
+ */
+const predictKataHandler = async (req, res, _next) => {
+  // If req.user does not exist returns a fail repsonse.
+  if (!req.user) {
+    return res.status(401).json({
+      status: "fail",
+      type: "user/user-unidentified",
+      message: "req.user does not exist. It is required to query data."
+    });
+  }
+
+  // Gets the id and then the letter in the parameter.
+  const { id } = req.user;
+  const { word } = req;
+
+  // checks the header content-type
+  if (!req.is("multipart/form-data")) {
+    return res.status(400).json({
+      status: "fail",
+      type: "server/wrong-header-type",
+      message: "Please speicfy the header content-type to be 'multipart/form-data.'"
+    });
+  }
+
+  // Get the file path of the uploaded wav file
+  const file = req.files[0];
+  if (!file) {
+    return res.status(500).json({
+      status: "fail",
+      type: "server/file-not-found",
+      message: "Something went wrong! File is not found!"
+    });
+  };
+
+  // Get the file and mime type of the multipart-form data
+  // from the request.
+  const type = file.mimetype.split("/")[0];
+  const ext = file.mimetype.split("/")[1];
+
+  // Checks the file and extension type.
+  const response = await fileTypeChecker(file, type, ext);
+  switch (response[0]) {
+    case -1:
+      return res.status(400).json({
+        status: "fail",
+        type: "server/file-not-supported",
+        message: "The server only receives audio file type."
+      });
+    case -2:
+      return res.status(400).json({
+        status: "fail",
+        type: "server/convert-error",
+        message: " There is an error while converting your file."
+      });
+    case 1:
+      file.path = response[1];
+  }
+
+  const tf = require("@tensorflow/tfjs-node");
+  const model = await tf.loadLayersModel("file://" + path.join(__dirname, "..", "models", `${word.toUpperCase()}`, "model.json"));
+  const getter = await getMFCCData(file.path);
+
+  if (getter) {
+    const execRes = await predictExecutor(file.path, model, tf);
+    if (execRes[0] === -1) {
+      return res.status(500).json({
+        status: "fail",
+        type: "server/internal-server-error",
+        message: `An error has occured: ${execRes[1]}`
+      });
+    } else if (execRes[0] === 1 && execRes[1] === 0) {
+      return res.status(200).json({
+        status: "success",
+        message: "Succesfully predicted.",
+        predict: execRes[1]
+      });
+    } else if (execRes[0] === 1 && execRes === 1) {
+      const updateRes = await updateScoreDatabase(word, id);
+      if (updateRes[0] === -1) {
         return res.status(500).json({
-            status: 'fail',
-            type: 'server/fail-to-predict',
-            message: 'We failed to predict your kata recording due to: ' + err
-        })
-    })
-}
+          status: "fail",
+          type: "database/fail-to-query",
+          message: `An error has occured: ${updateRes[1]}`,
+          predict: execRes[1]
+        });
+      } else {
+        return res.status(200).json({
+          status: "success",
+          message: "Successfully predicted.",
+          predict: execRes[1]
+        });
+      }
+    }
+  } else {
+    logger.error("Unable to get MFCC matrix.");
+    return res.status(500).json({
+      status: "fail",
+      type: "server/internal-server-error",
+      message: "Unable to get MFCC matrix."
+    });
+  };
+};
 
 module.exports = predictKataHandler;

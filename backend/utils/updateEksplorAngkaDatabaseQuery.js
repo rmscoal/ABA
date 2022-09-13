@@ -1,48 +1,42 @@
-/* 
-  This file is defined to be used to update achievements (update where) data for a given uid. 
+const pool = require("./database");
 
-  Here, it will be written as a Promise function. 
-*/
-
-const pool = require('./database');
-
-/* This function will be used for the req.body.eksplorHurufData is an object with string keys. 
-For example, the req.body is: 
+/* This function will be used for the req.body.eksplorHurufData is an object with string keys.
+For example, the req.body is:
   {
     eksplorAngkaData: {
       nol: true,
-      satu: true, 
+      satu: true,
       dua: true,
     }
   }
 */
 const updateEksplorAngkaObj = (id, obj) => {
-  var queryObjString = '';
+  let queryObjString = "";
   let i = 0;
   const max = Object.entries(obj).length;
   for (const [key, value] of Object.entries(obj)) {
     if (i === max - 1) {
-      queryObjString += `"${key}"`+ ':' + value; 
+      queryObjString += `"${key}"` + ":" + value;
     } else {
-      queryObjString += `"${key}"`+ ':' + value + ',';
+      queryObjString += `"${key}"` + ":" + value + ",";
     }
     i++;
   }
-  // the result of queryObjString would look like this: "nol":true, "satu":true, "dua":true,
+  // The result of queryObjString would look like this: "nol":true, "satu":true, "dua":true,
   // if necessary (some cases error occurs) we need to delete the last ',' on queryObjString
   // use this code: queryObjString = queryObjString.slice(0, queryObjString.length - 1);
-  // however without slicing it works just fine... 
+  // however without slicing it works just fine...
   return new Promise((resolve, reject) => {
-    var query = `UPDATE achievements SET eksplor_angka=JSON_MERGE_PATCH(eksplor_angka, '{${queryObjString}}') WHERE achievements.user_id=${id}`;
+    const query = `UPDATE achievements SET eksplor_angka=JSON_MERGE_PATCH(eksplor_angka, '{${queryObjString}}') WHERE achievements.user_id=${id}`;
     pool.getConnection((err, connection) => {
       if (err) reject(err);
       connection.query(query, (err, result) => {
         connection.release();
         if (err) reject(err);
         resolve(result);
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};
 
 module.exports = updateEksplorAngkaObj;

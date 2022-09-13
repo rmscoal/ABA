@@ -1,24 +1,17 @@
-/* 
-  This file is defined to be used to insert data (insert into) for a given uid 
-  and sets the achievements to its default value. 
+const pool = require("./database");
 
-  Here, it will be written as a Promise function. 
-*/
-
-const pool = require('./database');
-
-const makeNewUserAchievements = (user_id) => {
+const makeNewUserAchievements = (userID) => {
   return new Promise((resolve, reject) => {
-    var query = `INSERT INTO achievements (achv_id, user_id, eksplor_huruf, eksplor_angka, latMenyusunKatalvl1, latMenyusunKatalvl2, latMenyusunKatalvl3, latMengejaHuruflvl1, latMengejaHuruflvl2, latMengejaHuruflvl3) VALUES (NULL, ${user_id}, '{}', '{}', '0', '0', '0', '{}', '{}', '{}')`;
+    const query = `INSERT INTO achievements (achv_id, user_id, eksplor_huruf, eksplor_angka, latMenyusunKatalvl1, latMenyusunKatalvl2, latMenyusunKatalvl3, latMengejaHuruflvl1, latMengejaHuruflvl2, latMengejaHuruflvl3) VALUES (NULL, ${userID}, '{}', '{}', '0', '0', '0', '{}', '{}', '{}')`;
     pool.getConnection((err, connection) => {
       if (err) reject(err);
       connection.query(query, (err, result) => {
         connection.release();
         if (err) reject(err);
         resolve(result);
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};
 
 module.exports = makeNewUserAchievements;
