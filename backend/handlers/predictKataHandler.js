@@ -120,7 +120,8 @@ const predictKataHandler = async (req, res, _next) => {
     return res.status(401).json({
       status: "fail",
       type: "user/user-unidentified",
-      message: "req.user does not exist. It is required to query data."
+      message: "req.user does not exist. It is required to query data.",
+      time: Date.now()
     });
   }
 
@@ -133,7 +134,8 @@ const predictKataHandler = async (req, res, _next) => {
     return res.status(400).json({
       status: "fail",
       type: "server/wrong-header-type",
-      message: "Please speicfy the header content-type to be 'multipart/form-data.'"
+      message: "Please speicfy the header content-type to be 'multipart/form-data.'",
+      time: Date.now()
     });
   }
 
@@ -143,7 +145,8 @@ const predictKataHandler = async (req, res, _next) => {
     return res.status(500).json({
       status: "fail",
       type: "server/file-not-found",
-      message: "Something went wrong! File is not found!"
+      message: "Something went wrong! File is not found!",
+      time: Date.now()
     });
   };
 
@@ -159,13 +162,15 @@ const predictKataHandler = async (req, res, _next) => {
       return res.status(400).json({
         status: "fail",
         type: "server/file-not-supported",
-        message: "The server only receives audio file type."
+        message: "The server only receives audio file type.",
+        time: Date.now()
       });
     case -2:
       return res.status(400).json({
         status: "fail",
         type: "server/convert-error",
-        message: " There is an error while converting your file."
+        message: " There is an error while converting your file.",
+        time: Date.now()
       });
     case 1:
       file.path = response[1];
@@ -181,13 +186,15 @@ const predictKataHandler = async (req, res, _next) => {
       return res.status(500).json({
         status: "fail",
         type: "server/internal-server-error",
-        message: `An error has occured: ${execRes[1]}`
+        message: `An error has occured: ${execRes[1]}`,
+        time: Date.now()
       });
     } else if (execRes[0] === 1 && execRes[1] === 0) {
       return res.status(200).json({
         status: "success",
         message: "Succesfully predicted.",
-        predict: execRes[1]
+        predict: execRes[1],
+        time: Date.now()
       });
     } else if (execRes[0] === 1 && execRes === 1) {
       const updateRes = await updateScoreDatabase(word, id);
@@ -196,13 +203,15 @@ const predictKataHandler = async (req, res, _next) => {
           status: "fail",
           type: "database/fail-to-query",
           message: `An error has occured: ${updateRes[1]}`,
-          predict: execRes[1]
+          predict: execRes[1],
+          time: Date.now()
         });
       } else {
         return res.status(200).json({
           status: "success",
           message: "Successfully predicted.",
-          predict: execRes[1]
+          predict: execRes[1],
+          time: Date.now()
         });
       }
     }
@@ -211,7 +220,8 @@ const predictKataHandler = async (req, res, _next) => {
     return res.status(500).json({
       status: "fail",
       type: "server/internal-server-error",
-      message: "Unable to get MFCC matrix."
+      message: "Unable to get MFCC matrix.",
+      time: Date.now()
     });
   };
 };

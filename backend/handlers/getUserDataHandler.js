@@ -23,7 +23,7 @@ const databaseQuery = require("../utils/databaseQuery");
  * to make code structure clean and organized. The task of execFunction() is
  * to query data using the requested id and returns response beginning in int
  * to identify whether it has succeeded or failed during the query process.
- * @param {*} id of the user on requesting data.
+ * @param {int} id of the user on requesting data.
  * @returns a tuple of (code, result) where:
  *
  * 1 indicates that it has successfully retrieve user data from database,
